@@ -21,13 +21,13 @@
 - **Comunicação Externa:** Evento informal mensal ("bate-papo") toda última quinta-feira do mês, após o almoço, para integração com a comunidade acadêmica.
 
 ## 3. Plano de Ações (Issues)
-- [ ] Agendar cronograma de reuniões com grupos de pesquisa (Responsável: @richard-junior-manuel-godinez-tello, Área: Pesquisa, Prioridade: Alta, Prazo: 2026-03-15) - #1
-- [ ] Agendar reuniões com grupos de extensão (Responsável: @celio, Área: Extensão, Prioridade: Alta, Prazo: 2026-03-15) - #2
-- [ ] Alinhar com a CAP o novo calendário bimestral e pauta estratégica (Responsável: @richard-junior-manuel-godinez-tello, Área: Pesquisa, Prioridade: Média, Prazo: 2026-03-20) - #3
-- [ ] Formalizar comissão de aprovação de projetos (Célio, Richard, Propedêutico) (Responsável: @paulo, Área: Geral, Prioridade: Alta, Prazo: 2026-03-15) - #4
-- [ ] Propor a criação da CAEX - Comissão de Apoio à Extensão (Responsável: @paulo, Área: Extensão, Prioridade: Média, Prazo: 2026-03-20) - #5
-- [ ] Mapear tipos de projetos e fluxos de processos (Responsável: @paulo, Área: Geral, Prioridade: Alta, Prazo: 2026-04-10) - #6
-- [ ] Organizar primeiro bate-papo informal com a comunidade (Responsável: @paulo, Área: Geral, Prioridade: Baixa, Prazo: 2026-03-26) - #7
+- [ ] Agendar cronograma de reuniões com grupos de pesquisa (Responsável: @richard-junior-manuel-godinez-tello, Área: Pesquisa, Prioridade: Alta, Prazo: 2026-03-15) - [#1](https://github.com/ifesserra-lab/diretoria/issues/1)
+- [ ] Agendar reuniões com grupos de extensão (Responsável: @celio, Área: Extensão, Prioridade: Alta, Prazo: 2026-03-15) - [#2](https://github.com/ifesserra-lab/diretoria/issues/2)
+- [ ] Alinhar com a CAP o novo calendário bimestral e pauta estratégica (Responsável: @richard-junior-manuel-godinez-tello, Área: Pesquisa, Prioridade: Média, Prazo: 2026-03-20) - [#3](https://github.com/ifesserra-lab/diretoria/issues/3)
+- [ ] Formalizar comissão de aprovação de projetos (Célio, Richard, Propedêutico) (Responsável: @paulo, Área: Geral, Prioridade: Alta, Prazo: 2026-03-15) - [#4](https://github.com/ifesserra-lab/diretoria/issues/4)
+- [ ] Propor a criação da CAEX - Comissão de Apoio à Extensão (Responsável: @paulo, Área: Extensão, Prioridade: Média, Prazo: 2026-03-20) - [#5](https://github.com/ifesserra-lab/diretoria/issues/5)
+- [ ] Mapear tipos de projetos e fluxos de processos (Responsável: @paulo, Área: Geral, Prioridade: Alta, Prazo: 2026-04-10) - [#6](https://github.com/ifesserra-lab/diretoria/issues/6)
+- [ ] Organizar primeiro bate-papo informal com a comunidade (Responsável: @paulo, Área: Geral, Prioridade: Baixa, Prazo: 2026-03-26) - [#7](https://github.com/ifesserra-lab/diretoria/issues/7)
 
 ---
 *Ata gerada em: 2026-03-08*
