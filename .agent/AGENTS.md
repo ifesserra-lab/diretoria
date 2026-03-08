@@ -20,5 +20,10 @@
     - **Visuals**: Use Mermaid diagrams (PIE, GANTT) within Markdown for immediate visualization.
     - **Automation**: Implement Python/GitHub Actions workflows to generate PNG charts from `data/tasks.csv` to `docs/dashboards/graficos/`.
 
+- **Task Synchronization from Minutes**: Skilled in synchronizing tasks from minutes to GitHub.
+    - **Trigger**: New entries in `## 3. Plano de Ações (Issues)` in `docs/atas/`.
+    - **Extraction**: Reads items like `- [ ] Task Name (Responsible: @user, Area: Area, Priority: Priority, Deadline: YYYY-MM-DD)`.
+    - **Action**: Creates GitHub Issues in the repository, assigns to Project #7, and updates the Markdown with the Issue link (- [Issue #123](URL) Task Name...).
+
 ## Governance Workflow Pattern
 `Reunião → Ata → Deliberação → Issues → Project → Gráficos → Relatório mensal`
