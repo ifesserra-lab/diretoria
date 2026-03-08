@@ -1,44 +1,53 @@
-name: Daily Activity Sync
+name: 🌙 Daily Site Update
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Todo dia à meia-noite
+    - cron: '0 3 * * *' # Todo dia às 00:00 BRT (03:00 UTC)
   workflow_dispatch: # Permite execução manual
 
 permissions:
-  contents: write
-  issues: read
+  contents: write  # Para commit + push + gh-deploy
+  issues: read     # Para ler issues no sync_activities
 
 jobs:
-  sync:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    timeout-minutes: 15
 
-      - name: Setup Python
+    steps:
+      - name: 📥 Checkout repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Necessário para o gh-deploy ter acesso ao histórico completo
+
+      - name: 🐍 Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.12'
+          cache: 'pip'
 
-      - name: Install dependencies
+      - name: 📦 Instalar dependências
         run: pip install -r requirements-docs.txt
 
-      - name: Sync Activities
+      - name: 🔄 Sincronizar atividades das issues do GitHub
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/sync_activities.py
 
-      - name: Update Charts
+      - name: 📊 Gerar gráficos do dashboard
         run: python scripts/generate_charts.py
 
-      - name: Commit and Push changes
+      - name: 💾 Commit e push das alterações
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/tasks.csv docs/atividades/*.md docs/dashboards/graficos/*.png docs/index.md
-          git commit -m "chore: nightly update of activities and charts [skip ci]" || echo "No changes to commit"
+          git add \
+            data/tasks.csv \
+            docs/atividades/ \
+            docs/dashboards/graficos/ \
+            docs/index.md
+          git diff --cached --quiet || git commit -m "chore(bot): atualização noturna de atividades e dashboards [skip ci]"
           git push
 
-      - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+      - name: 🚀 Build e deploy do site (MkDocs → gh-pages)
+        run: mkdocs gh-deploy --force --clean
