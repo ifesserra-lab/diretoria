@@ -1,0 +1,39 @@
+name: Tarefa
+description: Criar uma nova demanda para a diretoria
+title: "[TAREFA]: "
+labels: ["tarefa"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por registrar esta demanda. Por favor, preencha os detalhes abaixo.
+  - type: input
+    id: area
+    attributes:
+      label: Área
+      placeholder: ex: Pesquisa, Extensão, Administrativo
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridade
+      options:
+        - Baixa
+        - Média
+        - Alta
+        - Crítica
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição da Demanda
+      placeholder: Descreva o que precisa ser feito...
+    validations:
+      required: true
+  - type: input
+    id: deadline
+    attributes:
+      label: Prazo (Opcional)
+      placeholder: AAAA-MM-DD

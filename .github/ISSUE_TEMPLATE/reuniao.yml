@@ -1,0 +1,22 @@
+name: Reunião / Ata
+description: Registrar uma pauta ou ata de reunião
+title: "[ATA]: Reunião dd/mm/aaaa"
+labels: ["reunião"]
+body:
+  - type: textarea
+    id: agenda
+    attributes:
+      label: Pauta
+      placeholder: Tópicos a serem discutidos...
+    validations:
+      required: true
+  - type: textarea
+    id: participants
+    attributes:
+      label: Participantes
+      placeholder: Lista de presentes...
+  - type: textarea
+    id: actions
+    attributes:
+      label: Ações e Deliberações
+      placeholder: O que foi decidido e quais as próximas tarefas...
