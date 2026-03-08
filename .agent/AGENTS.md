@@ -14,7 +14,7 @@
 
 - **Task Management**: Skilled in task orchestration using GitHub Issues and Projects.
     - **Workflow**: Create Issues using specific templates.
-    - **Tracking**: Monitor in GitHub Projects with custom fields: `Status`, `Area`, `Responsible`, `Priority`, `Deadline`, and `Origin`.
+    - **Tracking**: Monitor in GitHub Projects ([Diretoria - Governança #7](https://github.com/orgs/ifesserra-lab/projects/7)) with custom fields: `Status`, `Area`, `Responsible`, `Priority`, `Deadline`, and `Origin`.
 
 - **Dashboards and Indicators**: Skilled in automated reporting and visualization.
     - **Visuals**: Use Mermaid diagrams (PIE, GANTT) within Markdown for immediate visualization.

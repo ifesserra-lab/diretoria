@@ -18,7 +18,7 @@ Este repositório serve como a **fonte oficial de verdade** para a gestão da di
 O fluxo de trabalho segue a seguinte lógica:
 1. **Reunião**: Gera uma pauta e, posteriormente, uma **Ata**.
 2. **Ata**: Lista deliberações e ações que viram **Issues**.
-3. **Issues**: São categorizadas e acompanhadas no [GitHub Project](https://github.com/orgs/ifesserra-lab/projects).
+3. **Issues**: São categorizadas e acompanhadas no [GitHub Project](https://github.com/orgs/ifesserra-lab/projects/7).
 4. **Relatórios**: Workflows automáticos geram gráficos a partir das tarefas para o dashboard.
 
 ## Como Contribuir
