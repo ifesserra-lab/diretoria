@@ -10,6 +10,10 @@ Este documento registra as atividades concluídas durante o mês para fins de es
 ## ✅ Atividades por Área
 
 ### 🔬 Pesquisa
+- [#20](https://github.com/ifesserra-lab/diretoria/issues/20) - [PROJETO]: Aprovação do APPD&I Zaruc × IFES — Nova Economia Capixaba (⏳)
+- [#19](https://github.com/ifesserra-lab/diretoria/issues/19) - [TAREFA]: Apoio na submissão de projeto ao Edital ProInfra (Infraestrutura de IA com energias renováveis) (✅)
+- [#17](https://github.com/ifesserra-lab/diretoria/issues/17) - [PROJETO]: Colaboração Internacional com o Paraguai (⏳)
+- [#16](https://github.com/ifesserra-lab/diretoria/issues/16) - [PROJETO]: Ministério dos Povos Indígenas (MPI) (⏳)
 - [#15](https://github.com/ifesserra-lab/diretoria/issues/15) - [PROJETO]: Dashboard de Sustentabilidade (Cadastro SIG Pesq) (⏳)
 - [#14](https://github.com/ifesserra-lab/diretoria/issues/14) - [PROJETO]: LEDS Academy (Cadastro SIG Pesq) (⏳)
 - [#12](https://github.com/ifesserra-lab/diretoria/issues/12) - [TAREFA]: Reunião com o mestrado de automação (convite Gustavo Maia) (✅)
@@ -27,6 +31,7 @@ Este documento registra as atividades concluídas durante o mês para fins de es
 - [#2](https://github.com/ifesserra-lab/diretoria/issues/2) - [TAREFA]: Agendar reuniões com grupos de extensão (⏳)
 
 ### 🏛️ Gestão (DPPGE)
+- [#18](https://github.com/ifesserra-lab/diretoria/issues/18) - [TAREFA]: Avaliar participação de professores do IFES no mestrado PROFComp (SBC/UFRJ) (⏳)
 - [#13](https://github.com/ifesserra-lab/diretoria/issues/13) - [TAREFA]: Receber produtos da Receita Federal, categorizar e dividir entre as áreas do campus (✅)
 - [#7](https://github.com/ifesserra-lab/diretoria/issues/7) - [TAREFA]: Organizar primeiro bate-papo informal com a comunidade (⏳)
 - [#6](https://github.com/ifesserra-lab/diretoria/issues/6) - [TAREFA]: Mapear tipos de projetos e fluxos de processos (⏳)
