@@ -18,6 +18,7 @@ def get_gh_issues():
         "gh", "issue", "list",
         "--repo", "ifesserra-lab/diretoria",
         "--limit", "100",
+        "--state", "all",
         "--json", "number,title,state,labels,assignees,closedAt,url"
     ]
     result = subprocess.run(cmd, capture_output=True, text=True)

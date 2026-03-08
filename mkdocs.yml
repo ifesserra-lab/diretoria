@@ -38,6 +38,7 @@ nav:
       - 'Março 2026': atividades/2026-03-atividades.md
   - Dashboards:
       - Visão Geral: dashboards/index.md
+      - Indicadores: dashboards/indicadores.md
 
 markdown_extensions:
   - admonition

@@ -11,7 +11,7 @@ Este painel é atualizado automaticamente sempre que os dados em `data/tasks.csv
 ![Distribuição por Área](./graficos/por-area.png)
 
 ### Entregas Mensais
-![Entregas Mensais](./graficos/throughput.png)
+![Entregas Mensais](graficos/throughput.png)
 
 ---
 *Última atualização: Veja o histórico de commits do repositório.*

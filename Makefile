@@ -1,17 +1,24 @@
-.PHONY: setup serve build deploy sync
+VENV = .venv
+PYTHON = $(VENV)/bin/python3
+PIP = $(VENV)/bin/pip
 
-setup:
-	pip install -r requirements-docs.txt
+.PHONY: setup serve build deploy sync venv
+
+venv:
+	python3 -m venv $(VENV)
+
+setup: venv
+	$(PIP) install -r requirements-docs.txt
 
 serve:
-	mkdocs serve
+	$(VENV)/bin/mkdocs serve
 
 build:
-	mkdocs build
+	$(VENV)/bin/mkdocs build
 
 deploy:
-	mkdocs gh-deploy --force
+	$(VENV)/bin/mkdocs gh-deploy --force
 
 sync:
-	python3 scripts/sync_activities.py
-	python3 scripts/generate_charts.py
+	$(PYTHON) scripts/sync_activities.py
+	$(PYTHON) scripts/generate_charts.py
