@@ -1,0 +1,41 @@
+name: Daily Activity Sync
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Todo dia à meia-noite
+  workflow_dispatch: # Permite execução manual
+
+permissions:
+  contents: write
+  issues: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pandas matplotlib
+
+      - name: Sync Activities
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/sync_activities.py
+
+      - name: Update Charts
+        run: python scripts/generate_charts.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/tasks.csv docs/atividades/*.md docs/dashboards/graficos/*.png
+          git commit -m "chore: nightly update of activities and charts [skip ci]" || echo "No changes to commit"
+          git push

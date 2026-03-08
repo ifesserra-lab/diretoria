@@ -1,33 +1,29 @@
 ---
-description: Workflow para registro de atividades ad-hoc, criação de tarefas e atualização do log mensal.
+description: Workflow para criação de atividades ad-hoc e lançamento no GitHub.
 ---
 
-Este workflow simplifica o registro de atividades que surgem no dia a dia, garantindo que elas virem Issues no GitHub e sejam registradas no log de estatísticas mensal.
+Este workflow orienta o agente na criação de novas atividades/tarefas diretamente no GitHub, garantindo a formatação correta para que a automação diária as processe nos relatórios.
 
 ### Comandos:
-- `/record-activity`: Registra uma nova atividade, cria a Issue e atualiza o arquivo mensal.
+- `/activity-log`: Registra uma nova demanda e cria a Issue correspondente.
 
 ### Passo a Passo:
 
 1. **Coleta de Informações**:
-   - Descrição da atividade/tarefa.
-   - Área (Pesquisa, Extensão, Gestão).
-   - Status: "Para Fazer" (Cria Issue) ou "Concluída" (Apenas registra no log).
+   - Título da atividade.
+   - Responsável (ex: @paulo, @celio, @richard).
+   - Área (**Pesquisa**, **Extensão**, ou **Gestão**).
+   - Prazo (opcional).
 
-2. **Criação de Task (Se aplicável)**:
-   - Se o status for "Para Fazer", utilize a skill `github-issue-creator` para gerar a Issue.
-   - Capture o número da Issue (#ID).
+2. **Lançamento no GitHub**:
+   - Use a skill `github-issue-creator` para gerar a Issue.
+   - Adicione obrigatoriamente as labels: `tarefa` + a área correspondente (`Pesquisa`, `Extensão` ou `Gestão`).
+   - Garanta que o corpo da Issue siga o padrão de governança.
 
-3. **Atualização do Log Mensal**:
-   - Verifique se o arquivo do mês atual existe em `docs/atividades/YYYY-MM-atividades.md`.
-   - Se não existir, crie-o usando o `modelo-atividades.md`.
-   - Adicione a atividade na seção correspondente à Área.
-   - Se for uma Issue, inclua o link `[#ID](...)`.
-   - **Peça aprovação do rascunho da atualização antes de salvar.**
-
-4. **Sincronização**:
-   - Realize o commit e push com a confirmação do usuário.
+3. **Confirmação**:
+   - Informe ao usuário o número da Issue criada (#ID).
+   - **Nota Importante**: Informe que o arquivo em `docs/atividades/` será atualizado automaticamente pela automação diária (GitHub Action), não sendo necessária atualização manual neste momento.
 
 ---
-> [!TIP]
-> Use este workflow para "Aprovações Emergenciais" ou tarefas rápidas que não passaram por uma ata de reunião formal.
+> [!NOTE]
+> Este fluxo prioriza o registro no GitHub. O agrupamento estatístico e documental é feito via script automatizado (`sync_activities.py`).
