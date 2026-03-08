@@ -6,7 +6,7 @@ Este documento estabelece o cronograma de reuniões ordinárias da diretoria, oc
 
 | Reunião | Data Prevista | Status | Observação |
 | :--- | :--- | :--- | :--- |
-| 01 | 2026-02-27 | ✅ Realizada | Ata em `docs/atas/2026-02-27-planejamento-dppge.md` |
+| 01 | 2026-02-27 | ✅ Realizada | [📄 Ata da Reunião](../atas/2026-02-27-planejamento-dppge.md) |
 | 02 | 2026-03-13 | 📅 Agendada | |
 | 03 | 2026-03-27 | 📅 Agendada | |
 | 04 | 2026-04-10 | 📅 Agendada | |
