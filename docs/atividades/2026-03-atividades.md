@@ -25,7 +25,7 @@ Este documento registra as atividades concluídas durante o mês para fins de es
 - [#2](https://github.com/ifesserra-lab/diretoria/issues/2) - [TAREFA]: Agendar reuniões com grupos de extensão (⏳)
 
 ### 🏛️ Gestão (DPPGE)
-- [#13](https://github.com/ifesserra-lab/diretoria/issues/13) - [TAREFA]: Receber produtos da Receita Federal, categorizar e dividir entre as áreas do campus (⏳)
+- [#13](https://github.com/ifesserra-lab/diretoria/issues/13) - [TAREFA]: Receber produtos da Receita Federal, categorizar e dividir entre as áreas do campus (✅)
 - [#7](https://github.com/ifesserra-lab/diretoria/issues/7) - [TAREFA]: Organizar primeiro bate-papo informal com a comunidade (⏳)
 - [#6](https://github.com/ifesserra-lab/diretoria/issues/6) - [TAREFA]: Mapear tipos de projetos e fluxos de processos (⏳)
 - [#4](https://github.com/ifesserra-lab/diretoria/issues/4) - [TAREFA]: Formalizar comissão de aprovação de projetos (⏳)
