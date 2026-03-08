@@ -15,6 +15,7 @@ Este documento registra as atividades concluídas durante o mês para fins de es
 - [Atividade Ad-hoc] - Descrição de algo não planejado que foi executado.
 
 ### 🚀 Extensão
+- [#8](https://github.com/ifesserra-lab/diretoria/issues/8) - [TAREFA]: Coletar interessados e obter TV box modificadas (⏳)
 - [#5](https://github.com/ifesserra-lab/diretoria/issues/5) - [TAREFA]: Propor a criação da CAEX (⏳)
 - [#2](https://github.com/ifesserra-lab/diretoria/issues/2) - [TAREFA]: Agendar reuniões com grupos de extensão (⏳)
 
