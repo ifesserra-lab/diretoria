@@ -16,7 +16,6 @@ Este documento registra as atividades concluídas durante o mês para fins de es
 - [#16](https://github.com/ifesserra-lab/diretoria/issues/16) - [PROJETO]: Ministério dos Povos Indígenas (MPI) (⏳)
 - [#15](https://github.com/ifesserra-lab/diretoria/issues/15) - [PROJETO]: Dashboard de Sustentabilidade (Cadastro SIG Pesq) (⏳)
 - [#14](https://github.com/ifesserra-lab/diretoria/issues/14) - [PROJETO]: LEDS Academy (Cadastro SIG Pesq) (⏳)
-- [#12](https://github.com/ifesserra-lab/diretoria/issues/12) - [TAREFA]: Reunião com o mestrado de automação (convite Gustavo Maia) (✅)
 - [#11](https://github.com/ifesserra-lab/diretoria/issues/11) - [TAREFA]: Acompanhar o cadastro do SITEC dos mestrados (✅)
 - [#10](https://github.com/ifesserra-lab/diretoria/issues/10) - [TAREFA]: Solicitar calendários aos responsáveis pela pós-graduação (✅)
 - [#9](https://github.com/ifesserra-lab/diretoria/issues/9) - [TAREFA]: Solicitar ao procurador para tornar públicos os dados de pesquisa e extensão (✅)

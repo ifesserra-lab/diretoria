@@ -36,6 +36,7 @@ nav:
   - Relatórios de Atividades:
       - Modelo: atividades/modelo-atividades.md
       - 'Janeiro 2026': atividades/2026-01-atividades.md
+      - 'Fevereiro 2026': atividades/2026-02-atividades.md
       - 'Março 2026': atividades/2026-03-atividades.md
   - Dashboards:
       - Visão Geral: dashboards/index.md
