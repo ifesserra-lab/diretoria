@@ -42,19 +42,24 @@ plt.close()
 # Gráfico 3: Entregas (Volume)
 df["closed_at"] = pd.to_datetime(df["closed_at"], errors="coerce")
 done = df[df["status"] == "Concluído"].copy()
+
+plt.figure(figsize=(10, 6))
 if not done.empty:
     done["mes"] = done["closed_at"].dt.to_period("M").astype(str)
     monthly = done["mes"].value_counts().sort_index()
-    plt.figure(figsize=(10, 6))
     monthly.plot(kind="line", marker="o", color='green', linewidth=2)
     plt.title("Histórico de Entregas (Throughput)", fontsize=14, fontweight='bold')
     plt.xlabel("Mês", fontsize=12)
     plt.ylabel("Quantidade Concluída", fontsize=12)
     plt.grid(True, linestyle='--', alpha=0.7)
-    plt.tight_layout()
-    plt.savefig(out_dir / "throughput.png", dpi=300)
-    plt.close()
 else:
-    print("Nenhuma tarefa concluída para gerar o gráfico de entregas.")
+    plt.text(0.5, 0.5, "Aguardando primeiras conclusões...", 
+             horizontalalignment='center', verticalalignment='center',
+             fontsize=12, color='gray', style='italic')
+    plt.title("Histórico de Entregas (Sem dados)", fontsize=14, fontweight='bold')
+
+plt.tight_layout()
+plt.savefig(out_dir / "throughput.png", dpi=300)
+plt.close()
 
 print("Gráficos gerados com sucesso em docs/dashboards/graficos/")
