@@ -22,7 +22,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install pandas matplotlib
+        run: pip install -r requirements-docs.txt
 
       - name: Sync Activities
         env:
@@ -36,6 +36,9 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/tasks.csv docs/atividades/*.md docs/dashboards/graficos/*.png
+          git add data/tasks.csv docs/atividades/*.md docs/dashboards/graficos/*.png docs/index.md
           git commit -m "chore: nightly update of activities and charts [skip ci]" || echo "No changes to commit"
           git push
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
