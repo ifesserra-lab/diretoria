@@ -45,6 +45,12 @@ Este comando automatiza o ciclo de vida de uma reunião:
 2. **Issues**: Extrai tarefas e cria Issues automaticamente no GitHub.
 3. **Draft**: Pede aprovação antes de persistir ou fazer push.
 
+### `/activity-log`
+Utilizado para registro de atividades ad-hoc e demandas fora de reunião:
+1. **Log**: Atualiza o arquivo mensal em `docs/atividades/`.
+2. **Task**: Cria a Issue correspondente se a atividade for "Para Fazer".
+3. **Draft**: Pede aprovação antes de persistir ou fazer push.
+
 #### Como Contribuir:
 - **Tarefas**: Abra uma Issue usando o template de `Tarefa`.
 - **Pautas**: Sugira tópicos criando um arquivo em `docs/pautas/`.
