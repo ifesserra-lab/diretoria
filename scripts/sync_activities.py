@@ -3,6 +3,7 @@ import json
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
+import re
 
 # Configurações de caminhos
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -55,67 +56,55 @@ def sync_csv(issues):
     df.to_csv(DATA_FILE, index=False)
     print(f"CSV atualizado em {DATA_FILE}")
 
-def update_monthly_log(issues):
-    """Atualiza o arquivo Markdown mensal com as atividades."""
-    now = datetime.now()
-    month_str = now.strftime("%Y-%m")
-    month_name = now.strftime("%B/%Y") # Ex: March/2026
-    log_file = ACTIVITIES_DIR / f"{month_str}-atividades.md"
-    
-    # Se não existe, inicia com o modelo
-    if not log_file.exists() and TEMPLATE_FILE.exists():
-        content = TEMPLATE_FILE.read_text()
-        content = content.replace("[MÊS/ANO]", month_name)
-    else:
-        # Para simplificar, vamos reconstruir as seções de atividades
-        # mas manter o cabeçalho se o arquivo já existir
-        content = TEMPLATE_FILE.read_text().replace("[MÊS/ANO]", month_name)
-
-    # Contagem estatística
-    total_closed = len([i for i in issues if i['state'] == "CLOSED"])
-    
-    # Substituir resumo
-    content = content.replace("Total de Issues Concluídas: 0", f"Total de Issues Concluídas: {total_closed}")
-    
-    # Agrupar por área para o Markdown
-    for area in AREAS:
-        area_issues = []
-        for issue in issues:
-            is_in_area = any(l['name'] == area for l in issue['labels'])
-            if is_in_area:
-                link = f"[#{issue['number']}]({issue['url']})"
-                area_issues.append(f"- {link} - {issue['title']} (Status: {issue['state']})")
+def get_existing_manual_entries(log_file, area_title):
+    """Recupera entradas manuais iterando pelas linhas após o título da seção até a próxima."""
+    if not log_file.exists():
+        return []
         
-        placeholder = f"### {area}\n- [ISSUE #ID] - Descrição breve da entrega."
-        if area == "Gestão":
-            placeholder = f"### Gestão (DPPGE)\n- [ISSUE #ID] - Descrição breve da entrega."
+    lines = log_file.read_text().splitlines()
+    manual_entries = []
+    in_section = False
+    
+    for line in lines:
+        if line.startswith("### "):
+            in_section = (line.strip() == area_title)
+            continue
+        elif line.startswith("## ") and in_section:
+            break
             
-        if area_issues:
-            new_section = f"### {area if area != 'Gestão' else 'Gestão (DPPGE)'}\n" + "\n".join(area_issues)
-            content = content.replace(placeholder, new_section)
-
-    log_file.write_to_file(content, overwrite=True)
-    print(f"Log mensal atualizado em {log_file}")
+        if in_section and line.startswith("- "):
+            # Se não é uma issue do Github, consideramos manual
+            if "github.com" not in line and "[ISSUE #ID]" not in line:
+                manual_entries.append(line)
+                
+    return manual_entries
 
 if __name__ == "__main__":
     issues = get_gh_issues()
     if issues:
         sync_csv(issues)
-        # update_monthly_log(issues) # Comentado até resolver o método write_to_file do Path ou similar
         
-        # Correção simples para escrita de arquivo
         now = datetime.now()
         month_str = now.strftime("%Y-%m")
         log_file = ACTIVITIES_DIR / f"{month_str}-atividades.md"
         
-        # (Lógica de montagem de conteúdo repetida para o script final funcional)
         def generate_content(issues, month_name):
             template_content = TEMPLATE_FILE.read_text()
             content = template_content.replace("[MÊS/ANO]", month_name)
             total_closed = len([i for i in issues if i['state'] == "CLOSED"])
             content = content.replace("Total de Issues Concluídas: 0", f"Total de Issues Concluídas: {total_closed}")
             
+            # Map of area headers
+            area_headers = {
+                "Pesquisa": "### 🔬 Pesquisa",
+                "Extensão": "### 🚀 Extensão",
+                "Gestão": "### 🏛️ Gestão (DPPGE)"
+            }
+            
             for area in AREAS:
+                target_header = area_headers[area]
+                
+                # 1. Fetch GH Issues for this area
                 area_issues = []
                 for issue in issues:
                     is_in_area = any(l['name'] == area for l in issue['labels'])
@@ -124,20 +113,49 @@ if __name__ == "__main__":
                         status_emoji = "✅" if issue['state'] == "CLOSED" else "⏳"
                         area_issues.append(f"- {link} - {issue['title']} ({status_emoji})")
                 
-                # Mapeamento do template (usando busca por texto parcial para ser mais robusto)
+                # 2. Fetch manual lines already in the file for this area
+                manual_entries = get_existing_manual_entries(log_file, target_header)
+                if manual_entries:
+                    area_issues.extend(manual_entries)
+                
+                # 3. Replace template section
+                target_template_block = f"{target_header}\n- [ISSUE #ID] - Descrição breve da entrega."
                 if area == "Pesquisa":
-                    target = "### 🔬 Pesquisa\n- [ISSUE #ID] - Descrição breve da entrega."
-                elif area == "Extensão":
-                    target = "### 🚀 Extensão\n- [ISSUE #ID] - Descrição breve da entrega."
-                elif area == "Gestão":
-                    target = "### 🏛️ Gestão (DPPGE)\n- [ISSUE #ID] - Descrição breve da entrega."
+                    target_template_block += "\n- [Atividade Ad-hoc] - Descrição de algo não planejado que foi executado."
                 
                 if area_issues:
-                    replacement = target.split('\n')[0] + "\n" + "\n".join(area_issues)
-                    content = content.replace(target, replacement)
+                    replacement = target_header + "\n" + "\n".join(area_issues)
+                    content = content.replace(target_template_block, replacement)
+                    
             return content
 
         final_content = generate_content(issues, now.strftime("%B/%Y"))
+        
+        # Preserve observations block if they were edited
+        if log_file.exists():
+            old_lines = log_file.read_text().splitlines()
+            old_obs_idx = -1
+            for i, line in enumerate(old_lines):
+                if line.startswith("## 📈 Observações e Destaques"):
+                    old_obs_idx = i
+                    break
+            
+            if old_obs_idx != -1:
+                # Find the footer
+                footer_idx = -1
+                for i in range(old_obs_idx, len(old_lines)):
+                    if old_lines[i] == "---":
+                        footer_idx = i
+                        break
+                
+                if footer_idx != -1:
+                    old_obs_block = "\n".join(old_lines[old_obs_idx:footer_idx])
+                    
+                    # Target default observations from template in new content to replace
+                    default_obs_block = "## 📈 Observações e Destaques\n- (Espaço para comentar marcos importantes ou impedimentos do mês)\n"
+                    if default_obs_block in final_content:
+                        final_content = final_content.replace(default_obs_block, old_obs_block + "\n")
+                    
         with open(log_file, "w", encoding="utf-8") as f:
             f.write(final_content)
         print(f"Log mensal atualizado em {log_file}")
