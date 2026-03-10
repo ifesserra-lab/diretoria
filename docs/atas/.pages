@@ -1,7 +1,0 @@
-title: Atas de Reunião
-nav:
-  - index.md
-  - ...
-sort:
-  - type: natural
-    reverse: true

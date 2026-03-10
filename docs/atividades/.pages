@@ -1,9 +1,0 @@
-title: Relatórios de Atividades
-nav:
-  - index.md
-  - ...
-hide:
-  - modelo-atividades.md
-sort:
-  - type: natural
-    reverse: true
