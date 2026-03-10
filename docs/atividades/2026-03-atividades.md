@@ -25,7 +25,6 @@ Este documento registra as atividades concluídas durante o mês para fins de es
 | [#9](https://github.com/ifesserra-lab/diretoria/issues/9) - [TAREFA]: Solicitar ao procurador para tornar públicos os dados de pesquisa e extensão | Esta atividade foi realizada e aprovada em Janeiro/2026. | @paulossjunior | 2026-03-08 | 2026-03-08 | ✅ | - |
 | [#3](https://github.com/ifesserra-lab/diretoria/issues/3) - [TAREFA]: Alinhar com a CAP o novo calendário bimestral |  | @N/A | 2026-03-08 | - | ⏳ | **Último comentário:** Proposta de ata:  - Informes: Edital ProInfra - Agenda Bimestral de reuniões (Ri... |
 | [#1](https://github.com/ifesserra-lab/diretoria/issues/1) - [TAREFA]: Agendar cronograma de reuniões com grupos de pesquisa |  | @N/A | 2026-03-08 | - | ⏳ | - |
-| [Atividade Ad-hoc] - Descrição de algo não planejado que foi executado. | - | Manual | - | - | ⏳ | - |
 
 ### 🚀 Extensão
 
@@ -51,6 +50,7 @@ Este documento registra as atividades concluídas durante o mês para fins de es
 
 ## 📈 Observações e Destaques
 - (Espaço para comentar marcos importantes ou impedimentos do mês)
+
 
 
 
