@@ -1,11 +1,11 @@
 # Reunião Geral da Diretoria
 
 **Data:** 2026-03-12  
-**Local/Link:** Presencial / Gabinete DPPGE 
+**Local/Link:** Presencial / 801 - Incubadora  
 **Participantes:**
 - [ ] Paulo Junior
 - [ ] Richard
-- [ ] Cleio
+- [ ] Celio
 - [ ] Equipe Diretoria
 
 ## 1. Pauta
