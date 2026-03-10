@@ -4,13 +4,13 @@
 **Local/Link:** Presencial / Gabinete DPPGE 
 **Participantes:**
 - [ ] Paulo Junior
+- [ ] Richard
+- [ ] Cleio
 - [ ] Equipe Diretoria
 
 ## 1. Pauta
 - **Acompanhamento de Tarefas (Kanban)**
-  -  [#22] Conversar com o NAC sobre planejamento
   -  [#21] Aprovar documento NEA sobre gestão
-  -  [#18] Avaliar participação de professores do IFES no mestrado PROFComp (SBC/UFRJ)
   -  [#16] Projeto: Ministério dos Povos Indígenas (MPI)
   -  [#8] Coletar interessados e obter TV box modificadas
   -  [#7] Organizar primeiro bate-papo informal com a comunidade
