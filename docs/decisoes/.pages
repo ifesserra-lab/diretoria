@@ -1,7 +1,9 @@
-title: Atas de Reunião
+title: Decisões Formais
 nav:
   - index.md
   - ...
+hide:
+  - modelo-decisao.md
 sort:
   - type: natural
     reverse: true
