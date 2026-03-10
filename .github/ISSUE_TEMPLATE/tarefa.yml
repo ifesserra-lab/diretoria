@@ -6,12 +6,56 @@ body:
   - type: markdown
     attributes:
       value: |
-        Obrigado por registrar esta demanda. Por favor, preencha os detalhes abaixo.
+        Obrigado por registrar esta demanda. Por favor, preencha o máximo de detalhes para facilitar o andamento dessa atividade.
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto
+      placeholder: Qual é a motivação dessa demanda? Forneça o contexto inicial aqui...
+    validations:
+      required: true
+  - type: textarea
+    id: subtasks
+    attributes:
+      label: Subtarefas
+      placeholder: |
+        - [ ] Passo 1
+        - [ ] Passo 2
+        - [ ] Reunião/Validação
+      value: |
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: dod
+    attributes:
+      label: Definition of Done (DoD)
+      description: O que exatamente caracteriza essa tarefa como concluída e finalizada?
+      placeholder: |
+        - [ ] O documento foi gerado
+        - [ ] A funcionalidade foi entregue e testada
+      value: |
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: dor
+    attributes:
+      label: Definition of Reading
+      description: O que precisa ser lido/revisado ou estar pronto para iniciarmos essa demanda?
+      placeholder: |
+        - [ ] O arquivo X precisa ser revisado
+        - [ ] O manual de usuário precisa ser lido previamente
+      value: |
+        - [ ] 
+    validations:
+      required: true
   - type: input
     id: area
     attributes:
       label: Área
-      placeholder: ex: Pesquisa, Extensão, Administrativo
+      placeholder: ex: Pesquisa, Extensão, Gestão
     validations:
       required: true
   - type: dropdown
@@ -23,13 +67,6 @@ body:
         - Média
         - Alta
         - Crítica
-    validations:
-      required: true
-  - type: textarea
-    id: description
-    attributes:
-      label: Descrição da Demanda
-      placeholder: Descreva o que precisa ser feito...
     validations:
       required: true
   - type: input
