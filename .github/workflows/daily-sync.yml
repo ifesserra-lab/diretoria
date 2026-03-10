@@ -4,6 +4,14 @@ on:
   schedule:
     - cron: '0 15 * * *' # Todo dia às 12:00 BRT (15:00 UTC)
   workflow_dispatch: # Permite execução manual
+  issues:
+    types: [opened, edited, deleted, closed, reopened, labeled, unlabeled, assigned, unassigned]
+  issue_comment:
+    types: [created, edited, deleted]
+
+concurrency:
+  group: "site-sync"
+  cancel-in-progress: true
 
 permissions:
   contents: write  # Para commit + push + gh-deploy
