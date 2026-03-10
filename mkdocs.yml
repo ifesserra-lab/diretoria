@@ -28,18 +28,10 @@ theme:
 
 nav:
   - Home: index.md
-  - Atas de Reunião:
-      - Calendário 2026: pautas/calendario-reunioes-2026.md
-      - '2026-03-12 - Reunião Geral': atas/2026-03-12-reuniao-geral.md
-      - '2026-02-27 - Planejamento': atas/2026-02-27-planejamento-dppge.md
-  - Decisões Formais:
-      - '001 - Diretrizes Planejamento': decisoes/001-diretrizes-planejamento-dppge.md
-  - Relatórios de Atividades:
-      - Modelo: atividades/modelo-atividades.md
-      - 'Dezembro 2025': atividades/2025-12-atividades.md
-      - 'Janeiro 2026': atividades/2026-01-atividades.md
-      - 'Fevereiro 2026': atividades/2026-02-atividades.md
-      - 'Março 2026': atividades/2026-03-atividades.md
+  - Pautas: pautas/
+  - Atas de Reunião: atas/
+  - Decisões Formais: decisoes/
+  - Relatórios de Atividades: atividades/
   - Dashboards:
       - Visão Geral: dashboards/index.md
       - Indicadores: dashboards/indicadores.md
@@ -58,3 +50,4 @@ markdown_extensions:
 plugins:
   - search
   - mermaid2
+  - awesome-pages

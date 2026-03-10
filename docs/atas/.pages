@@ -1,0 +1,7 @@
+title: Atas de Reunião
+arrange:
+  - 2026-03-12-reuniao-geral.md
+  - 2026-02-27-planejamento-dppge.md
+sort:
+  - type: natural
+    reverse: true

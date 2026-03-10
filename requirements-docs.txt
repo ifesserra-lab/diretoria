@@ -2,3 +2,4 @@ mkdocs-material==9.5.13
 mkdocs-mermaid2-plugin==0.6.0
 pandas==2.2.1
 matplotlib==3.8.3
+mkdocs-awesome-pages-plugin==2.9.2
