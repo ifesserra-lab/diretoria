@@ -3,13 +3,17 @@
 **Data:** 2026-03-12  
 **Local/Link:** Presencial / 801 - Incubadora  
 **Participantes:**
+
 - [ ] Paulo Junior
+
 - [ ] Richard
+
 - [ ] Celio
-- [ ] Equipe Diretoria
+
 
 ## 1. Pauta
 - **Acompanhamento de Tarefas (Kanban)**
+
   -  [#21] Aprovar documento NEA sobre gestão
   -  [#16] Projeto: Ministério dos Povos Indígenas (MPI)
   -  [#8] Coletar interessados e obter TV box modificadas
@@ -22,6 +26,7 @@
   -  [#1] Agendar cronograma de reuniões com grupos de pesquisa
 
 - **Discussões Específicas**
+
   - Preparação para a visita do Ministério dos Povos Indígenas (MPI) no IFES - Dias 18 a 20.
   - Alinhamento sobre o Curso Técnico em Manutenção de Equipamentos Hospitalares.
   - Feedback/Discussão da Reunião do Nard.
