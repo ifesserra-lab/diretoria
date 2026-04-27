@@ -1,0 +1,41 @@
+# Ambiente local
+/.venv/
+/venv/
+/.env
+/.env.*
+!/.env.example
+/.python-version
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+.eggs/
+*.egg-info/
+pip-wheel-metadata/
+
+# MkDocs e caches locais
+.cache/
+.mkdocs/
+/site/
+
+# IDE / sistema operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Estado local do agente
+/.codex
