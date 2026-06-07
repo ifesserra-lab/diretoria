@@ -1,14 +1,15 @@
 VENV = .venv
+PYTHON_BIN = python3.12
 PYTHON = $(VENV)/bin/python3
 PIP = $(VENV)/bin/pip
 
 .PHONY: setup serve build deploy sync venv
 
 venv:
-	python3 -m venv $(VENV)
+	$(PYTHON_BIN) -m venv $(VENV)
 
 setup: venv
-	$(PIP) install -r requirements-docs.txt
+	$(PIP) install -r requirements.txt
 
 serve:
 	$(VENV)/bin/mkdocs serve
