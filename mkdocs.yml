@@ -30,6 +30,8 @@ nav:
   - Home: index.md
   - Equipe:
       - Equipe Gestora: equipe/index.md
+  - Ferramentas:
+      - Repositórios: tools/README.md
   - Processos:
       - Resumo: processo/README.md
       - Edital de Patrocínio de Empresas: processo/edital-patrocinio-empresas.md
