@@ -2,9 +2,9 @@
 
 Lista de repositórios da organização GitHub `ifesserra-lab`, gerada automaticamente uma vez por semana.
 
-Última atualização: 2026-06-07 15:19 UTC
+Última atualização: 2026-06-07 15:24 UTC
 
-Total de repositórios: 15
+Total de repositórios: 13
 
 | Repositório | Descrição | Linguagem | Estado | Atualizado em |
 | --- | --- | --- | --- | --- |
@@ -12,11 +12,9 @@ Total de repositórios: 15
 | [dgp.cnqp_lib](https://github.com/ifesserra-lab/dgp.cnqp_lib) | Biblioteca Python para coleta e tratamento de dados do Diretório dos Grupos de Pesquisa do CNPq. | Python | Publico | 2026-06-07 |
 | [diretoria](https://github.com/ifesserra-lab/diretoria) | Portal de governança e documentação operacional da DPPGE do IFES Campus Serra. | Python | Publico | 2026-06-07 |
 | [factor_lib](https://github.com/ifesserra-lab/factor_lib) | Python library using Playwright to scrape project data from Facto transparency portal | HTML | Publico | 2026-05-17 |
-| [fapes_lib](https://github.com/ifesserra-lab/fapes_lib) | Biblioteca Python para extracao de dados da API FAPES webServicesSig, guiada por TDD, MVC, documentacao por EPIC/User Stories e Gherkin. | Python | Publico | 2026-05-09 |
 | [homologacao-ponto](https://github.com/ifesserra-lab/homologacao-ponto) | CLI para extração automatizada do Espelho de Ponto do SIGRH (IFES) | Vue | Publico | 2026-05-30 |
 | [horizon_dashboard](https://github.com/ifesserra-lab/horizon_dashboard) | Premium Dashboard for Research Group Academic Visualization and Monitoring - Horizon Project. | Astro | Publico | 2026-05-18 |
 | [horizon_etl](https://github.com/ifesserra-lab/horizon_etl) | ETL Pipeline for extracting, validating, and loading data from multiple sources (Web, API) into Supabase using Prefect and Hexagonal Architecture. | Python | Publico | 2026-06-01 |
-| [nexo](https://github.com/ifesserra-lab/nexo) | Plataforma que conecta empresas à academia para projetos de pesquisa, TCC e estágio | HTML | Publico | 2026-05-13 |
 | [portal_edital](https://github.com/ifesserra-lab/portal_edital) | Portal de Editais - Astro + Tailwind v4 + BDD | HTML | Publico | 2026-04-03 |
 | [research_domain_lib](https://github.com/ifesserra-lab/research_domain_lib) | Biblioteca Python para modelagem e análise de domínios de pesquisa. | Python | Publico | 2026-03-29 |
 | [retrieve_edital](https://github.com/ifesserra-lab/retrieve_edital) | Agente especializado em fazer o download de editais usando Python e Playwright. | Python | Publico | 2026-06-07 |
