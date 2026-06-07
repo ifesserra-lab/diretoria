@@ -32,6 +32,14 @@ nav:
       - Equipe Gestora: equipe/index.md
   - Ferramentas:
       - Repositórios: tools/README.md
+  - Comissões:
+      - Resumo: comissao/README.md
+      - Comissão de Energia: comissao/comissao-energia.md
+      - Comissão de Gestão de Projetos: comissao/comissao-gestao-projetos.md
+      - Comissão de Impacto do Campus: comissao/comissao-impacto-campus.md
+      - Comissão da Morpheus Jr.: comissao/comissao-morpheus.md
+      - Comissão de Organização do SBF: comissao/comissao-sbf.md
+      - Comissão da SNCT: comissao/comissao-snct.md
   - Processos:
       - Resumo: processo/README.md
       - Edital de Patrocínio de Empresas: processo/edital-patrocinio-empresas.md
