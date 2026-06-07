@@ -73,6 +73,10 @@ Criar, manter e executar um calendário de eventos do campus que:
 
 ## Tipos de eventos sugeridos
 
+- Semana Nacional de Ciência e Tecnologia (SNCT).
+- Semana Estadual de Ciência e Tecnologia.
+- Integra Ifes.
+- ESX.
 - Mostra de cursos do campus.
 - Feira de projetos de ensino, pesquisa, extensão e inovação.
 - Visitas guiadas para escolas.
@@ -121,4 +125,3 @@ flowchart TD
     H --> I[Registrar resultados e oportunidades]
     I --> D
 ```
-
