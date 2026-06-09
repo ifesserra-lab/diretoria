@@ -2,6 +2,8 @@
 
 Esta seção reúne comissões propostas ou em estruturação pela diretoria para apoiar a governança do campus.
 
+Site: [https://ifesserra-lab.github.io/diretoria](https://ifesserra-lab.github.io/diretoria)
+
 ## Comissões em estruturação
 
 | Comissão | Objetivo | Situação |
