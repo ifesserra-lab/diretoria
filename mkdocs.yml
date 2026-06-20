@@ -28,6 +28,8 @@ theme:
 
 nav:
   - Home: index.md
+  - Relatórios:
+      - Pesquisa na Formação: relatorios/index.md
   - Equipe:
       - Equipe Gestora: equipe/index.md
   - Ferramentas:
