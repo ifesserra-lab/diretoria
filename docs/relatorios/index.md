@@ -43,3 +43,16 @@ o **score combinado revistas + congressos**.
     Métricas derivadas de fontes públicas (Lattes, SCImago, Qualis CAPES). Congressos têm Qualis
     apenas na área de Computação (lista CC 2016); eventos de Engenharia/Educação ficam fora.
     Citações/h-index do autor não entram (sem acesso ao Google Scholar).
+
+## Rede de Colaboração dos Docentes 🚧
+
+Site **interativo**: digite ou clique num pesquisador e veja a sua **ego-rede** de coautoria
+(colaboradores, força das conexões, métricas). Inclui detecção de **comunidades** (Louvain)
+ordenadas por relevância (impacto Qualis), e análise de padrões por **área, autores, coautores
+e projetos**. Zoom, pan e controle de espalhamento.
+
+[Abrir rede de colaboração](rede-colaboracao.html){ .md-button }
+
+!!! warning "Under development"
+    Versão preliminar — dados e métricas em validação. Coautoria/projetos cruzados por nome
+    (sujeito a homônimo); coautores externos ao campus não entram no grafo.
