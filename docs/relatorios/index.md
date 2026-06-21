@@ -28,3 +28,18 @@ e painel de fomento (recorte IFES Serra). Cada seção traz um quadro **"Como le
 !!! warning "Dados nominais"
     Esta versão **identifica pessoas** (bolsistas, orientandos e orientadores) para uso interno
     da gestão. Trate conforme a política de privacidade da diretoria.
+
+## Docentes — Veículos e Impacto de Publicação
+
+Análise da produção dos docentes do Campus Serra a partir dos currículos **Lattes**:
+revistas e congressos onde publicam, classificados por impacto internacional
+(**SJR/SCImago**, quartil Q1–Q4) e **Qualis CAPES** (periódicos 2017–2020 e conferências CC).
+Inclui ranking por impacto, por qualidade média, por sub-área, pesquisadores em ascensão e
+o **score combinado revistas + congressos**.
+
+[Abrir análise de docentes](docentes-veiculos-impacto.html){ .md-button }
+
+!!! note "Sobre os dados"
+    Métricas derivadas de fontes públicas (Lattes, SCImago, Qualis CAPES). Congressos têm Qualis
+    apenas na área de Computação (lista CC 2016); eventos de Engenharia/Educação ficam fora.
+    Citações/h-index do autor não entram (sem acesso ao Google Scholar).
