@@ -34,6 +34,8 @@ nav:
       - Equipe Gestora: equipe/index.md
   - Ferramentas:
       - Repositórios: tools/README.md
+  - Relatórios:
+      - Veículos de Publicação (Docentes): relatorios/index.html
   - Comissões:
       - Resumo: comissao/README.md
       - Comissão de Energia: comissao/comissao-energia.md
