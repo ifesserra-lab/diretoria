@@ -34,15 +34,19 @@ e painel de fomento (recorte IFES Serra). Cada seção traz um quadro **"Como le
 Análise da produção dos docentes do Campus Serra a partir dos currículos **Lattes**:
 revistas e congressos onde publicam, classificados por impacto internacional
 (**SJR/SCImago**, quartil Q1–Q4) e **Qualis CAPES** (periódicos 2017–2020 e conferências CC).
-Inclui ranking por impacto, por qualidade média, por sub-área, pesquisadores em ascensão e
-o **score combinado revistas + congressos**.
+Cruza a **qualidade do veículo** com o **impacto real** — citações, **FWCI**, **h/g/m-index**,
+percentis e crédito fracionado por autoria, via **OpenAlex** (casado por DOI). Inclui ranking
+por impacto, por qualidade média, por sub-área, pesquisadores em ascensão, o **score combinado
+revistas + congressos** e uma seção final de **fórmulas e referências** de cada métrica.
 
 [Abrir análise de docentes](docentes-veiculos-impacto.html){ .md-button }
 
 !!! note "Sobre os dados"
-    Métricas derivadas de fontes públicas (Lattes, SCImago, Qualis CAPES). Congressos têm Qualis
-    apenas na área de Computação (lista CC 2016); eventos de Engenharia/Educação ficam fora.
-    Citações/h-index do autor não entram (sem acesso ao Google Scholar).
+    Métricas derivadas de fontes públicas (Lattes, SCImago, Qualis CAPES, OpenAlex). Congressos
+    têm Qualis apenas na área de Computação (lista CC 2016); eventos de Engenharia/Educação ficam
+    fora. As citações e o FWCI vêm do **OpenAlex**, casados por **DOI** (1:1, sem ambiguidade de
+    homônimo) — não do Google Scholar, cujo acesso automatizado é bloqueado; tendem a ser menores
+    que os do Scholar, mas consistentes e comparáveis entre docentes.
 
 ## Rede de Colaboração dos Docentes 🚧
 
