@@ -60,3 +60,22 @@ e projetos**. Zoom, pan e controle de espalhamento.
 !!! warning "Under development"
     Versão preliminar — dados e métricas em validação. Coautoria/projetos cruzados por nome
     (sujeito a homônimo); coautores externos ao campus não entram no grafo.
+
+## Edital PRPPG 13/2026 — Pesquisador de Produtividade (PPP)
+
+Análise de **elegibilidade** dos docentes do Campus Serra ao **Edital PRPPG 13/2026** (Programa
+Pesquisador de Produtividade). Aplica os critérios do edital ao **Lattes**: pontuação bibliográfica
+por **percentil de citação** (Tabela 1, proxy WoS/Scopus via **OpenAlex**, janela 2021–2026) e
+**orientações concluídas**, classificando cada docente na modalidade **PQ-1/PQ-2/PQ-3** que alcança.
+Traz o **panorama** por modalidade, as **shortlists** de confirmados e de "com chance", e um ranking
+interativo com o cálculo aberto artigo a artigo.
+
+[Abrir análise do edital](ppp-edital-13-2026.html){ .md-button }
+
+!!! note "Sobre os dados"
+    Pontuação é um **piso** (lower bound): o cache OpenAlex guarda só os artigos mais citados (com
+    **DOI**), então subestima quem publica muito ou teve pico antes de 2021 e ignora produção sem DOI
+    (livros, capítulos, eventos, periódicos nacionais), que também pontua. O nível da orientação
+    (IC × stricto sensu) não consta nos dados — usa-se o total concluído. **Vínculo a PPG stricto
+    sensu** e **colaboração internacional** (exigências PQ-1/PQ-2) não estão nos dados e exigem
+    conferência manual do Lattes.
