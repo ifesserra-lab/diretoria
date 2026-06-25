@@ -86,15 +86,12 @@ Painel interativo dos indicadores de **impacto científico** do Campus Serra, vi
 (citações casadas por DOI do Lattes): **ascensão** (artigo de cada docente que mais ganhou citações
 nos últimos 2 anos), **produção de elite** (top 10%/1%), **eficiência** (crédito fracionado por
 autoria), **concentração** (curva de Lorenz + Gini), **benchmark por área** (FWCI mediano),
-**qualidade de veículo** (% Q1/Q2 SJR e A1-A2 Qualis), **sparkline** de citações/ano e **ROI do
-fomento** (impacto por R$ FAPES + bolsas, com 4 quadrantes). Inclui **base teórica** com referências
-de cada métrica.
+**qualidade de veículo** (% Q1/Q2 SJR e A1-A2 Qualis) e **sparkline** de citações/ano. Inclui
+**base teórica** com referências de cada métrica.
 
 [Abrir dashboard de impacto](dashboard-impacto-docentes.html){ .md-button }
 
 !!! warning "Simulação — uso interno"
     Estimativas a partir de dados públicos do **OpenAlex** (só obras com **DOI** indexadas) — **não é o
     Google Scholar** e **não tem todos os artigos**; números tendem a ser menores que no Scholar, porém
-    consistentes entre docentes. O **ROI** é um *proxy* (defasagem de 2–4 anos, atribuição imperfeita,
-    cobertura de fomento só FAPES+bolsas) e usa **faixas** de valor por privacidade. **Não** é avaliação
-    oficial de desempenho — não usar para ranquear pessoas.
+    consistentes entre docentes. **Não** é avaliação oficial de desempenho — não usar para ranquear pessoas.
