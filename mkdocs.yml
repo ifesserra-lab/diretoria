@@ -29,7 +29,8 @@ theme:
 nav:
   - Home: index.md
   - Relatórios:
-      - Pesquisa na Formação: relatorios/index.md
+      - Visão geral: relatorios/index.md
+      - ROI e Impacto da Pesquisa: relatorios/roi-impacto-pesquisa.html
   - Equipe:
       - Equipe Gestora: equipe/index.md
   - Ferramentas:

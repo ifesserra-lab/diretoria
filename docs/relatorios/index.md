@@ -1,5 +1,30 @@
 # Relatórios
 
+## ROI e Impacto da Pesquisa — painel multidimensional
+
+Relatório técnico-metodológico de **retorno do investimento em pesquisa** do Campus Serra,
+combinando quatro abordagens internacionais — **Payback Framework**, **CAHS Framework**,
+**bibliometria responsável** (Manifesto de Leiden / DORA) e **estudos de caso no modelo REF** —
+com **monetização seletiva**. Painel de **7 dimensões** (inputs, científico, formação, inovação,
+social, econômico, casos), matriz Payback/CAHS, candidatos a estudo de caso e plano de
+implementação. Inclui anexo de **artigos-fonte** (OpenAlex por DOI) e referências.
+
+[Abrir relatório de ROI](roi-impacto-pesquisa.html){ .md-button .md-button--primary }
+
+!!! danger "Dados preliminares — não é fonte da verdade"
+    Este relatório é um **exercício metodológico exploratório**, gerado automaticamente a partir
+    de fontes com **lacunas, duplicidades, homônimos e autodeclarações não auditadas** (Lattes,
+    FAPES, FACTO, SigPesq, OpenAlex). Os números são **estimativas preliminares, sujeitas a
+    revisão**, e **não devem ser usados como registro oficial**, avaliação individual ou base de
+    decisão sem **conferência manual** com as fontes primárias. Use como **panorama**.
+
+!!! note "Convenções e limites"
+    **Valores financeiros não são expostos em cifra exata**: totais em **ordem de grandeza** e
+    valores por coordenador/projeto em **faixa + %**. Todos os totais são **distintos** (obra
+    co-autorada / dissertação co-orientada conta uma vez). O **ROI financeiro (%) não é
+    reportado** por ausência de benefício monetizado. FACTO entra no **saldo do campus** apenas
+    nos projetos **coordenados por docente do campus** (equipe não soma).
+
 ## Pesquisa na Formação — IFES Campus Serra
 
 Relatório institucional sobre a participação em pesquisa dos **egressos da graduação**
