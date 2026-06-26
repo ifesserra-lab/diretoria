@@ -31,6 +31,7 @@ nav:
   - Home: index.md
   - Relatórios:
       - Visão geral: relatorios/index.md
+      - Captação de Projetos (FAPES + FACTO): relatorios/captacao-projetos.html
       - ROI e Impacto da Pesquisa: relatorios/roi-impacto-pesquisa.html
   - Equipe:
       - Equipe Gestora: equipe/index.md

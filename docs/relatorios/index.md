@@ -1,5 +1,20 @@
 # Relatórios
 
+## Captação de Projetos — FAPES + FACTO
+
+Evolução e volume da **captação de projetos** dos professores do campus: gráfico de linha de
+**projetos por ano** (FAPES + FACTO), **captação por ano** em índice, **bolsistas ao longo dos
+anos**, **rubricas** do orçamento, e a **liderança de captação** por coordenador (FAPES e FACTO)
+e por financiadora.
+
+[Abrir relatório de captação](captacao-projetos.html){ .md-button .md-button--primary }
+
+!!! note "Convenções e limites"
+    Valores em **ordem de grandeza** (totais), **faixa + %** (por coordenador/financiadora) e
+    **índice** (captação por ano) — sem cifras exatas. **FAPES** e **FACTO** são fontes distintas
+    (não somadas); a FACTO entra no captado do campus só nos projetos **coordenados por docente**
+    do campus. A curva de bolsistas inclui **B-UnAC** (ensino/EAD), não só pesquisa.
+
 ## ROI e Impacto da Pesquisa — painel multidimensional
 
 Relatório técnico-metodológico de **retorno do investimento em pesquisa** do Campus Serra,
