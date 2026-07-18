@@ -42,4 +42,4 @@ que aborta se qualquer PII vazar.
 ## Fonte
 
 SRC/Ifes — https://src.ifes.edu.br. Gerado pela biblioteca `src_etl`
-(github.com/ifesserra-lab/SRC_ETL). Página web: dados-abertos.html.
+(github.com/ifesserra-lab/src). Página web: dados-abertos.html.
