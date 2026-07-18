@@ -1,29 +1,32 @@
 <!doctype html><html lang='pt-br'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Gabriel Victor Ferreira de Araújo</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap');
 :root{
   color-scheme:light;
-  --plane:#fbfbfc; --surface-1:#ffffff;
-  --text-primary:#171c2e; --text-secondary:#5a6072; --muted:#9298a8;
-  --grid:#eceef2; --border:#e4e6ec; --series-1:#4f46e5;
-  --radius:12px; --shadow:none;
+  --plane:#f4f7fe; --surface-1:#ffffff;
+  --text-primary:#2b3674; --text-secondary:#707eae; --muted:#a3aed0;
+  --grid:#e9edf7; --border:#e0e5f2; --series-1:#4318ff;
+  --radius:14px; --shadow:0 4px 22px rgba(112,144,176,.10);
 }
 @media (prefers-color-scheme:dark){:root:where(:not([data-theme=light])){
   color-scheme:dark;
-  --plane:#0e1015; --surface-1:#15181f;
-  --text-primary:#e8eaf2; --text-secondary:#9aa0b2; --muted:#6b7284;
-  --grid:#232733; --border:#262b38; --series-1:#8b93ff;
+  --plane:#0b1437; --surface-1:#111c44;
+  --text-primary:#ffffff; --text-secondary:#a3aed0; --muted:#707eae;
+  --grid:#ffffff14; --border:#ffffff1f; --series-1:#7551ff;
+  --shadow:0 4px 22px rgba(0,0,0,.30);
 }}
 :root[data-theme=dark]{
   color-scheme:dark;
-  --plane:#0e1015; --surface-1:#15181f;
-  --text-primary:#e8eaf2; --text-secondary:#9aa0b2; --muted:#6b7284;
-  --grid:#232733; --border:#262b38; --series-1:#8b93ff;
+  --plane:#0b1437; --surface-1:#111c44;
+  --text-primary:#ffffff; --text-secondary:#a3aed0; --muted:#707eae;
+  --grid:#ffffff14; --border:#ffffff1f; --series-1:#7551ff;
+  --shadow:0 4px 22px rgba(0,0,0,.30);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--plane);color:var(--text-primary);
-font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;
+font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;
 -webkit-font-smoothing:antialiased}
 /* ---- shell minimalista: topbar + conteúdo ---- */
-.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--plane) 82%,transparent);
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface-1) 88%,transparent);
 backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
 .topbar-in{max-width:1080px;margin:0 auto;padding:0 24px;height:58px;
 display:flex;align-items:center;gap:28px}
@@ -58,7 +61,7 @@ border-radius:20px;padding:6px 14px;font-size:.82rem;cursor:pointer;font-family:
 .chips button:hover{color:var(--series-1);border-color:var(--series-1)}
 /* stat-row minimalista: números grandes separados por hairlines */
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;margin:24px 0 8px;
-border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface-1)}
+border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface-1);box-shadow:var(--shadow)}
 .tile{padding:18px 20px;border-right:1px solid var(--grid)}
 .tile:last-child{border-right:0}
 .tile-val{font-size:1.85rem;font-weight:650;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
@@ -68,7 +71,7 @@ text-transform:uppercase;letter-spacing:.05em}
 section{margin-top:34px}h2{font-size:1.05rem;margin:0 0 2px;letter-spacing:-.015em;font-weight:650}
 .sec-desc{color:var(--text-secondary);font-size:.85rem;margin:0 0 12px}
 .card{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius);
-padding:20px;overflow-x:auto}
+padding:20px;overflow-x:auto;box-shadow:var(--shadow)}
 .lbl{fill:var(--text-secondary);font-size:12px}
 .val{fill:var(--text-primary);font-size:12px;font-weight:700}
 .vazio{color:var(--muted);margin:0;font-size:.9rem}

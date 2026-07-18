@@ -1,29 +1,32 @@
 <!doctype html><html lang='pt-br'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Expedição Ifes</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap');
 :root{
   color-scheme:light;
-  --plane:#fbfbfc; --surface-1:#ffffff;
-  --text-primary:#171c2e; --text-secondary:#5a6072; --muted:#9298a8;
-  --grid:#eceef2; --border:#e4e6ec; --series-1:#4f46e5;
-  --radius:12px; --shadow:none;
+  --plane:#f4f7fe; --surface-1:#ffffff;
+  --text-primary:#2b3674; --text-secondary:#707eae; --muted:#a3aed0;
+  --grid:#e9edf7; --border:#e0e5f2; --series-1:#4318ff;
+  --radius:14px; --shadow:0 4px 22px rgba(112,144,176,.10);
 }
 @media (prefers-color-scheme:dark){:root:where(:not([data-theme=light])){
   color-scheme:dark;
-  --plane:#0e1015; --surface-1:#15181f;
-  --text-primary:#e8eaf2; --text-secondary:#9aa0b2; --muted:#6b7284;
-  --grid:#232733; --border:#262b38; --series-1:#8b93ff;
+  --plane:#0b1437; --surface-1:#111c44;
+  --text-primary:#ffffff; --text-secondary:#a3aed0; --muted:#707eae;
+  --grid:#ffffff14; --border:#ffffff1f; --series-1:#7551ff;
+  --shadow:0 4px 22px rgba(0,0,0,.30);
 }}
 :root[data-theme=dark]{
   color-scheme:dark;
-  --plane:#0e1015; --surface-1:#15181f;
-  --text-primary:#e8eaf2; --text-secondary:#9aa0b2; --muted:#6b7284;
-  --grid:#232733; --border:#262b38; --series-1:#8b93ff;
+  --plane:#0b1437; --surface-1:#111c44;
+  --text-primary:#ffffff; --text-secondary:#a3aed0; --muted:#707eae;
+  --grid:#ffffff14; --border:#ffffff1f; --series-1:#7551ff;
+  --shadow:0 4px 22px rgba(0,0,0,.30);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--plane);color:var(--text-primary);
-font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;
+font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;
 -webkit-font-smoothing:antialiased}
 /* ---- shell minimalista: topbar + conteúdo ---- */
-.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--plane) 82%,transparent);
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface-1) 88%,transparent);
 backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
 .topbar-in{max-width:1080px;margin:0 auto;padding:0 24px;height:58px;
 display:flex;align-items:center;gap:28px}
@@ -58,7 +61,7 @@ border-radius:20px;padding:6px 14px;font-size:.82rem;cursor:pointer;font-family:
 .chips button:hover{color:var(--series-1);border-color:var(--series-1)}
 /* stat-row minimalista: números grandes separados por hairlines */
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;margin:24px 0 8px;
-border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface-1)}
+border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface-1);box-shadow:var(--shadow)}
 .tile{padding:18px 20px;border-right:1px solid var(--grid)}
 .tile:last-child{border-right:0}
 .tile-val{font-size:1.85rem;font-weight:650;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
@@ -68,7 +71,7 @@ text-transform:uppercase;letter-spacing:.05em}
 section{margin-top:34px}h2{font-size:1.05rem;margin:0 0 2px;letter-spacing:-.015em;font-weight:650}
 .sec-desc{color:var(--text-secondary);font-size:.85rem;margin:0 0 12px}
 .card{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius);
-padding:20px;overflow-x:auto}
+padding:20px;overflow-x:auto;box-shadow:var(--shadow)}
 .lbl{fill:var(--text-secondary);font-size:12px}
 .val{fill:var(--text-primary);font-size:12px;font-weight:700}
 .vazio{color:var(--muted);margin:0;font-size:.9rem}
@@ -152,5 +155,5 @@ font-size:.75rem;color:var(--muted);white-space:nowrap}
 
 As ações extracurriculares envolvem visitação a cidades históricas, visitação aos biomas, sítios arqueológicos e museus de arte e cultura, de cada região do projeto, visando a complementação e suplementação da formação dos estudantes, bem como seu desenvolvimento pessoal, a partir da representatividade dos atravessamentos culturais que recebem.
 
-A ideia, com essa ação complementar é ensinar conteúdos que vão além dos limites da sala de aula e que, por conta disso, podem complementar / suplementar as disciplinas obrigatórias e garantir uma formação ainda mais completa e sólida ao aluno, ao conhecer os aspectos históricos, sócio e culturais in loco, recebendo as informações onde a história ocorreu, conhecendo os aspectos da diversidade biológica diretamente na natureza. As atividades também favorecem a interdisciplinaridade e, dessa forma, uma aprendizagem mais significativa.</div><div class="tiles"><div class="tile"><div class="tile-val">5</div><div class="tile-lbl">Atividades</div></div><div class="tile"><div class="tile-val">189</div><div class="tile-lbl">Alunos atendidos</div><div class="tile-sub">participações de público</div></div><div class="tile"><div class="tile-val">9</div><div class="tile-lbl">Pessoas na equipe</div></div></div><div class="card" style="margin-top:14px"><table class="tb"><tr><th>Nº</th><th>Atividade</th><th>Público</th><th>Aprovados</th><th>Certificados</th><th>Equipe</th></tr><tr><td>001</td><td>Expedição Ifes</td><td>9</td><td>9</td><td>0</td><td>0</td></tr><tr><td>002</td><td>Visita guiada: Ilhas de Paraty e City Tour</td><td>57</td><td>57</td><td>57</td><td>0</td></tr><tr><td>003</td><td>Visita guiada: Comunidade Caiçara de Trindade</td><td>57</td><td>57</td><td>57</td><td>0</td></tr><tr><td>004</td><td>Visita guiada: Trilha do Ouro</td><td>57</td><td>57</td><td>57</td><td>0</td></tr><tr><td>005</td><td>Expedição Ifes - Paraty 2022</td><td>9</td><td>9</td><td>0</td><td>9</td></tr></table></div><div class="card" style="margin-top:14px"><table class="tb"><tr><th>Equipe de execução</th><th>Função(ões)</th></tr><tr><td>Alessandro Bermudes Gomes</td><td>COORDENADOR(A)</td></tr><tr><td>Gabriele Gonçalves Soares</td><td>PROFESSOR(A)</td></tr><tr><td>Hilario Seibel Junior</td><td>PROFESSOR(A)</td></tr><tr><td>Jessica Oliveira Ferreira</td><td>PROFESSOR(A)</td></tr><tr><td>Josué Rego da Silva</td><td>PROFESSOR(A)</td></tr><tr><td>Nicole Silva Loss</td><td>PROFESSOR(A)</td></tr><tr><td>Paulo Cezar Camargo Guedes</td><td>PROFESSOR(A)</td></tr><tr><td>Tatiane Policário Chagas</td><td>PROFESSOR(A)</td></tr><tr><td>Wagner Kirmse Caldas</td><td>COORDENADOR(A) ADJUNTO(A)</td></tr></table></div><div class='pii'>Público-alvo é mostrado apenas como contagem — nomes, CPF e e-mail de alunos atendidos não são publicados. A equipe de execução é listada como crédito público (sem dados pessoais).</div>
+A ideia, com essa ação complementar é ensinar conteúdos que vão além dos limites da sala de aula e que, por conta disso, podem complementar / suplementar as disciplinas obrigatórias e garantir uma formação ainda mais completa e sólida ao aluno, ao conhecer os aspectos históricos, sócio e culturais in loco, recebendo as informações onde a história ocorreu, conhecendo os aspectos da diversidade biológica diretamente na natureza. As atividades também favorecem a interdisciplinaridade e, dessa forma, uma aprendizagem mais significativa.</div><div class="tiles"><div class="tile"><div class="tile-val">5</div><div class="tile-lbl">Atividades</div></div><div class="tile"><div class="tile-val">189</div><div class="tile-lbl">Alunos atendidos</div><div class="tile-sub">participações de público</div></div><div class="tile"><div class="tile-val">9</div><div class="tile-lbl">Pessoas na equipe</div></div></div><div class="card" style="margin-top:14px"><table class="tb"><tr><th>Nº</th><th>Atividade</th><th>Público</th><th>Aprovados</th><th>Certificados</th><th>Equipe</th></tr><tr><td>001</td><td><a class="lk" href="../atividades/14250.html">Expedição Ifes</a></td><td>9</td><td>9</td><td>0</td><td>0</td></tr><tr><td>002</td><td><a class="lk" href="../atividades/14251.html">Visita guiada: Ilhas de Paraty e City Tour</a></td><td>57</td><td>57</td><td>57</td><td>0</td></tr><tr><td>003</td><td><a class="lk" href="../atividades/14252.html">Visita guiada: Comunidade Caiçara de Trindade</a></td><td>57</td><td>57</td><td>57</td><td>0</td></tr><tr><td>004</td><td><a class="lk" href="../atividades/14253.html">Visita guiada: Trilha do Ouro</a></td><td>57</td><td>57</td><td>57</td><td>0</td></tr><tr><td>005</td><td><a class="lk" href="../atividades/14686.html">Expedição Ifes - Paraty 2022</a></td><td>9</td><td>9</td><td>0</td><td>9</td></tr></table></div><div class="card" style="margin-top:14px"><table class="tb"><tr><th>Equipe de execução</th><th>Função(ões)</th></tr><tr><td>Alessandro Bermudes Gomes</td><td>COORDENADOR(A)</td></tr><tr><td>Gabriele Gonçalves Soares</td><td>PROFESSOR(A)</td></tr><tr><td>Hilario Seibel Junior</td><td>PROFESSOR(A)</td></tr><tr><td>Jessica Oliveira Ferreira</td><td>PROFESSOR(A)</td></tr><tr><td>Josué Rego da Silva</td><td>PROFESSOR(A)</td></tr><tr><td>Nicole Silva Loss</td><td>PROFESSOR(A)</td></tr><tr><td>Paulo Cezar Camargo Guedes</td><td>PROFESSOR(A)</td></tr><tr><td>Tatiane Policário Chagas</td><td>PROFESSOR(A)</td></tr><tr><td>Wagner Kirmse Caldas</td><td>COORDENADOR(A) ADJUNTO(A)</td></tr></table></div><div class='pii'>Público-alvo é mostrado apenas como contagem — nomes, CPF e e-mail de alunos atendidos não são publicados. A equipe de execução é listada como crédito público (sem dados pessoais).</div>
 </div></div></body></html>
