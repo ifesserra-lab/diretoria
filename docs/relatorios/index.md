@@ -1,5 +1,21 @@
 # Relatórios
 
+## Extensão — Campus Serra (SRC)
+
+Painel analítico das **ações de extensão e ensino** do Campus Serra, extraídas do **SRC**
+(Sistema de Registro e Emissão de Certificados): **201 ações**, **525 atividades** e
+**757 extensionistas**, com **+4.845 pessoas atingidas**. Inclui busca por palavra-chave,
+página por ação/atividade/extensionista, jornada do formado, pendências e **dados abertos**
+(JSON sem dados pessoais + `llms.txt` para IA).
+
+[Abrir painel de extensão](campus-serra/index.html){ .md-button .md-button--primary }
+[Painel no GitHub Pages :material-open-in-new:](https://ifesserra-lab.github.io/src/){ .md-button }
+
+!!! note "Privacidade"
+    Público-alvo aparece **apenas como contagens** (sem nomes/CPF/e-mail). Equipe e
+    coordenadores(as) são **crédito público** de execução. Gerado pela lib
+    [`src`](https://github.com/ifesserra-lab/src).
+
 ## Captação de Projetos — FAPES + FACTO
 
 Evolução e volume da **captação de projetos** dos professores do campus: gráfico de linha de
