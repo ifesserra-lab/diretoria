@@ -1,29 +1,32 @@
 <!doctype html><html lang='pt-br'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Incluir &amp; Multiplicar</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap');
 :root{
   color-scheme:light;
-  --plane:#fbfbfc; --surface-1:#ffffff;
-  --text-primary:#171c2e; --text-secondary:#5a6072; --muted:#9298a8;
-  --grid:#eceef2; --border:#e4e6ec; --series-1:#4f46e5;
-  --radius:12px; --shadow:none;
+  --plane:#f4f7fe; --surface-1:#ffffff;
+  --text-primary:#2b3674; --text-secondary:#707eae; --muted:#a3aed0;
+  --grid:#e9edf7; --border:#e0e5f2; --series-1:#4318ff;
+  --radius:14px; --shadow:0 4px 22px rgba(112,144,176,.10);
 }
 @media (prefers-color-scheme:dark){:root:where(:not([data-theme=light])){
   color-scheme:dark;
-  --plane:#0e1015; --surface-1:#15181f;
-  --text-primary:#e8eaf2; --text-secondary:#9aa0b2; --muted:#6b7284;
-  --grid:#232733; --border:#262b38; --series-1:#8b93ff;
+  --plane:#0b1437; --surface-1:#111c44;
+  --text-primary:#ffffff; --text-secondary:#a3aed0; --muted:#707eae;
+  --grid:#ffffff14; --border:#ffffff1f; --series-1:#7551ff;
+  --shadow:0 4px 22px rgba(0,0,0,.30);
 }}
 :root[data-theme=dark]{
   color-scheme:dark;
-  --plane:#0e1015; --surface-1:#15181f;
-  --text-primary:#e8eaf2; --text-secondary:#9aa0b2; --muted:#6b7284;
-  --grid:#232733; --border:#262b38; --series-1:#8b93ff;
+  --plane:#0b1437; --surface-1:#111c44;
+  --text-primary:#ffffff; --text-secondary:#a3aed0; --muted:#707eae;
+  --grid:#ffffff14; --border:#ffffff1f; --series-1:#7551ff;
+  --shadow:0 4px 22px rgba(0,0,0,.30);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--plane);color:var(--text-primary);
-font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;
+font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;
 -webkit-font-smoothing:antialiased}
 /* ---- shell minimalista: topbar + conteúdo ---- */
-.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--plane) 82%,transparent);
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface-1) 88%,transparent);
 backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
 .topbar-in{max-width:1080px;margin:0 auto;padding:0 24px;height:58px;
 display:flex;align-items:center;gap:28px}
@@ -58,7 +61,7 @@ border-radius:20px;padding:6px 14px;font-size:.82rem;cursor:pointer;font-family:
 .chips button:hover{color:var(--series-1);border-color:var(--series-1)}
 /* stat-row minimalista: números grandes separados por hairlines */
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;margin:24px 0 8px;
-border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface-1)}
+border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface-1);box-shadow:var(--shadow)}
 .tile{padding:18px 20px;border-right:1px solid var(--grid)}
 .tile:last-child{border-right:0}
 .tile-val{font-size:1.85rem;font-weight:650;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
@@ -68,7 +71,7 @@ text-transform:uppercase;letter-spacing:.05em}
 section{margin-top:34px}h2{font-size:1.05rem;margin:0 0 2px;letter-spacing:-.015em;font-weight:650}
 .sec-desc{color:var(--text-secondary);font-size:.85rem;margin:0 0 12px}
 .card{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius);
-padding:20px;overflow-x:auto}
+padding:20px;overflow-x:auto;box-shadow:var(--shadow)}
 .lbl{fill:var(--text-secondary);font-size:12px}
 .val{fill:var(--text-primary);font-size:12px;font-weight:700}
 .vazio{color:var(--muted);margin:0;font-size:.9rem}
@@ -148,5 +151,5 @@ font-size:.75rem;color:var(--muted);white-space:nowrap}
 <div><b>Fomento</b>PAEX-IFES</div>
 <div><b>Cadastro</b>13/08/2019</div>
 <div><b>Relatório aprovado</b>Sim</div>
-</div><div class="resumo">Tendo em vista a grande diversidade de conhecimentos tecnológicos, de natureza dinâmica e evolutiva, juntamente com a necessidade de incluir todos neste mundo digital e visando o compartilhamento igualitário de oportunidades no mercado de trabalho, torna-se cada vez mais necessária a realização de ações de inclusão digital, social e implementação de tecnologias sociais em comunidades vulneráveis. Neste contexto, o projeto “Incluir &amp; Multiplicar” tem como finalidade promover melhorias na formação intelectual, profissional e social de crianças, adolescentes e jovens do bairro de Central Carapina, localizado na periferia do município de Serra - ES, via a inserção de multiplicadores de conhecimentos de informática na comunidade, com a intermediação da Associação de Vivência Shalon, que realiza vários projetos sociais no bairro desde 1997. A formação destes multiplicadores, ou facilitadores, se dará através da oferta de curso de formação básica em informática no Instituto Federal do Espírito Santo, campus Serra. Inserida no projeto pedagógico deste curso, teremos a componente curricular “Estágio em Docência”, quando os alunos dos cursos de inclusão digital do Ifes poderão dedicar algumas horas na semana para ensinar o que aprenderam para as crianças menores, que fazem os cursos de informática na Associação Shalon. A formação no curso de inclusão digital do Ifes terá metodologia específica e adaptada à realidade dos moradores daquela comunidade. As disciplinas serão ministradas por aluno bolsista dos cursos técnicos ou superiores do Ifes, sob orientação do professor coordenador desta ação. A partir da inserção dos multiplicadores na comunidade, espera-se que mais turmas de formação básica em computação possam ser criadas na Associação Shalon, permitindo uma propagação do conhecimento, já que os alunos terão a possibilidade de se tornarem futuros multiplicadores em sua comunidade. Espera-se com esta metodologia cíclica (multiplicadores formando futuros multiplicadores) e com a facilidade de reaplicação da tecnologia social proposta neste trabalho, contribuir com a geração de renda e superação da desigualdade social, por meio da inclusão no mundo do trabalho e autonomia econômica das famílias inscritas no Cadastro Único para Programas Sociais do Governo Federal.</div><div class="tiles"><div class="tile"><div class="tile-val">1</div><div class="tile-lbl">Atividades</div></div><div class="tile"><div class="tile-val">0</div><div class="tile-lbl">Alunos atendidos</div><div class="tile-sub">participações de público</div></div><div class="tile"><div class="tile-val">5</div><div class="tile-lbl">Pessoas na equipe</div></div></div><div class="card" style="margin-top:14px"><table class="tb"><tr><th>Nº</th><th>Atividade</th><th>Público</th><th>Aprovados</th><th>Certificados</th><th>Equipe</th></tr><tr><td>001</td><td>Incluir &amp; Multiplicar</td><td>0</td><td>0</td><td>0</td><td>5</td></tr></table></div><div class="card" style="margin-top:14px"><table class="tb"><tr><th>Equipe de execução</th><th>Função(ões)</th></tr><tr><td>Bruno Cardoso Coutinho</td><td>COORDENADOR(A)</td></tr><tr><td>Gabriel Victor Ferreira de Araújo</td><td>ALUNO(A) BOLSISTA</td></tr><tr><td>Glaucelena Dias Lopes da Vitória</td><td>COLABORADOR(A)</td></tr><tr><td>Juliana Rohsner Vianna Toniati</td><td>COLABORADOR(A)</td></tr><tr><td>Renata Imaculada de Oliveira Teixeira</td><td>COLABORADOR(A)</td></tr></table></div><div class='pii'>Público-alvo é mostrado apenas como contagem — nomes, CPF e e-mail de alunos atendidos não são publicados. A equipe de execução é listada como crédito público (sem dados pessoais).</div>
+</div><div class="resumo">Tendo em vista a grande diversidade de conhecimentos tecnológicos, de natureza dinâmica e evolutiva, juntamente com a necessidade de incluir todos neste mundo digital e visando o compartilhamento igualitário de oportunidades no mercado de trabalho, torna-se cada vez mais necessária a realização de ações de inclusão digital, social e implementação de tecnologias sociais em comunidades vulneráveis. Neste contexto, o projeto “Incluir &amp; Multiplicar” tem como finalidade promover melhorias na formação intelectual, profissional e social de crianças, adolescentes e jovens do bairro de Central Carapina, localizado na periferia do município de Serra - ES, via a inserção de multiplicadores de conhecimentos de informática na comunidade, com a intermediação da Associação de Vivência Shalon, que realiza vários projetos sociais no bairro desde 1997. A formação destes multiplicadores, ou facilitadores, se dará através da oferta de curso de formação básica em informática no Instituto Federal do Espírito Santo, campus Serra. Inserida no projeto pedagógico deste curso, teremos a componente curricular “Estágio em Docência”, quando os alunos dos cursos de inclusão digital do Ifes poderão dedicar algumas horas na semana para ensinar o que aprenderam para as crianças menores, que fazem os cursos de informática na Associação Shalon. A formação no curso de inclusão digital do Ifes terá metodologia específica e adaptada à realidade dos moradores daquela comunidade. As disciplinas serão ministradas por aluno bolsista dos cursos técnicos ou superiores do Ifes, sob orientação do professor coordenador desta ação. A partir da inserção dos multiplicadores na comunidade, espera-se que mais turmas de formação básica em computação possam ser criadas na Associação Shalon, permitindo uma propagação do conhecimento, já que os alunos terão a possibilidade de se tornarem futuros multiplicadores em sua comunidade. Espera-se com esta metodologia cíclica (multiplicadores formando futuros multiplicadores) e com a facilidade de reaplicação da tecnologia social proposta neste trabalho, contribuir com a geração de renda e superação da desigualdade social, por meio da inclusão no mundo do trabalho e autonomia econômica das famílias inscritas no Cadastro Único para Programas Sociais do Governo Federal.</div><div class="tiles"><div class="tile"><div class="tile-val">1</div><div class="tile-lbl">Atividades</div></div><div class="tile"><div class="tile-val">0</div><div class="tile-lbl">Alunos atendidos</div><div class="tile-sub">participações de público</div></div><div class="tile"><div class="tile-val">5</div><div class="tile-lbl">Pessoas na equipe</div></div></div><div class="card" style="margin-top:14px"><table class="tb"><tr><th>Nº</th><th>Atividade</th><th>Público</th><th>Aprovados</th><th>Certificados</th><th>Equipe</th></tr><tr><td>001</td><td><a class="lk" href="../atividades/8979.html">Incluir &amp; Multiplicar</a></td><td>0</td><td>0</td><td>0</td><td>5</td></tr></table></div><div class="card" style="margin-top:14px"><table class="tb"><tr><th>Equipe de execução</th><th>Função(ões)</th></tr><tr><td>Bruno Cardoso Coutinho</td><td>COORDENADOR(A)</td></tr><tr><td>Gabriel Victor Ferreira de Araújo</td><td>ALUNO(A) BOLSISTA</td></tr><tr><td>Glaucelena Dias Lopes da Vitória</td><td>COLABORADOR(A)</td></tr><tr><td>Juliana Rohsner Vianna Toniati</td><td>COLABORADOR(A)</td></tr><tr><td>Renata Imaculada de Oliveira Teixeira</td><td>COLABORADOR(A)</td></tr></table></div><div class='pii'>Público-alvo é mostrado apenas como contagem — nomes, CPF e e-mail de alunos atendidos não são publicados. A equipe de execução é listada como crédito público (sem dados pessoais).</div>
 </div></div></body></html>
