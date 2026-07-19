@@ -16,6 +16,22 @@ página por ação/atividade/extensionista, jornada do formado, pendências e **
     coordenadores(as) são **crédito público** de execução. Gerado pela lib
     [`src`](https://github.com/ifesserra-lab/src).
 
+## Pesquisa × Extensão — Campus Serra
+
+Cruzamento, por nome, entre os **coordenadores de pesquisa** (Horizon: FAPES/FACTO · Lattes ·
+OpenAlex) e os **extensionistas** do SRC. Mostra que **78% dos coordenadores de pesquisa também
+fazem extensão** e que **fazer extensão não reduz o impacto científico** (FWCI mediano acima da
+média mundial), além de um gráfico de dispersão citações × pessoas impactadas e as listas de
+"faz os dois" e "pesquisa sem extensão".
+
+[Abrir Pesquisa × Extensão](pesquisa-x-extensao.html){ .md-button .md-button--primary }
+
+!!! note "Convenções e limites"
+    Dados **agregados e públicos** (crédito de coordenação/execução) — sem CPF, e-mail ou dados de
+    alunos. Cruzamento por **nome normalizado** (sujeito a homônimo). O Horizon cobre os
+    **coordenadores de pesquisa** (não todos os docentes); citações/FWCI via OpenAlex (só DOI,
+    subestima).
+
 ## Captação de Projetos — FAPES + FACTO
 
 Evolução e volume da **captação de projetos** dos professores do campus: gráfico de linha de
