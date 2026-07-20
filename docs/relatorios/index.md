@@ -32,6 +32,21 @@ média mundial), além de um gráfico de dispersão citações × pessoas impact
     **coordenadores de pesquisa** (não todos os docentes); citações/FWCI via OpenAlex (só DOI,
     subestima).
 
+## Índice de Extensão — 5 dimensões (FORPROEX)
+
+Leitura da extensão do Campus Serra organizada nas **cinco dimensões dos Indicadores Brasileiros
+de Extensão Universitária** (FORPROEX, 2017): Política de Gestão, Infraestrutura, Política
+Acadêmica, Relação Universidade-Sociedade e Produção Acadêmica — preenchidas só com dados
+verificáveis do SRC e do Horizon, com as **lacunas assinaladas**. Inclui a seção de **fontes com
+resumo** e a ressalva de que FWCI/citações medem impacto científico, não impacto de extensão.
+
+[Abrir Índice de Extensão](indice-extensao.html){ .md-button .md-button--primary }
+
+!!! note "Como ler"
+    Não é uma nota única: é um painel por dimensão. Cruzamentos por nome (sujeito a homônimo);
+    idade e público em contagens (sem CPF/nome). Lacunas (satisfação/impacto social percebido,
+    orçamento) exigem coleta que hoje não está no SRC.
+
 ## Captação de Projetos — FAPES + FACTO
 
 Evolução e volume da **captação de projetos** dos professores do campus: gráfico de linha de
