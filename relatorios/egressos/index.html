@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impacto na carreira — visão executiva</title>
+<style>
+  .root{
+    color-scheme:light;
+    --plane:#f3f6f4; --surface:#ffffff; --surface-2:#eef3f0;
+    --ink:#122019; --ink-2:#4a5a53; --muted:#83918a;
+    --line:#e1e8e4; --border:rgba(18,32,25,.10);
+    --accent:#0e8a68; --accent-2:#0b6e53;
+    --band:rgba(14,138,104,.15); --band-thin:rgba(14,138,104,.07);
+    --amber:#bd7d00; --data:#5a4bc4; --sw:#0e8a68; --pv:#d9642b; --bolsa:rgba(189,125,0,.11);
+    --shadow:0 1px 2px rgba(18,32,25,.05),0 8px 24px rgba(18,32,25,.07);
+    background:var(--plane); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased;
+    min-height:100%; padding:16px 13px; box-sizing:border-box;
+  }
+  @media (prefers-color-scheme:dark){ :root:where(:not([data-theme="light"])) .root{
+    color-scheme:dark; --plane:#0a0e0c; --surface:#141a17; --surface-2:#1d2521;
+    --ink:#eef3f0; --ink-2:#aebab4; --muted:#7a877f; --line:#242c28; --border:rgba(255,255,255,.10);
+    --accent:#2fbc90; --accent-2:#37c99b; --band:rgba(47,188,144,.20); --band-thin:rgba(47,188,144,.08);
+    --amber:#dda52f; --data:#9285ea; --sw:#2fbc90; --pv:#ef7d42; --bolsa:rgba(221,165,47,.15);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.5);
+  }}
+  :root[data-theme="dark"] .root{
+    color-scheme:dark; --plane:#0a0e0c; --surface:#141a17; --surface-2:#1d2521;
+    --ink:#eef3f0; --ink-2:#aebab4; --muted:#7a877f; --line:#242c28; --border:rgba(255,255,255,.10);
+    --accent:#2fbc90; --accent-2:#37c99b; --band:rgba(47,188,144,.20); --band-thin:rgba(47,188,144,.08);
+    --amber:#dda52f; --data:#9285ea; --sw:#2fbc90; --pv:#ef7d42; --bolsa:rgba(221,165,47,.15); --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.5);
+  }
+
+  /* mobile-first: base = telas pequenas; min-width escala p/ cima */
+  .wrap{ max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:18px; }
+  .eyebrow{ font-size:12px; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:var(--accent); margin:0 0 10px; }
+  h1{ font-size:clamp(23px,4.2vw,40px); line-height:1.1; margin:0 0 12px; font-weight:750; letter-spacing:-.02em; text-wrap:balance; }
+  .lede{ font-size:clamp(15px,1.7vw,17px); line-height:1.55; color:var(--ink-2); margin:0; max-width:none; }
+
+  .hero-kpi{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+  .hk{ background:var(--surface); padding:16px 15px; }
+  .hk .v{ font-size:clamp(24px,3.6vw,36px); font-weight:780; letter-spacing:-.02em; line-height:1; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .hk .v.big{ color:var(--accent); }
+  .hk .v small{ font-size:15px; font-weight:600; color:var(--ink-2); letter-spacing:0; }
+  .hk .k{ font-size:12px; color:var(--muted); margin-top:8px; line-height:1.35; }
+
+  .card{ background:var(--surface); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); padding:clamp(18px,2.6vw,26px); }
+  .card h2{ font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-2); margin:0 0 4px; font-weight:700; }
+  .card .hint{ font-size:12.5px; color:var(--muted); margin:0 0 18px; }
+
+  .pillars{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  .pillar{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow); border-top:3px solid var(--accent); }
+  .pillar h3{ margin:0 0 6px; font-size:15px; font-weight:720; }
+  .pillar p{ margin:0; font-size:13px; line-height:1.5; color:var(--ink-2); }
+  .pillar .tag{ font-size:11px; font-weight:600; color:var(--accent); letter-spacing:.04em; text-transform:uppercase; }
+
+  .chart-scroll{ overflow-x:auto; }
+  svg{ display:block; width:100%; height:auto; min-width:560px; }
+  text{ font-family:system-ui,-apple-system,"Segoe UI",sans-serif; }
+  .tick{ fill:var(--muted); font-size:11px; font-variant-numeric:tabular-nums; }
+  .gridline{ stroke:var(--line); stroke-width:1; }
+  .baseline{ stroke:var(--border); stroke-width:1; }
+  .band{ fill:var(--band); }
+  .band-thin{ fill:var(--band-thin); }
+  .mline{ fill:none; stroke:var(--accent); stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+  .mline-thin{ fill:none; stroke:var(--accent); stroke-width:2.5; stroke-dasharray:5 4; stroke-linejoin:round; }
+  .mdot{ fill:var(--surface); stroke:var(--accent); stroke-width:2.5; }
+  .pvline{ fill:none; stroke:var(--pv); stroke-width:2; stroke-dasharray:2 3; stroke-linejoin:round; stroke-linecap:round; }
+  .pvdot{ fill:var(--surface); stroke:var(--pv); stroke-width:2; }
+  .refline{ fill:none; stroke:var(--muted); stroke-width:1.5; stroke-dasharray:6 4; opacity:.8; }
+  .reflab{ fill:var(--muted); font-size:11px; font-weight:600; }
+  .cfband{ fill:var(--data); opacity:.13; }
+  .sw-cfband{ width:20px; height:12px; border-radius:3px; background:var(--data); opacity:.28; }
+  .cfline{ fill:none; stroke:var(--data); stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+  .cfdot{ fill:var(--surface); stroke:var(--data); stroke-width:2.5; }
+  .cflab{ fill:var(--data); font-size:10.5px; font-weight:700; }
+  .sw-cf{ width:20px; height:0; border-top:3px solid var(--data); }
+  .epline{ fill:none; stroke:var(--pv); stroke-width:2.5; stroke-dasharray:6 4; stroke-linejoin:round; stroke-linecap:round; }
+  .epdot{ fill:var(--pv); stroke:var(--surface); stroke-width:1.5; }
+  .epdot-ex{ fill:var(--surface); stroke:var(--pv); stroke-width:1.5; }
+  .eplab{ fill:var(--pv); font-size:9.5px; font-weight:700; }
+  .sw-ep{ width:20px; height:0; border-top:2.5px dashed var(--pv); }
+  .atable{ width:100%; border-collapse:collapse; font-size:13px; margin-top:8px; }
+  .atable th,.atable td{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); }
+  .atable th{ color:var(--muted); font-weight:700; font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; }
+  .atable td.n{ text-align:center; font-variant-numeric:tabular-nums; }
+  .atable td.tot{ font-weight:700; }
+  .atable tr:last-child td{ border-bottom:none; }
+  .clist{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
+  .clist li{ display:flex; gap:10px; align-items:flex-start; }
+  .cdot{ flex:none; width:10px; height:10px; border-radius:50%; margin-top:4px; }
+  .clist b{ font-size:13.5px; } .clist small{ color:var(--muted); display:block; font-size:12px; line-height:1.45; }
+  .cf-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; margin-bottom:14px; }
+  .cf-grid h4{ font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin:0 0 9px; font-weight:700; }
+  .chip.num b{ color:var(--accent); }
+  .anno{ fill:var(--ink); font-size:12px; font-weight:680; }
+  .anno-sub{ fill:var(--muted); font-size:10.5px; }
+  .bolsaband{ fill:var(--bolsa); }
+  .bolsaedge{ fill:none; stroke:var(--amber); stroke-width:1; stroke-dasharray:3 3; opacity:.45; }
+  .bolsalab{ fill:var(--amber); font-size:10.5px; font-weight:700; }
+  .bolsalab-sub{ fill:var(--amber); font-size:9px; font-weight:600; opacity:.9; }
+  .xlab{ fill:var(--ink-2); font-size:11.5px; font-variant-numeric:tabular-nums; }
+  .axtitle{ fill:var(--muted); font-size:11px; }
+
+  /* dumbbell */
+  .db{ display:flex; flex-direction:column; gap:2px; }
+  .db-row{ display:grid; grid-template-columns:92px 1fr 56px; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--line); }
+  .db-row:last-child{ border-bottom:none; }
+  .db-lab{ font-size:13px; font-weight:650; }
+  .db-lab small{ display:block; font-size:11px; font-weight:500; color:var(--muted); }
+  .db-track{ position:relative; height:20px; }
+  .db-line{ position:absolute; top:9px; height:3px; border-radius:2px; background:linear-gradient(90deg,var(--muted),var(--dbc)); opacity:.5; }
+  .db-a{ position:absolute; top:4px; width:11px; height:11px; border-radius:50%; background:var(--surface); border:2px solid var(--muted); transform:translateX(-50%); }
+  .db-b{ position:absolute; top:3px; width:13px; height:13px; border-radius:50%; background:var(--dbc); box-shadow:0 0 0 2px var(--surface); transform:translateX(-50%); }
+  .db-mult{ font-size:14px; font-weight:750; text-align:right; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .db-scale{ display:grid; grid-template-columns:92px 1fr 56px; gap:10px; margin-top:6px; }
+  .db-ticks{ position:relative; height:14px; }
+  .db-tk{ position:absolute; transform:translateX(-50%); font-size:10px; color:var(--muted); font-variant-numeric:tabular-nums; }
+
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ font-size:12px; font-weight:600; padding:5px 12px; border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border); }
+  .chip b{ color:var(--ink); }
+  .finds{ display:grid; gap:13px; margin:0; padding:0; }
+  .finds li{ list-style:none; padding-left:18px; position:relative; font-size:13.5px; line-height:1.5; color:var(--ink-2); }
+  .finds li:before{ content:""; position:absolute; left:0; top:6px; width:8px; height:8px; border-radius:2px; background:var(--accent); }
+  .finds li b{ color:var(--ink); }
+  .ladder{ display:flex; flex-direction:column; gap:9px; }
+  .lad-row{ display:grid; grid-template-columns:104px 1fr; align-items:center; gap:10px; }
+  .lad-name{ font-size:12.5px; font-weight:650; text-align:right; line-height:1.2; }
+  .lad-name small{ display:block; font-weight:500; color:var(--muted); font-size:10.5px; }
+  .lad-track{ display:flex; align-items:center; gap:8px; }
+  .lad-bar{ height:26px; border-radius:0 6px 6px 0; background:var(--sw); opacity:.55; display:flex; align-items:center; justify-content:flex-end; padding-right:9px; color:#fff; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; min-width:52px; white-space:nowrap; }
+  .lad-row.hl .lad-bar{ opacity:1; }
+  .lad-row.start .lad-bar{ background:var(--pv); opacity:1; }
+  .lad-tag{ font-size:11px; font-weight:700; color:var(--accent); white-space:nowrap; }
+  .lad-tag.s{ color:var(--pv); }
+
+  .notes{ font-size:12px; line-height:1.6; color:var(--ink-2); }
+  .notes h2{ color:var(--amber); }
+  .notes ul{ margin:0; padding-left:18px; display:flex; flex-direction:column; gap:5px; }
+  .foot{ font-size:11px; color:var(--muted); text-align:center; line-height:1.6; }
+  .legend{ display:flex; flex-wrap:wrap; gap:16px; font-size:12px; color:var(--ink-2); margin-top:14px; }
+  .legend span{ display:inline-flex; align-items:center; gap:7px; }
+  .sw-band{ width:20px; height:12px; border-radius:3px; background:var(--band); }
+  .sw-line{ width:20px; height:0; border-top:3px solid var(--accent); }
+  .sw-pv{ width:20px; height:0; border-top:2px dotted var(--pv); }
+  .sw-ref{ width:20px; height:0; border-top:1.5px dashed var(--muted); }
+
+  /* enhancement: telas médias/grandes restauram o layout desktop */
+  @media (min-width:560px){
+    .hero-kpi{ grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); }
+    .hk{ padding:22px 20px; }
+    .db-row,.db-scale{ grid-template-columns:118px 1fr 74px; gap:12px; }
+    .lad-row{ grid-template-columns:158px 1fr; gap:12px; }
+  }
+  @media (min-width:600px){
+    .root{ padding:32px 26px; }
+    .wrap{ gap:26px; }
+  }
+  @media (min-width:960px){ .root{ padding:52px; } }
+</style>
+<style>
+.exp-banner{position:fixed;top:0;left:0;right:0;z-index:99999;background:#c62828;color:#fff;
+  font:600 14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;text-align:center;
+  padding:11px 18px;letter-spacing:.02em;box-shadow:0 2px 10px rgba(0,0,0,.28);
+  background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.14) 0 14px,transparent 14px 28px)}
+.exp-banner strong{font-weight:800;letter-spacing:.06em}
+.root,.viz-root{padding-top:clamp(64px,7vw,80px)!important}
+@media(max-width:640px){.exp-banner{font-size:12px;padding:9px 12px}}
+</style>
+
+<div class="exp-banner" role="alert">
+  ⚠️ <strong>SITE EXPERIMENTAL</strong> — em construção. Metodologia ainda sendo desenvolvida; dados e conclusões preliminares, sujeitos a alteração.
+</div>
+
+<div class="root">
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Impacto de ensino · pesquisa · extensão</p>
+      <h1>Da monitoria e do laboratório ao mercado sênior</h1>
+      <p class="lede">Trajetória financeira estimada de onze egressos que começaram na mesma base — ensino (monitoria), pesquisa aplicada com bolsa de IC da FAPES (Prodest) e um laboratório de extensão (LEDS/IFES) — e hoje ocupam posições sênior em engenharia de software, dados, consultoria e liderança técnica (vários no exterior). Valores em poder de compra de 2026, anonimizados.</p>
+    </header>
+
+    <nav aria-label="Outras visões" style="display:flex;flex-wrap:wrap;gap:10px">
+      <a href="dashboard_alunos.html" style="flex:1 1 240px;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);font-weight:650;font-size:13.5px;color:var(--accent)">👥 Panorama por egresso (A–K) →<span style="display:block;font-weight:400;color:var(--ink-2);font-size:12px;margin-top:3px;line-height:1.4">Linha do tempo e cards individuais, anonimizados</span></a>
+      <a href="evolucao_salario_local.html" style="flex:1 1 240px;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);font-weight:650;font-size:13.5px;color:var(--accent)">📈 Evolução salarial ano a ano →<span style="display:block;font-weight:400;color:var(--ink-2);font-size:12px;margin-top:3px;line-height:1.4">Estimativa por experiência (Stack Overflow + IPCA)</span></a>
+    </nav>
+
+    <section class="hero-kpi" id="kpi"></section>
+
+    <section>
+      <div class="pillars">
+        <div class="pillar"><span class="tag">Ensino</span><h3>Monitoria &amp; tutoria</h3><p>Todos passaram por monitoria de disciplinas (programação, estrutura de dados, arquitetura) — a primeira experiência de ensinar e consolidar fundamentos.</p></div>
+        <div class="pillar"><span class="tag">Pesquisa</span><h3>Pesquisa aplicada</h3><p>Projetos de P&amp;D em órgão público (ciência de dados, ETL, APIs) deram o primeiro contato com problemas reais em escala.</p></div>
+        <div class="pillar"><span class="tag">Extensão</span><h3>Laboratório &amp; empresa júnior</h3><p>Laboratório de extensão e empresa júnior forneceram projetos com clientes, metodologias ágeis e liderança antes do primeiro emprego formal.</p></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Crescimento financeiro por anos de experiência</h2>
+      <p class="hint">Duas leituras: a <b>trajetória real</b> (o que ganharam em cada época, corrigido a R$ de 2026) e <b>a valores de hoje</b> (o que o mercado de 2026 paga por aquela experiência). No início elas se afastam — bolsa de ~R$ 800 vs. ~R$ 3,5k que o mercado hoje paga a um iniciante — e convergem conforme entram no mercado.</p>
+      <div class="chart-scroll"><svg id="chart" viewBox="0 0 960 460" role="img" aria-label="Crescimento salarial estimado por anos de experiência"></svg></div>
+      <div class="legend">
+        <span><i class="sw-line"></i> Trajetória real (valor da época, corrigido)</span>
+        <span><i class="sw-pv"></i> A valores de hoje (mercado 2026)</span>
+        <span><i class="sw-band"></i> Faixa típica (p25–p75)</span>
+        <span><i class="sw-ref"></i> Bolsa só corrigida pela inflação</span>
+        <span style="color:var(--muted)">— tracejado: só 1 egresso nessa faixa</span>
+      </div>
+      <p class="hint" style="margin:14px 0 0">Dados: bolsas iniciais dos registros da <a href="https://fapes.es.gov.br/fapes-reajusta-tabela-de-valores-de-bolsas-e" target="_blank" rel="noopener"><b>FAPES</b></a> + salários de mercado da <a href="https://survey.stackoverflow.co/" target="_blank" rel="noopener"><b>Stack Overflow Developer Survey</b></a> (Brasil), convertidos por câmbio médio anual e IPCA.</p>
+    </section>
+
+    <section class="card">
+      <h2>Crescimento por anos de experiência — mercado brasileiro (Código Fonte 2026)</h2>
+      <p class="hint">Duas leituras do mercado nacional (Código Fonte) por senioridade, ao lado da trajetória real dos egressos — todas em R$/mês de 2026: <b>a valores de hoje</b> (edição 2026) e <b>valor da época</b> (a edição do ano em que cada senioridade foi atingida, corrigida por IPCA), como no primeiro gráfico.</p>
+      <div class="chart-scroll"><svg id="chart2" viewBox="0 0 960 430" role="img" aria-label="Crescimento por experiência — Código Fonte"></svg></div>
+      <div class="legend">
+        <span><i class="sw-line"></i> Trajetória real dos egressos</span>
+        <span><i class="sw-cf"></i> Mercado a valores de hoje (Código Fonte 2026)</span>
+        <span><i class="sw-ep"></i> Mercado — valor da época dos egressos (IPCA 2026)</span>
+        <span><i class="sw-cfband"></i> Faixa de mercado (CLT↔PJ · variação entre estados)</span>
+      </div>
+      <p class="hint" style="margin:12px 0 0"><b>Valor da época:</b> cada senioridade é precificada com a edição da Código Fonte do ano mediano em que os egressos a atingiram (Pleno ≈ 2021, Sênior/Espec. ≈ 2024), corrigida pela inflação (IPCA) a R$ de 2026 — mesma lógica do gráfico anterior. A pesquisa só existe desde 2021, então Estágio (~2017) e Júnior (~2019) — a era da bolsa — usam a edição 2021 corrigida e ficam marcados como <b>extrapolados</b> (pontos ocos). A <b>sombra</b> é ilustrativa (piso ≈ CLT no estado de menor média, teto ≈ PJ no de maior; ~0,85× e ~1,31× sobre a média de 2026), não um intervalo amostral. Fonte: <a href="https://pesquisa.codigofonte.com.br" target="_blank" rel="noopener">Pesquisa Código Fonte</a> (edições 2021–2026).</p>
+    </section>
+
+    <section class="card">
+      <h2>Escada de senioridade — mercado brasileiro (Código Fonte 2026)</h2>
+      <p class="hint">Salário médio por nível, R$/mês, em reais de 2026. Fonte nacional com 17.046 respondentes. Marcado onde os egressos começaram (bolsa de IC) e onde estão hoje.</p>
+      <div class="ladder" id="ladder"></div>
+      <p class="hint" style="margin:16px 0 0">Do início (bolsa de IC, abaixo até do estágio de mercado) ao Sênior, os egressos subiram <b>toda</b> a escada. Fonte: <a href="https://pesquisa.codigofonte.com.br/2026" target="_blank" rel="noopener">Pesquisa Código Fonte 2026</a>.</p>
+    </section>
+
+    <section class="card">
+      <h2>Referência de mercado — Pesquisa Código Fonte 2026</h2>
+      <p class="hint">17.046 respondentes · coleta fev–jun/2026 · R$/mês (média) · fonte nacional, auto-reportada.</p>
+      <div class="cf-grid">
+        <div>
+          <h4>Por senioridade</h4>
+          <div class="chips">
+            <span class="chip num">Estágio <b>R$ 2.587</b></span>
+            <span class="chip num">Júnior <b>R$ 5.060</b></span>
+            <span class="chip num">Pleno <b>R$ 8.467</b></span>
+            <span class="chip num">Sênior <b>R$ 14.608</b></span>
+            <span class="chip num">Espec./Tech Lead <b>R$ 20.602</b></span>
+          </div>
+        </div>
+        <div>
+          <h4>Por contrato</h4>
+          <div class="chips">
+            <span class="chip num">CLT <b>R$ 10.166</b></span>
+            <span class="chip num">PJ <b>R$ 13.436</b></span>
+            <span class="chip num">Outro <b>R$ 10.200</b></span>
+          </div>
+        </div>
+        <div>
+          <h4>Regiões (top)</h4>
+          <div class="chips">
+            <span class="chip num">DF <b>R$ 11.797</b></span>
+            <span class="chip num">RS <b>R$ 11.330</b></span>
+            <span class="chip num">SC <b>R$ 11.167</b></span>
+            <span class="chip num">SP <b>R$ 11.113</b></span>
+            <span class="chip num">GO <b>R$ 10.084</b></span>
+          </div>
+        </div>
+        <div>
+          <h4>Linguagens (topo → fim)</h4>
+          <div class="chips">
+            <span class="chip num">Go <b>R$ 13.642</b></span>
+            <span class="chip num">Kotlin <b>R$ 13.506</b></span>
+            <span class="chip num">Ruby <b>R$ 12.214</b></span>
+            <span class="chip num">Java <b>R$ 11.457</b></span>
+            <span class="chip num">Python <b>R$ 10.644</b></span>
+            <span class="chip num">Delphi <b>R$ 9.365</b></span>
+          </div>
+        </div>
+      </div>
+      <p class="hint" style="margin:0">A pesquisa <b>não</b> divulga em R$: por área/cargo, por anos de experiência e por gênero (apenas percentuais e gráficos). Fonte: <a href="https://pesquisa.codigofonte.com.br/2026" target="_blank" rel="noopener">Pesquisa Código Fonte 2026</a>.</p>
+    </section>
+
+    <section class="card">
+      <h2>Salto individual — do início ao momento atual</h2>
+      <p class="hint">Cada linha: da primeira remuneração (estágio/bolsa) à estimativa atual. Perfis anonimizados; só a trilha é revelada.</p>
+      <div class="db" id="dumbbell"></div>
+      <div class="db-scale"><div></div><div class="db-ticks" id="dbticks"></div><div></div></div>
+    </section>
+
+    <section class="card">
+      <h2>Principais achados</h2>
+      <ul class="finds">
+        <li><b>Salto de 11,3× (até 17,9×) na renda real</b> — da bolsa de pesquisa/extensão ao mercado sênior, já descontada a inflação (poder de compra de 2026).</li>
+        <li><b>A bolsa foi trampolim, não teto</b> — a trajetória real alcança o valor de mercado por volta de 3 anos de experiência e cresce junto a partir daí.</li>
+        <li><b>A bolsa custeou o início, o mercado fez o resto</b> — os egressos receberam ~R$ 800/mês em bolsa FAPES de projeto de governo (2018–2020), o equivalente a ~R$ 1.187/mês em poder de compra de 2026.</li>
+        <li><b>Grande diferença de oportunidade</b> — o mercado hoje paga ~R$ 3,5 mil a um iniciante, ~3× o valor real daquela bolsa. A bolsa de IC padrão da FAPES, por comparação, subiu de ~R$ 400 (época deles) para R$ 900/mês hoje.</li>
+        <li><b>Retenção em tecnologia: 11 de 11</b> — engenharia de software (backend, fullstack, mobile, front) e liderança técnica, além de dados/consultoria sênior (ex.: Consulting Engineer de banco de dados); 3 atuam no exterior (Londres, Portugal, Chile) e 1 atua no setor público como analista de dados (defesa).</li>
+        <li><b>Base comum decisiva</b> — a maioria passou por ensino (monitoria), pesquisa aplicada com bolsa de IC da FAPES (Prodest) e laboratório de extensão (LEDS/IFES) antes do primeiro emprego formal.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Resultado</h2>
+      <div class="chips" id="outcomes"></div>
+    </section>
+
+    <section class="card">
+      <h2>Análise do grupo — tecnologias, perfis e destinos</h2>
+      <p class="hint">Padrões extraídos dos 11 egressos (trilha, stack, senioridade e tipo de empregador). Perfis anonimizados (A–K); empregadores agregados como nacional × internacional.</p>
+      <div class="cf-grid">
+        <div>
+          <h4>Stack mais usada (nº de egressos)</h4>
+          <div class="chips">
+            <span class="chip num">Angular <b>5</b></span>
+            <span class="chip num">Node.js <b>5</b></span>
+            <span class="chip num">.NET <b>4</b></span>
+            <span class="chip num">Ionic <b>4</b></span>
+            <span class="chip num">GraphQL <b>4</b></span>
+            <span class="chip num">MongoDB <b>3</b></span>
+            <span class="chip num">NestJS <b>3</b></span>
+            <span class="chip num">Java <b>3</b></span>
+            <span class="chip num">Docker <b>3</b></span>
+            <span class="chip num">Python <b>3</b></span>
+          </div>
+          <p class="hint" style="margin-top:9px">Ecossistema <b>JavaScript/TypeScript + .NET</b>, com mobile híbrido (Ionic) e nuvem (Docker/AWS/GCP). Alinhado às linguagens mais bem pagas da Código Fonte (Go, Kotlin, Java, Python).</p>
+        </div>
+        <div>
+          <h4>Três perfis recorrentes (clusters)</h4>
+          <ul class="clist">
+            <li><span class="cdot" style="background:var(--sw)"></span><div><b>Núcleo software &amp; liderança — 6 perfis</b><small>Backend/fullstack, ~8,7 anos de carreira; 4 já são tech lead ou coordenador. Maioria no Brasil.</small></div></li>
+            <li><span class="cdot" style="background:var(--data)"></span><div><b>Dados &amp; consultoria — 3 perfis</b><small>Consultoria de banco de dados e engenharia de ML/dados; um atua como analista de dados no setor público (defesa).</small></div></li>
+            <li><span class="cdot" style="background:var(--pv)"></span><div><b>Carreira internacional — 2 perfis</b><small>Desenvolvimento mobile e liderança técnica, atuando no exterior (~12 anos).</small></div></li>
+          </ul>
+        </div>
+      </div>
+
+      <h4 style="margin:18px 0 0">Senioridade × empregador (nacional / internacional)</h4>
+      <table class="atable">
+        <thead><tr><th>Senioridade atual</th><th class="n">Nacional</th><th class="n">Internacional</th><th class="n">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Sênior</td><td class="n">3</td><td class="n">3</td><td class="n tot">6</td></tr>
+          <tr><td>Especialista / Tech Lead</td><td class="n">2</td><td class="n">3</td><td class="n tot">5</td></tr>
+          <tr><td class="tot">Total</td><td class="n tot">5</td><td class="n tot">6</td><td class="n tot">11</td></tr>
+        </tbody>
+      </table>
+      <p class="hint" style="margin-top:10px"><b>6 dos 11 egressos trabalham para empresas internacionais</b> (Europa, América Latina e EUA/global) — <b>todos em nível Sênior ou superior</b>. A mediana estimada do grupo hoje (~R$ 15,8k) fica <b>~8% acima</b> do Sênior nacional da Código Fonte 2026 (R$ 14,6k). <b>Ressalva:</b> as estimativas partem da curva do mercado brasileiro por experiência (Stack Overflow), então <b>não capturam o prêmio real de contratos em moeda estrangeira</b> — o dado aqui é de <b>composição</b> (para onde foram), não de remuneração comparada. <b>8 dos 11 começaram como bolsistas/estagiários</b> de IC/extensão; a rotatividade média é de ~2 anos por empresa.</p>
+    </section>
+
+    <section class="card notes">
+      <h2>Método &amp; ressalvas</h2>
+      <ul>
+        <li><b>Estimativa, não salário real:</b> cruza os anos de experiência de cada egresso com a mediana de desenvolvedores/analistas de dados no Brasil (Stack Overflow Developer Survey 2018–2023), por câmbio e IPCA da época, trazidos a R$ de 2026.</li>
+        <li><b>Início com valor real de bolsa:</b> os anos de bolsa/estágio usam o valor documentado — R$ 800/mês (bolsa FAPES nível VI, projeto "ES na Palma da Mão", 2018–2020) e R$ 400/mês (bolsa de extensão/IC, 2013–2014), cruzado com os registros da FAPES. Por isso o ponto de partida é tão baixo. <b>8 dos 11</b> começaram em bolsa/estágio (projeto FAPES ou extensão do LEDS/IFES); 3 entraram direto no mercado.</li>
+        <li><b>Bolsa de projeto, não IC padrão — e o valor da bolsa hoje:</b> os egressos estavam em <b>bolsas FAPES de projeto de governo</b> (BPIG, R$ 800–1.500/mês, projeto "ES na Palma da Mão") e de extensão, não na IC comum. Pela <a href="https://fapes.es.gov.br/Media/fapes/Tabela_Bolsas_Aux%C3%ADlio/Tabela%20de%20Bolsas%20e%20Auxilios%20-%202026.pdf" target="_blank" rel="noopener">tabela atual da FAPES (Res. 361/2026)</a> a Iniciação Científica e Tecnológica (ICT) paga hoje <b>R$ 900/mês</b> — na época deles (2012–2020) a ICT valia ~R$ 400/mês. De todo modo, o mercado paga ~R$ 3,5k a um iniciante: o ganho dos egressos veio da <b>qualificação</b>, não do valor da bolsa.</li>
+        <li><b>Anonimizado:</b> sem nomes, empresas ou localidades. Apenas trilha (software/dados) e anos de experiência.</li>
+        <li><b>Amostra pequena</b> nas faixas de mais experiência (linha tracejada) — apenas o egresso de carreira mais longa.</li>
+      </ul>
+    </section>
+    <p class="foot" id="foot"></p>
+  </div>
+  <div id="tip" style="position:fixed;pointer-events:none;opacity:0;transform:translate(-50%,-115%);background:var(--surface);border:1px solid var(--border);border-radius:9px;box-shadow:var(--shadow);padding:9px 12px;font-size:12px;line-height:1.5;z-index:30;transition:opacity .08s;min-width:150px"></div>
+</div>
+
+<script>
+const KPI={n:11,em_tech:11,cresc_medio:11.3,cresc_max:17.9,faixa_inicial_med:1642,bolsa_tipica:800,faixa_atual_lo:14199,faixa_atual_hi:19706,med_atual:15840};
+const PERFIS=[
+  {perfil:"Perfil A",trilha:"Software",em_tech:true, anos:8, bolsa:1187, med_ini:1187, med_atual:14629, cresc:12.3},
+  {perfil:"Perfil B",trilha:"Software",em_tech:true, anos:8, bolsa:1187, med_ini:1187, med_atual:14629, cresc:12.3},
+  {perfil:"Perfil C",trilha:"Dados",   em_tech:true, anos:13,bolsa:794,  med_ini:794,  med_atual:14199, cresc:17.9},
+  {perfil:"Perfil D",trilha:"Dados",   em_tech:true, anos:8, bolsa:1187, med_ini:1187, med_atual:16241, cresc:13.7},
+  {perfil:"Perfil E",trilha:"Dados",   em_tech:true, anos:14,bolsa:1278, med_ini:1278, med_atual:15490, cresc:12.1},
+  {perfil:"Perfil F",trilha:"Software",em_tech:true, anos:14,bolsa:1278, med_ini:1278, med_atual:19706, cresc:15.4},
+  {perfil:"Perfil G",trilha:"Software",em_tech:true, anos:9, bolsa:null, med_ini:3065, med_atual:15662, cresc:5.1},
+  {perfil:"Perfil H",trilha:"Software",em_tech:true, anos:8, bolsa:1695, med_ini:1695, med_atual:14629, cresc:8.6},
+  {perfil:"Perfil I",trilha:"Software",em_tech:true, anos:8, bolsa:1187, med_ini:1187, med_atual:14629, cresc:12.3},
+  {perfil:"Perfil J",trilha:"Software",em_tech:true, anos:10,bolsa:null, med_ini:3452, med_atual:17211, cresc:5.0},
+  {perfil:"Perfil K",trilha:"Software",em_tech:true, anos:11,bolsa:1751, med_ini:1751, med_atual:17211, cresc:9.8}
+];
+const AGG=[
+  {exp:0,lo:794,hi:5178,med:1642,n:11},{exp:1,lo:746,hi:5084,med:1780,n:11},{exp:2,lo:1025,hi:5084,med:1750,n:10},
+  {exp:3,lo:3913,hi:16278,med:7718,n:11},{exp:4,lo:3984,hi:16862,med:8528,n:11},{exp:5,lo:3984,hi:19977,med:11221,n:10},
+  {exp:6,lo:6778,hi:22909,med:13267,n:10},{exp:7,lo:6431,hi:24892,med:14332,n:11},{exp:8,lo:8714,hi:25256,med:14650,n:11},
+  {exp:9,lo:9691,hi:34682,med:17445,n:6},{exp:10,lo:10584,hi:33364,med:19442,n:5},{exp:11,lo:10326,hi:32628,med:20208,n:4},
+  {exp:12,lo:10928,hi:32420,med:20744,n:3},{exp:13,lo:11278,hi:35149,med:16167,n:3},{exp:14,lo:11961,hi:32012,med:17598,n:2}
+];
+// "a valores de hoje": o que cada nível de experiência vale no MERCADO DE 2026 (reprecificado hoje)
+const AGG_PV=[
+  {exp:0,med:3563},{exp:1,med:4131},{exp:2,med:5163},{exp:3,med:7510},{exp:4,med:10037},
+  {exp:5,med:11772},{exp:6,med:12839},{exp:7,med:14613},{exp:8,med:15069},{exp:9,med:16178},
+  {exp:10,med:18380},{exp:11,med:18672},{exp:12,med:18587},{exp:13,med:15203},{exp:14,med:17598}
+];
+const brl=n=>"R$ "+Math.round(n).toLocaleString("pt-BR");
+const brlk=n=>"R$ "+(n/1000).toFixed(n>=10000?0:1).replace(".",",")+"k";
+
+// ---- KPIs ----
+document.getElementById("kpi").innerHTML=`
+  <div class="hk"><div class="v big">${String(KPI.cresc_medio).replace(".",",")}×</div><div class="k">crescimento salarial médio (real) — até ${String(KPI.cresc_max).replace(".",",")}× — da bolsa à posição atual</div></div>
+  <div class="hk"><div class="v">R$ ${KPI.bolsa_tipica}<small>/mês</small></div><div class="k">bolsa FAPES de projeto de governo (valor real, nível VI, R$ 800) — 8 dos 11 começaram em bolsa/estágio; início médio ~${brl(KPI.faixa_inicial_med)} em R$ de 2026</div></div>
+  <div class="hk"><div class="v">R$ ${Math.round(KPI.faixa_atual_lo/1000)}–${Math.round(KPI.faixa_atual_hi/1000)}k<small>/mês</small></div><div class="k">faixa estimada atual (mediana ~${brlk(KPI.med_atual)}/mês)</div></div>
+  <div class="hk"><div class="v">${KPI.em_tech}<small> de ${KPI.n}</small></div><div class="k">seguem em tecnologia (1 atua no setor público, em dados)</div></div>`;
+
+// ---- growth chart ----
+const W=960,H=460,m={t:30,r:28,b:56,l:76}, iw=W-m.l-m.r, ih=H-m.t-m.b;
+const EXPMAX=14, YMAX=36000;
+const xs=e=>m.l+iw*e/EXPMAX, ys=v=>m.t+ih*(1-v/YMAX);
+const NS="http://www.w3.org/2000/svg", svg=document.getElementById("chart");
+const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+for(let v=0;v<=YMAX;v+=8000){ svg.appendChild(el("line",{x1:m.l,x2:W-m.r,y1:ys(v),y2:ys(v),class:"gridline"}));
+  const tk=el("text",{x:m.l-10,y:ys(v)+4,"text-anchor":"end",class:"tick"}); tk.textContent=brlk(v); svg.appendChild(tk); }
+svg.appendChild(el("line",{x1:m.l,x2:W-m.r,y1:ys(0),y2:ys(0),class:"baseline"}));
+// faixa: período em que estavam com bolsa de pesquisa/extensão (anos 0–2)
+(function(){ const x0=xs(0), x2=xs(2), yt=m.t, hb=ih;
+  svg.appendChild(el("rect",{x:x0,y:yt,width:x2-x0,height:hb,class:"bolsaband"}));
+  svg.appendChild(el("line",{x1:x2,x2:x2,y1:yt,y2:yt+hb,class:"bolsaedge"}));
+  const l1=el("text",{x:x0+6,y:yt+15,class:"bolsalab"}); l1.textContent="bolsa de pesquisa / extensão"; svg.appendChild(l1);
+  const l2=el("text",{x:x0+6,y:yt+28,class:"bolsalab-sub"}); l2.textContent="LEDS · Prodest · FAPES (anos 0–2)"; svg.appendChild(l2);
+})();
+// split solid (n>=2) / thin (n==1)
+const solid=AGG.filter(d=>d.n>=2), splitIdx=solid.length-1;
+function bandPath(arr){ let u="",l=""; arr.forEach((d,i)=>u+=(i?"L":"M")+xs(d.exp)+" "+ys(d.hi)+" "); for(let i=arr.length-1;i>=0;i--)l+="L"+xs(arr[i].exp)+" "+ys(arr[i].lo)+" "; return u+l+"Z"; }
+svg.appendChild(el("path",{d:bandPath(solid),class:"band"}));
+const thin=AGG.slice(splitIdx); // inclui ponto de junção
+if(thin.length>1) svg.appendChild(el("path",{d:bandPath(thin),class:"band-thin"}));
+// median lines
+let ml=""; solid.forEach((d,i)=>ml+=(i?"L":"M")+xs(d.exp)+" "+ys(d.med)+" "); svg.appendChild(el("path",{d:ml,class:"mline"}));
+let mt=""; thin.forEach((d,i)=>mt+=(i?"L":"M")+xs(d.exp)+" "+ys(d.med)+" "); if(thin.length>1) svg.appendChild(el("path",{d:mt,class:"mline-thin"}));
+// dots + hover
+const tip=document.getElementById("tip");
+AGG.forEach(d=>{ const c=el("circle",{cx:xs(d.exp),cy:ys(d.med),r:4,class:"mdot"});
+  c.addEventListener("mousemove",ev=>{ tip.innerHTML=`<b>${d.exp} anos de exp.</b><br>mediana ${brl(d.med)}<br><span style="color:var(--muted)">faixa ${brl(d.lo)} – ${brl(d.hi)} · ${d.n} perfil${d.n>1?"s":""}</span>`; tip.style.left=ev.clientX+"px"; tip.style.top=ev.clientY+"px"; tip.style.opacity=1; });
+  c.addEventListener("mouseleave",()=>tip.style.opacity=0); svg.appendChild(c); });
+// linha "a valores de hoje" (mercado 2026 por experiência)
+let pv=""; AGG_PV.forEach((d,i)=>pv+=(i?"L":"M")+xs(d.exp)+" "+ys(d.med)+" "); svg.appendChild(el("path",{d:pv,class:"pvline"}));
+AGG_PV.forEach(d=>{ const c=el("circle",{cx:xs(d.exp),cy:ys(d.med),r:3,class:"pvdot"});
+  c.addEventListener("mousemove",ev=>{ tip.innerHTML=`<b>${d.exp} anos · a valores de hoje</b><br>mercado 2026 paga ${brl(d.med)}/mês`; tip.style.left=ev.clientX+"px"; tip.style.top=ev.clientY+"px"; tip.style.opacity=1; });
+  c.addEventListener("mouseleave",()=>tip.style.opacity=0); svg.appendChild(c); });
+// referência: bolsa da época corrigida SÓ pela inflação (mantém poder de compra) — consolidado ~R$ 1.089
+const REF=1089;
+svg.appendChild(el("line",{x1:m.l,x2:W-m.r,y1:ys(REF),y2:ys(REF),class:"refline"}));
+const rlab=el("text",{x:W-m.r,y:ys(REF)-6,"text-anchor":"end",class:"reflab"}); rlab.textContent="bolsa só corrigida pela inflação ~"+brlk(REF)+"/mês"; svg.appendChild(rlab);
+// x labels
+for(let e=0;e<=EXPMAX;e++){ const t=el("text",{x:xs(e),y:H-m.b+20,"text-anchor":"middle",class:"xlab"}); t.textContent=e; svg.appendChild(t); }
+const xt=el("text",{x:m.l+iw/2,y:H-8,"text-anchor":"middle",class:"axtitle"}); xt.textContent="anos de experiência profissional"; svg.appendChild(xt);
+const yt=el("text",{x:-(m.t+ih/2),y:14,"text-anchor":"middle",class:"axtitle",transform:"rotate(-90)"}); yt.textContent="R$ / mês (real 2026)"; svg.appendChild(yt);
+// annotations start & now
+const a0=AGG[0]; const an1=el("text",{x:xs(a0.exp)+8,y:ys(a0.med)-8,class:"anno"}); an1.textContent="início ~"+brlk(a0.med); svg.appendChild(an1);
+const as1=el("text",{x:xs(a0.exp)+8,y:ys(a0.med)+8,class:"anno-sub"}); as1.textContent="bolsa FAPES ~R$ 800/mês"; svg.appendChild(as1);
+const p8=AGG[8]; const an2=el("text",{x:xs(p8.exp)-6,y:ys(p8.med)-12,"text-anchor":"end",class:"anno"}); an2.textContent="sênior ~"+brlk(p8.med); svg.appendChild(an2);
+
+// ---- dumbbell ----
+const DBMAX=18000, dpx=v=>v/DBMAX*100;
+document.getElementById("dumbbell").innerHTML=PERFIS.map(p=>{
+  const c=p.trilha==="Dados"?"var(--data)":"var(--sw)";
+  return `<div class="db-row">
+    <div class="db-lab">${p.perfil}<small>${p.trilha}${p.em_tech?"":" · migrou"} · ${p.anos}a</small></div>
+    <div class="db-track" style="--dbc:${c}">
+      <div class="db-line" style="left:${dpx(p.med_ini)}%;width:${Math.max(dpx(p.med_atual)-dpx(p.med_ini),1)}%"></div>
+      <div class="db-a" style="left:${dpx(p.med_ini)}%" title="início ${brl(p.med_ini)}"></div>
+      <div class="db-b" style="left:${dpx(p.med_atual)}%" title="atual ${brl(p.med_atual)}"></div>
+    </div>
+    <div class="db-mult">${p.cresc}×</div>
+  </div>`;}).join("");
+let dbt=""; for(let v=0;v<=DBMAX;v+=6000) dbt+=`<div class="db-tk" style="left:${dpx(v)}%">${brlk(v)}</div>`;
+document.getElementById("dbticks").innerHTML=dbt;
+
+// ---- outcomes ----
+document.getElementById("outcomes").innerHTML=[
+  "<b>8</b> em engenharia de software e liderança técnica (backend, fullstack, mobile, front)",
+  "<b>3</b> em dados / analytics / consultoria sênior (banco de dados, ML)",
+  "<b>3</b> atuando no exterior (Londres, Portugal, Chile)",
+  "<b>1</b> no setor público, como analista de dados (defesa)",
+  "Origem comum: <b>ensino + pesquisa (IC/FAPES) + extensão (LEDS/IFES)</b>",
+  "<b>8 de 11</b> partiram de bolsa/estágio (IC/extensão)"
+].map(t=>`<span class="chip">${t}</span>`).join("");
+
+// gráfico de linha por experiência — Código Fonte 2026 (escopo isolado)
+(()=>{
+  const W=960,H=430,mm={t:28,r:120,b:52,l:76}, iw=W-mm.l-mm.r, ih=H-mm.t-mm.b;
+  const EX=14, YM=28000;
+  const X=e=>mm.l+iw*e/EX, Y=v=>mm.t+ih*(1-v/YM);
+  const NS="http://www.w3.org/2000/svg", s=document.getElementById("chart2");
+  const E=(t,a)=>{const el=document.createElementNS(NS,t);for(const k in a)el.setAttribute(k,a[k]);return el;};
+  for(let v=0;v<=YM;v+=7000){ s.appendChild(E("line",{x1:mm.l,x2:W-mm.r,y1:Y(v),y2:Y(v),class:"gridline"}));
+    const t=E("text",{x:mm.l-10,y:Y(v)+4,"text-anchor":"end",class:"tick"}); t.textContent=brlk(v); s.appendChild(t); }
+  s.appendChild(E("line",{x1:mm.l,x2:W-mm.r,y1:Y(0),y2:Y(0),class:"baseline"}));
+  // faixa: período em que estavam com bolsa de pesquisa/extensão (anos 0–2)
+  (function(){ const x0=X(0), x2=X(2), yt0=mm.t, hb=ih;
+    s.appendChild(E("rect",{x:x0,y:yt0,width:x2-x0,height:hb,class:"bolsaband"}));
+    s.appendChild(E("line",{x1:x2,x2:x2,y1:yt0,y2:yt0+hb,class:"bolsaedge"}));
+    const l1=E("text",{x:x0+6,y:yt0+15,class:"bolsalab"}); l1.textContent="bolsa pesquisa/extensão"; s.appendChild(l1);
+    const l2=E("text",{x:x0+6,y:yt0+28,class:"bolsalab-sub"}); l2.textContent="LEDS · Prodest · FAPES"; s.appendChild(l2);
+  })();
+  // mercado Código Fonte por senioridade + FAIXA derivada da dispersão CLT↔PJ e entre estados
+  const CFX=[{e:0,v:2587,l:"Estágio"},{e:1.5,v:5060,l:"Júnior"},{e:4,v:8467,l:"Pleno"},{e:7.5,v:14608,l:"Sênior"},{e:11,v:20602,l:"Espec./TL"}];
+  // low = CLT × estado mais baixo ; high = PJ × estado mais alto (razões relativas às médias)
+  const LOM=0.848, HIM=1.312;
+  let cbu="",cbl=""; CFX.forEach((d,i)=>cbu+=(i?"L":"M")+X(d.e)+" "+Y(d.v*HIM)+" ");
+  for(let i=CFX.length-1;i>=0;i--) cbl+="L"+X(CFX[i].e)+" "+Y(CFX[i].v*LOM)+" ";
+  s.appendChild(E("path",{d:cbu+cbl+"Z",class:"cfband"}));
+  // trajetória real dos egressos (AGG med, real 2026)
+  const eg=AGG.filter(d=>d.exp<=EX);
+  let g=""; eg.forEach((d,i)=>g+=(i?"L":"M")+X(d.exp)+" "+Y(d.med)+" "); s.appendChild(E("path",{d:g,class:"mline"}));
+  eg.forEach(d=>s.appendChild(E("circle",{cx:X(d.exp),cy:Y(d.med),r:3,class:"mdot"})));
+  // linha de mercado (mediana CF)
+  let c=""; CFX.forEach((d,i)=>c+=(i?"L":"M")+X(d.e)+" "+Y(d.v)+" "); s.appendChild(E("path",{d:c,class:"cfline"}));
+  const tip2=document.getElementById("tip");
+  CFX.forEach(d=>{ const dot=E("circle",{cx:X(d.e),cy:Y(d.v),r:4,class:"cfdot"});
+    dot.addEventListener("mousemove",ev=>{ tip2.innerHTML=`<b>${d.l}</b><br>~${d.e} anos · ${brl(d.v)}/mês`; tip2.style.left=ev.clientX+"px"; tip2.style.top=ev.clientY+"px"; tip2.style.opacity=1; });
+    dot.addEventListener("mouseleave",()=>tip2.style.opacity=0); s.appendChild(dot);
+    const t=E("text",{x:X(d.e),y:Y(d.v)-9,"text-anchor":d.e>=11?"end":"middle",class:"cflab"}); t.textContent=d.l; s.appendChild(t); });
+  // Código Fonte — valor da ÉPOCA dos egressos, corrigido por IPCA a 2026.
+  // Cada senioridade precificada no ANO MEDIANO em que os egressos a atingiram, com a edição CF desse ano × IPCA→2026.
+  // Estágio (mediana ~2017) e Júnior (~2019) são pré-2021 (era da bolsa) → edição 2021 corrigida = EXTRAPOLADO (pontos ocos).
+  // Pleno=2021, Sênior=2024, Espec.=2024 usam a edição real do ano. Fonte: data/codigofonte_historico.json.
+  const CFEP=[{e:0,v:1637,ex:1,y:"~2017→ed.2021"},{e:1.5,v:3657,ex:1,y:"~2019→ed.2021"},{e:4,v:6921,ex:0,y:"2021"},{e:7.5,v:16044,ex:0,y:"2024"},{e:11,v:19404,ex:0,y:"2024"}];
+  let ep=""; CFEP.forEach((d,i)=>ep+=(i?"L":"M")+X(d.e)+" "+Y(d.v)+" "); s.appendChild(E("path",{d:ep,class:"epline"}));
+  CFEP.forEach(d=>{ const dot=E("circle",{cx:X(d.e),cy:Y(d.v),r:3.5,class:d.ex?"epdot-ex":"epdot"});
+    dot.addEventListener("mousemove",ev=>{ tip2.innerHTML=`<b>Código Fonte · valor da época</b><br>${brl(d.v)}/mês (R$ de 2026)<br><span style="color:var(--muted)">edição ${d.y}${d.ex?" · extrapolado (CF só desde 2021)":""}</span>`; tip2.style.left=ev.clientX+"px"; tip2.style.top=ev.clientY+"px"; tip2.style.opacity=1; });
+    dot.addEventListener("mouseleave",()=>tip2.style.opacity=0); s.appendChild(dot); });
+  { const t=E("text",{x:X(1.5),y:Y(3657)+18,"text-anchor":"middle",class:"eplab"}); t.textContent="◌ extrapolado (pré-2021)"; s.appendChild(t); }
+  // rótulos das bordas da faixa (o que é piso e o que é teto)
+  const lastCF=CFX[CFX.length-1];
+  const tHi=E("text",{x:X(lastCF.e)-4,y:Y(lastCF.v*HIM)-7,"text-anchor":"end",class:"cflab"}); tHi.textContent="teto ≈ PJ · estado + alto"; s.appendChild(tHi);
+  const tLo=E("text",{x:X(lastCF.e)-4,y:Y(lastCF.v*LOM)+15,"text-anchor":"end",class:"cflab"}); tLo.textContent="piso ≈ CLT · estado + baixo"; s.appendChild(tLo);
+  for(let e=0;e<=EX;e+=2){ const t=E("text",{x:X(e),y:H-mm.b+20,"text-anchor":"middle",class:"xlab"}); t.textContent=e; s.appendChild(t); }
+  const xt=E("text",{x:mm.l+iw/2,y:H-8,"text-anchor":"middle",class:"axtitle"}); xt.textContent="anos de experiência (senioridade na experiência típica)"; s.appendChild(xt);
+  const yt=E("text",{x:-(mm.t+ih/2),y:14,"text-anchor":"middle",class:"axtitle",transform:"rotate(-90)"}); yt.textContent="R$ / mês (2026)"; s.appendChild(yt);
+})();
+
+// 2º gráfico: escada de senioridade (Pesquisa Código Fonte 2026)
+const CF=[
+ {nome:"Bolsa de IC",sub:"início dos egressos",val:800,start:true,tag:"início · abaixo do estágio",tagcls:"s"},
+ {nome:"Estágio",sub:"mercado",val:2587},
+ {nome:"Júnior",val:5060},
+ {nome:"Pleno",val:8467},
+ {nome:"Sênior",val:14608,hl:true,tag:"← nível sênior dos egressos hoje"},
+ {nome:"Especialista / Tech Lead",val:20602}
+];
+const CFMAX=20602;
+document.getElementById("ladder").innerHTML=CF.map(d=>`
+ <div class="lad-row${d.hl?' hl':''}${d.start?' start':''}">
+   <div class="lad-name">${d.nome}${d.sub?`<small>${d.sub}</small>`:''}</div>
+   <div class="lad-track">
+     <div class="lad-bar" style="width:${Math.max(d.val/CFMAX*100,4)}%">${brl(d.val)}</div>
+     ${d.tag?`<span class="lad-tag${d.tagcls?' '+d.tagcls:''}">${d.tag}</span>`:''}
+   </div>
+ </div>`).join("");
+
+document.getElementById("foot").innerHTML='Fontes: bolsas iniciais = registros reais da <a href="https://fapes.es.gov.br/fapes-reajusta-tabela-de-valores-de-bolsas-e" target="_blank" rel="noopener"><b>FAPES</b></a> (valor, nível e período) e IFES; salários de mercado = <a href="https://survey.stackoverflow.co/" target="_blank" rel="noopener">Stack Overflow Developer Survey 2018–2023</a> (gráfico por experiência) e <a href="https://pesquisa.codigofonte.com.br/2026" target="_blank" rel="noopener">Pesquisa Código Fonte 2026</a> (escada de senioridade, 17.046 respondentes, Brasil) · perfis via LinkedIn → estrutura anônima · câmbio médio anual + IPCA acumulado a jul/2026 · estimativa ilustrativa para fins de apresentação, não representa remuneração real declarada.';
+</script>
+
+</body>
+</html>
