@@ -182,3 +182,25 @@ autoria), **concentração** (curva de Lorenz + Gini), **benchmark por área** (
     Estimativas a partir de dados públicos do **OpenAlex** (só obras com **DOI** indexadas) — **não é o
     Google Scholar** e **não tem todos os artigos**; números tendem a ser menores que no Scholar, porém
     consistentes entre docentes. **Não** é avaliação oficial de desempenho — não usar para ranquear pessoas.
+
+## Egressos — Impacto na Carreira 🚧
+
+Painel do impacto de **ensino, pesquisa e extensão** na trajetória de **11 egressos** que passaram
+pela mesma base no campus — monitoria, bolsa de IC (**FAPES/Prodest**) e o laboratório de extensão
+(**LEDS/IFES**) — e hoje ocupam posições sênior em engenharia de software, dados, consultoria e
+liderança técnica (vários no exterior). Três visões: **dashboard executivo** (crescimento salarial
+estimado, comparação com o mercado, faixa de bolsa), **panorama por egresso** (linha do tempo e
+cards A–K) e **evolução salarial ano a ano**.
+
+[Abrir painel executivo](egressos/index.html){ .md-button .md-button--primary }
+[Painel no GitHub Pages :material-open-in-new:](https://ifesserra-lab.github.io/egressos/){ .md-button }
+
+!!! danger "Experimental — em construção"
+    Metodologia ainda em desenvolvimento; **dados e conclusões preliminares, sujeitos a alteração**.
+    Salários são **estimativas de mercado por anos de experiência** (Stack Overflow + câmbio + IPCA),
+    **não** salários reais. Não usar como registro oficial.
+
+!!! note "Privacidade"
+    **Anonimizado**: egressos identificados só por letra (**A–K**); **sem nomes, empresas ou
+    localidades reais**. A origem comum institucional (LEDS/IFES, Prodest/FAPES, Morpheus Jr.) é
+    crédito público de execução.
