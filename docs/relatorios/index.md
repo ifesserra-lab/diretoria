@@ -185,13 +185,13 @@ autoria), **concentração** (curva de Lorenz + Gini), **benchmark por área** (
 
 ## Egressos — Impacto na Carreira 🚧
 
-Painel do impacto de **ensino, pesquisa e extensão** na trajetória de **23 egressos** que passaram
+Painel do impacto de **ensino, pesquisa e extensão** na trajetória de **28 egressos** que passaram
 pela mesma base no campus — monitoria, bolsa de IC (**FAPES/Prodest**) e o laboratório de extensão
 (**LEDS/IFES**) — e hoje ocupam posições sênior em engenharia de software, dados, consultoria,
 liderança técnica e gestão de TI (vários no exterior). Três visões: **dashboard executivo**
 (crescimento salarial estimado, análise do grupo, **indicadores de impacto** — dispersão, fomento
 FAPES, fluxo formação→trilha→destino e internacionalização), **panorama por egresso** (linha do
-tempo e cards A–W) e **evolução salarial ano a ano**.
+tempo e cards A–AB) e **evolução salarial ano a ano**.
 
 [Abrir painel executivo](egressos/index.html){ .md-button .md-button--primary }
 [Painel no GitHub Pages :material-open-in-new:](https://ifesserra-lab.github.io/egressos/){ .md-button }
@@ -202,6 +202,6 @@ tempo e cards A–W) e **evolução salarial ano a ano**.
     **não** salários reais. Não usar como registro oficial.
 
 !!! note "Privacidade"
-    **Anonimizado**: egressos identificados só por letra (**A–W**); **sem nomes, empresas ou
+    **Anonimizado**: egressos identificados só por letra (**A–AB**); **sem nomes, empresas ou
     localidades reais**. A origem comum institucional (LEDS/IFES, Prodest/FAPES, Morpheus Jr.) é
     crédito público de execução.
