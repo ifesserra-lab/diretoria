@@ -1,4 +1,7 @@
-name: 🌙 Daily Site Update
+# Sincroniza conteúdo (issues → atividades, gráficos) e commita em docs/.
+# NÃO faz mais deploy: o site agora é o portal Astro, publicado pelo workflow
+# "Deploy portal (Astro)", que dispara via workflow_run quando este termina.
+name: 🌙 Daily Content Sync
 
 on:
   schedule:
@@ -14,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write  # Para commit + push + gh-deploy
+  contents: write  # Para commit + push das atualizações em docs/
   issues: read     # Para ler issues no sync_activities
 
 jobs:
@@ -56,6 +59,5 @@ jobs:
             docs/index.md
           git diff --cached --quiet || git commit -m "chore(bot): atualização noturna de atividades e dashboards [skip ci]"
           git push
-
-      - name: 🚀 Build e deploy do site (MkDocs → gh-pages)
-        run: mkdocs gh-deploy --force --clean
+        # O deploy do portal Astro é disparado automaticamente ao fim deste
+        # workflow (ver workflow_run em deploy-web.yml).
