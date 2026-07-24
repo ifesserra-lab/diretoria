@@ -1,0 +1,22 @@
+---
+// Faixa GitOps — o carimbo do "registro vivo". Os valores podem ser
+// injetados pelo Actions no build (env), com fallback estático.
+const sha = import.meta.env.PUBLIC_GIT_SHA?.slice(0, 7) || '7b02688';
+const msg = import.meta.env.PUBLIC_GIT_MSG || 'egressos: metodologia + item na nav';
+const when = import.meta.env.PUBLIC_GIT_WHEN || 'atualizado automaticamente via GitHub Actions';
+---
+<div class="gitstrip">
+  <span class="sha">{sha}</span>
+  <span class="msg">{msg}</span>
+  <span class="ago">{when}</span>
+</div>
+
+<style>
+  .gitstrip{display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+    font-family:var(--mono); font-size:12.5px; color:var(--muted);
+    background:var(--gold-soft); border-radius:10px; padding:11px 16px}
+  .sha{color:var(--gold); font-weight:700}
+  .msg{color:var(--ink)}
+  .ago{margin-left:auto; color:var(--faint)}
+  @media (max-width:560px){ .ago{margin-left:0} }
+</style>

@@ -1,0 +1,19 @@
+---
+import Doc from '../../layouts/Doc.astro';
+import { getCollection, render } from 'astro:content';
+import { sections } from '../../lib/sections';
+import { displayTitle, dateFromId, fmtDate } from '../../lib/derive';
+export async function getStaticPaths() {
+  const entries = await getCollection('atas');
+  return entries.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const s = sections.atas;
+const { Content, headings } = await render(entry);
+const titulo = displayTitle(entry as any);
+const data = (entry.data as any).data ?? dateFromId(entry.id);
+---
+<Doc title={titulo} section={{ label: s.label, href: s.href }} headings={headings}
+     editPath={`${s.editDir}/${entry.id}.md`} meta={data ? `Reunião · ${fmtDate(data)}` : undefined}>
+  <Content />
+</Doc>

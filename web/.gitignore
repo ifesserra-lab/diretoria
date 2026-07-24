@@ -1,0 +1,13 @@
+# build output
+dist/
+# generated deps
+node_modules/
+# astro
+.astro/
+# painéis copiados no prebuild (SSOT fica em ../docs/relatorios)
+public/relatorios/
+# env
+.env
+.env.production
+# logs
+npm-debug.log*

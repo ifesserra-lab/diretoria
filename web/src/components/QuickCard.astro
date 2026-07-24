@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+interface Props { icon: string; titulo: string; desc: string; meta?: string; href: string; }
+const { icon, titulo, desc, meta, href } = Astro.props;
+---
+<a class="qcard" href={href}>
+  <span class="ic"><Icon name={icon} size={20} /></span>
+  <span class="t">{titulo}</span>
+  <span class="d">{desc}</span>
+  {meta && <span class="meta">{meta}</span>}
+</a>
+
+<style>
+  .qcard{background:var(--surface); padding:18px; display:flex; flex-direction:column; gap:7px;
+    min-height:124px; text-decoration:none; color:var(--ink)}
+  .qcard:hover{background:var(--surface-2); text-decoration:none}
+  .qcard:hover .t{color:var(--green)}
+  .ic{color:var(--green)}
+  .t{font-weight:600; font-size:15px}
+  .d{font-size:12.5px; color:var(--muted); line-height:1.4}
+  .meta{margin-top:auto; font-family:var(--mono); font-size:11px; color:var(--faint); letter-spacing:.02em}
+</style>

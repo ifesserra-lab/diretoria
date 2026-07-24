@@ -1,0 +1,34 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const repo = 'https://github.com/ifesserra-lab/diretoria';
+---
+<footer class="ft">
+  <div class="wrap inner">
+    <div>
+      <div class="fn">DPPGE · IFES Campus Serra</div>
+      <p class="fm">
+        Diretoria de Pesquisa, Pós-Graduação e Extensão · Serra/ES<br />
+        Fonte única de verdade — versionada no Git, pública e auditável.
+      </p>
+      <p class="fm">
+        <a href={repo}>Editar no GitHub</a> ·
+        <a href={base + '/relatorios'}>Relatórios</a> ·
+        <a href="https://github.com/orgs/ifesserra-lab/projects/7">Project #7</a>
+      </p>
+    </div>
+    <div class="fm meta">
+      Gerado por Astro · publicado em GitHub Pages<br />
+      Atualização automática via GitHub Actions<br />
+      pt-BR · tema claro/escuro · WCAG AA
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ft{border-top:1px solid var(--line); background:var(--surface); padding:40px 0 56px; margin-top:40px}
+  .inner{display:flex; justify-content:space-between; gap:28px; flex-wrap:wrap}
+  .fn{font-family:var(--serif); font-size:18px; font-weight:600; margin-bottom:8px}
+  .fm{font-size:13px; color:var(--muted); line-height:1.7; margin:6px 0 0}
+  .fm.meta{font-family:var(--mono); font-size:11.5px; color:var(--faint); text-align:right}
+  @media (max-width:640px){ .fm.meta{text-align:left} }
+</style>

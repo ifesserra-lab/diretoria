@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import ReportCard from '../../components/ReportCard.astro';
+import { reports } from '../../lib/reports';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title="Relatórios" description="Painéis analíticos de impacto da pesquisa e extensão do IFES Campus Serra.">
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head narrow">
+        <p class="eyebrow">Impacto em números</p>
+        <h1>Relatórios</h1>
+        <p class="lead">Painéis analíticos gerados a partir de fontes públicas (SRC, Lattes, FAPES/FACTO,
+          OpenAlex). Cada painel diz o que mede — e o que <strong>não</strong> prova.</p>
+      </div>
+
+      <div class="rgrid">
+        {reports.map((r) => <ReportCard report={r} />)}
+      </div>
+
+      <aside class="note">
+        <p class="mono tag">Como ler</p>
+        <p>Valores individuais aparecem em <strong>faixa + %</strong> ou <strong>ordem de grandeza</strong>,
+          nunca em cifra exata. Cruzamentos por nome estão sujeitos a homônimo. Painéis marcados como
+          <span class="pill exp">experimental</span> ou <span class="pill wip">🚧 em construção</span>
+          trazem dados preliminares — não são registro oficial.</p>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .rgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  @media (max-width:900px){ .rgrid{grid-template-columns:1fr 1fr} }
+  @media (max-width:600px){ .rgrid{grid-template-columns:1fr} }
+  .note{margin-top:36px; border:1px solid var(--line); border-left:3px solid var(--gold);
+    background:var(--gold-soft); border-radius:10px; padding:16px 18px; max-width:820px}
+  .note .tag{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px}
+  .note p{font-size:14px; color:var(--ink); line-height:1.55; margin:0}
+</style>

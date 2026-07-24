@@ -1,0 +1,26 @@
+---
+// Substitui os admonitions do MkDocs (!!! note / warning / danger).
+// Uso em .mdx:  <Callout type="danger" titulo="Preliminar"> ... </Callout>
+interface Props { type?: 'note' | 'warn' | 'danger'; titulo?: string; }
+const { type = 'note', titulo } = Astro.props;
+const fallback = { note: 'Nota', warn: 'Atenção', danger: 'Cuidado' } as const;
+---
+<aside class={`callout ${type}`}>
+  <div class="ct">{titulo ?? fallback[type]}</div>
+  <div class="cb"><slot /></div>
+</aside>
+
+<style>
+  .callout{border-radius:10px; padding:14px 16px; margin:20px 0; font-size:14.5px; line-height:1.55; border-left:3px solid}
+  .callout .ct{font-family:var(--mono); font-weight:700; font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; margin-bottom:5px}
+  .callout .cb :global(p){margin:0}
+  .callout .cb :global(p + p){margin-top:8px}
+  .callout.note{background:var(--green-soft); border-color:var(--green); color:var(--ink)}
+  .callout.note .ct{color:var(--green-deep)}
+  .callout.warn{background:var(--gold-soft); border-color:var(--gold)}
+  .callout.warn .ct{color:var(--gold)}
+  .callout.danger{background:var(--danger-soft); border-color:var(--danger)}
+  .callout.danger .ct{color:var(--danger)}
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .callout.note .ct{color:var(--green)} }
+  :root[data-theme="dark"] .callout.note .ct{color:var(--green)}
+</style>

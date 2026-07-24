@@ -1,0 +1,105 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+interface Props { title?: string; description?: string; }
+const { title, description } = Astro.props;
+const siteName = 'Portal DPPGE · IFES Campus Serra';
+const fullTitle = title ? `${title} — ${siteName}` : siteName;
+const desc = description ?? 'Portal de Governança da Diretoria de Pesquisa, Pós-Graduação e Extensão do IFES Campus Serra. Atas, decisões e indicadores versionados no Git — fonte única de verdade, pública e auditável.';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <meta name="theme-color" content="#17654A" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0D1512" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href={base + '/favicon.svg'} type="image/svg+xml" />
+    <!-- no-flash: aplica o tema salvo antes de pintar -->
+    <script is:inline>
+      (() => {
+        try {
+          const t = localStorage.getItem('dppge-theme');
+          if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <Nav />
+    <main id="conteudo"><slot /></main>
+    <Footer />
+
+    <!-- Busca (Pagefind — índice gerado no build, roda 100% no navegador) -->
+    <dialog id="search-dialog" aria-label="Buscar no portal">
+      <div class="sd-head">
+        <span class="mono">Buscar no portal</span>
+        <button id="search-close" type="button" aria-label="Fechar">Esc</button>
+      </div>
+      <div id="search-ui"></div>
+      <p class="sd-hint mono">A busca é indexada no build (Pagefind) — disponível no site publicado.</p>
+    </dialog>
+
+    <style>
+      .skip{position:absolute; left:-9999px; top:0; background:var(--green); color:var(--on-green);
+        padding:10px 16px; border-radius:0 0 8px 0; z-index:100}
+      .skip:focus{left:0}
+      #search-dialog{border:1px solid var(--line-strong); border-radius:14px; padding:0; width:min(640px,92vw);
+        background:var(--surface); color:var(--ink); box-shadow:var(--shadow-lg); top:12vh; margin:0 auto}
+      #search-dialog::backdrop{background:rgba(13,21,18,.45); backdrop-filter:blur(2px)}
+      .sd-head{display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-bottom:1px solid var(--line)}
+      .sd-head .mono{font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint)}
+      #search-close{font-family:var(--mono); font-size:11px; border:1px solid var(--line-strong); background:var(--paper);
+        color:var(--muted); border-radius:6px; padding:3px 8px; cursor:pointer}
+      #search-ui{padding:16px 18px; min-height:60px}
+      .sd-hint{padding:0 18px 16px; font-size:11.5px; color:var(--faint)}
+      /* tema Pagefind alinhado ao Registro Vivo */
+      #search-ui{--pagefind-ui-primary:var(--green); --pagefind-ui-text:var(--ink);
+        --pagefind-ui-background:var(--surface); --pagefind-ui-border:var(--line);
+        --pagefind-ui-font:var(--sans)}
+    </style>
+
+    <script>
+      const dialog = document.getElementById('search-dialog') as HTMLDialogElement | null;
+      const openBtn = document.getElementById('search-open');
+      const closeBtn = document.getElementById('search-close');
+      let loaded = false;
+      const base = document.documentElement.dataset.base || '';
+
+      async function ensurePagefind() {
+        if (loaded || !dialog) return;
+        loaded = true;
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = `${import.meta.env.BASE_URL}pagefind/pagefind-ui.css`;
+        document.head.appendChild(css);
+        try {
+          // @ts-ignore — gerado no build pelo Pagefind
+          await import(/* @vite-ignore */ `${import.meta.env.BASE_URL}pagefind/pagefind-ui.js`);
+          // @ts-ignore
+          new PagefindUI({ element: '#search-ui', showSubResults: true, translations: {
+            placeholder: 'Buscar atas, decisões, comissões…', zero_results: 'Nada encontrado para [SEARCH_TERM].'
+          }});
+        } catch (e) {
+          const el = document.getElementById('search-ui');
+          if (el) el.innerHTML = '<p style="color:var(--muted);font-size:14px;margin:0">A busca fica ativa no site publicado (índice gerado no build).</p>';
+        }
+      }
+      function open() { ensurePagefind(); dialog?.showModal(); }
+      openBtn?.addEventListener('click', open);
+      closeBtn?.addEventListener('click', () => dialog?.close());
+      addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); open(); }
+      });
+      dialog?.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    </script>
+  </body>
+</html>
