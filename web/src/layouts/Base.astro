@@ -6,7 +6,7 @@ interface Props { title?: string; description?: string; }
 const { title, description } = Astro.props;
 const siteName = 'Portal DPPGE · IFES Campus Serra';
 const fullTitle = title ? `${title} — ${siteName}` : siteName;
-const desc = description ?? 'Portal de Governança da Diretoria de Pesquisa, Pós-Graduação e Extensão do IFES Campus Serra. Atas, decisões e indicadores versionados no Git — fonte única de verdade, pública e auditável.';
+const desc = description ?? 'Portal de Governança da Diretoria de Pesquisa, Pós-Graduação e Extensão do IFES Campus Serra. Atas, decisões e indicadores — fonte única de verdade, pública e auditável.';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <!doctype html>
@@ -45,7 +45,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <button id="search-close" type="button" aria-label="Fechar">Esc</button>
       </div>
       <div id="search-ui"></div>
-      <p class="sd-hint mono">A busca é indexada no build (Pagefind) — disponível no site publicado.</p>
     </dialog>
 
     <style>
@@ -60,7 +59,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       #search-close{font-family:var(--mono); font-size:11px; border:1px solid var(--line-strong); background:var(--paper);
         color:var(--muted); border-radius:6px; padding:3px 8px; cursor:pointer}
       #search-ui{padding:16px 18px; min-height:60px}
-      .sd-hint{padding:0 18px 16px; font-size:11.5px; color:var(--faint)}
+      .sd-err{color:var(--muted); font-size:14px; margin:0}
       /* tema Pagefind alinhado ao Registro Vivo */
       #search-ui{--pagefind-ui-primary:var(--green); --pagefind-ui-text:var(--ink);
         --pagefind-ui-background:var(--surface); --pagefind-ui-border:var(--line);
@@ -71,26 +70,45 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       const dialog = document.getElementById('search-dialog') as HTMLDialogElement | null;
       const openBtn = document.getElementById('search-open');
       const closeBtn = document.getElementById('search-close');
+      const BASE = import.meta.env.BASE_URL; // '/diretoria/'
       let loaded = false;
-      const base = document.documentElement.dataset.base || '';
+
+      function loadScript(src: string) {
+        return new Promise<void>((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = src; s.async = true;
+          s.onload = () => resolve();
+          s.onerror = () => reject(new Error('falha ao carregar ' + src));
+          document.head.appendChild(s);
+        });
+      }
 
       async function ensurePagefind() {
         if (loaded || !dialog) return;
         loaded = true;
         const css = document.createElement('link');
         css.rel = 'stylesheet';
-        css.href = `${import.meta.env.BASE_URL}pagefind/pagefind-ui.css`;
+        css.href = `${BASE}pagefind/pagefind-ui.css`;
         document.head.appendChild(css);
         try {
-          // @ts-ignore — gerado no build pelo Pagefind
-          await import(/* @vite-ignore */ `${import.meta.env.BASE_URL}pagefind/pagefind-ui.js`);
-          // @ts-ignore
-          new PagefindUI({ element: '#search-ui', showSubResults: true, translations: {
-            placeholder: 'Buscar atas, decisões, comissões…', zero_results: 'Nada encontrado para [SEARCH_TERM].'
-          }});
+          // pagefind-ui.js NÃO é ESM — carrega via <script> e usa o global PagefindUI
+          await loadScript(`${BASE}pagefind/pagefind-ui.js`);
+          const PagefindUI = (window as any).PagefindUI;
+          if (typeof PagefindUI !== 'function') throw new Error('PagefindUI indisponível');
+          new PagefindUI({
+            element: '#search-ui',
+            bundlePath: `${BASE}pagefind/`,   // índice fica sob /diretoria/pagefind/
+            showSubResults: true,
+            showImages: false,
+            translations: {
+              placeholder: 'Buscar atas, decisões, comissões…',
+              zero_results: 'Nada encontrado para [SEARCH_TERM].',
+            },
+          });
         } catch (e) {
+          loaded = false; // permite nova tentativa
           const el = document.getElementById('search-ui');
-          if (el) el.innerHTML = '<p style="color:var(--muted);font-size:14px;margin:0">A busca fica ativa no site publicado (índice gerado no build).</p>';
+          if (el) el.innerHTML = '<p class="sd-err">Não foi possível carregar a busca. Recarregue a página e tente novamente.</p>';
         }
       }
       function open() { ensurePagefind(); dialog?.showModal(); }
