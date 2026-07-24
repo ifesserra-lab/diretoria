@@ -61,6 +61,9 @@ web/
 
 ## Deploy
 
-`.github/workflows/deploy-web.yml` (disparo **manual** por enquanto, para não conflitar com o
-fluxo atual do MkDocs). Roda `npm run build` e publica `web/dist/` no GitHub Pages. O carimbo da
-`GitStrip` pode ser injetado no build via `PUBLIC_GIT_SHA` / `PUBLIC_GIT_MSG` / `PUBLIC_GIT_WHEN`.
+`.github/workflows/deploy-web.yml` roda **automaticamente** a cada push no `master` que toque em
+`web/**`, `docs/**` ou no próprio workflow (inclui a atualização noturna do bot) — e também sob
+demanda (**workflow_dispatch**). Roda `npm run build` e publica `web/dist/` no GitHub Pages. O
+carimbo da `GitStrip` é injetado no build via `PUBLIC_GIT_SHA` / `PUBLIC_GIT_MSG` / `PUBLIC_GIT_WHEN`.
+
+> Requer, uma vez: **Settings → Pages → Source: GitHub Actions**.

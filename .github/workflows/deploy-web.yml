@@ -1,8 +1,14 @@
 name: Deploy portal (Astro)
 
-# Disparo MANUAL por enquanto — não conflita com o fluxo atual do MkDocs.
-# Ao migrar de vez, trocar por `push: { branches: [master] }`.
+# Deploy automático: publica a cada push no master que toque no portal ou no
+# conteúdo (inclui a atualização noturna do bot em docs/). Também roda sob demanda.
 on:
+  push:
+    branches: [master]
+    paths:
+      - 'web/**'
+      - 'docs/**'
+      - '.github/workflows/deploy-web.yml'
   workflow_dispatch:
 
 permissions:
