@@ -1,0 +1,26 @@
+---
+interface Stat { n: string; l: string; }
+const stats: Stat[] = [
+  { n: '201', l: 'ações de extensão (SRC)' },
+  { n: '757', l: 'extensionistas' },
+  { n: '+4.845', l: 'pessoas atingidas' },
+  { n: '78%', l: 'coordenadores que fazem extensão' },
+  { n: '28', l: 'egressos acompanhados' },
+];
+---
+<div class="mstats">
+  {stats.map((s) => (
+    <div class="stat">
+      <div class="n tnum">{s.n}</div>
+      <div class="l">{s.l}</div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .mstats{display:grid; grid-template-columns:repeat(5,1fr); gap:20px; padding:24px 0;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .stat .n{font-family:var(--serif); font-size:28px; font-weight:600; color:var(--green); letter-spacing:-.01em}
+  .stat .l{font-size:12px; color:var(--muted); line-height:1.35; margin-top:3px}
+  @media (max-width:720px){ .mstats{grid-template-columns:repeat(2,1fr); gap:22px 14px} }
+</style>

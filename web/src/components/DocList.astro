@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Section } from '../lib/sections';
+import { displayTitle, dateFromId, fmtDate } from '../lib/derive';
+import Icon from '../components/Icon.astro';
+
+interface Props { section: Section; entries: CollectionEntry<any>[]; }
+const { section, entries } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+type Row = { href: string; titulo: string; data?: Date; desc?: string };
+let rows: Row[] = entries
+  .filter((e) => !/^(modelo-|template)/i.test(e.id.split('/').pop() ?? ''))
+  .map((e) => ({
+    href: `${base}${section.href}/${e.id}`,
+    titulo: displayTitle(e as any),
+    data: (e.data as any)?.data ?? dateFromId(e.id),
+    desc: (e.data as any)?.descricao ?? (e.data as any)?.responsavel,
+  }));
+if (section.dateSort) rows.sort((a, b) => (b.data?.getTime() ?? 0) - (a.data?.getTime() ?? 0));
+else rows.sort((a, b) => a.titulo.localeCompare(b.titulo, 'pt-BR'));
+---
+<ul class="doclist">
+  {rows.map((r) => (
+    <li>
+      <a href={r.href}>
+        <span class="ic"><Icon name={section.icon} size={18} /></span>
+        <span class="body">
+          <span class="tt">{r.titulo}</span>
+          {r.desc && <span class="dd">{r.desc}</span>}
+        </span>
+        {r.data && <time class="dt mono tnum">{fmtDate(r.data)}</time>}
+        <span class="arr"><Icon name="arrow" size={16} /></span>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .doclist{list-style:none; margin:0; padding:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
+  .doclist li + li{border-top:1px solid var(--line)}
+  .doclist a{display:flex; align-items:center; gap:16px; padding:16px 20px; text-decoration:none; color:var(--ink)}
+  .doclist a:hover{background:var(--surface-2); text-decoration:none}
+  .ic{color:var(--green); flex-shrink:0}
+  .body{display:flex; flex-direction:column; gap:2px; min-width:0; flex:1}
+  .tt{font-family:var(--serif); font-size:17px; font-weight:600}
+  .dd{font-size:13px; color:var(--muted)}
+  .dt{font-size:12px; color:var(--faint); flex-shrink:0}
+  .arr{color:var(--faint); flex-shrink:0}
+  .doclist a:hover .tt{color:var(--green)}
+  .doclist a:hover .arr{color:var(--green)}
+</style>

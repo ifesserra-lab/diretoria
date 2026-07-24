@@ -1,0 +1,107 @@
+/* ============================================================
+   Registro Vivo — sistema de design do Portal DPPGE
+   Verde-pinheiro institucional (gesto forte) · ocre (dado/Git) ·
+   tijolo (alerta). Neutros com viés verde. Serifa=registro,
+   mono=dado/git, sans=leitura. Claro/escuro token-a-token.
+   ============================================================ */
+:root {
+  --paper:#F6F7F4; --surface:#FFFFFF; --surface-2:#FBFCFA;
+  --ink:#14201A; --muted:#5A6660; --faint:#7E8A83;
+  --line:#DDE3DC; --line-strong:#C8D1C7;
+  --green:#17654A; --green-deep:#0F4A34; --green-soft:#E4EFE8; --on-green:#FFFFFF;
+  --gold:#B8791F; --gold-soft:#F4E9D4;
+  --danger:#B23A2E; --danger-soft:#F6E2DE;
+  --shadow:0 1px 2px rgba(20,32,26,.04), 0 8px 30px rgba(20,32,26,.06);
+  --shadow-lg:0 4px 12px rgba(20,32,26,.08), 0 24px 60px rgba(20,32,26,.12);
+
+  /* Produção: auto-hospedar via @fontsource (a CSP proíbe CDN).
+     Fallback = pilha do sistema, sem fallback silencioso. */
+  --serif:"Fraunces","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+
+  --r:14px; --r-sm:9px;
+  --w:1080px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#0D1512; --surface:#121D18; --surface-2:#16241E;
+    --ink:#E9EFEA; --muted:#94A199; --faint:#77857D;
+    --line:#243029; --line-strong:#324137;
+    --green:#57C293; --green-deep:#3EA277; --green-soft:#183527; --on-green:#0D1512;
+    --gold:#D9A441; --gold-soft:#2E2413;
+    --danger:#E17565; --danger-soft:#33201C;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 30px rgba(0,0,0,.35);
+    --shadow-lg:0 4px 12px rgba(0,0,0,.4), 0 24px 60px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="light"]{
+  --paper:#F6F7F4; --surface:#FFFFFF; --surface-2:#FBFCFA;
+  --ink:#14201A; --muted:#5A6660; --faint:#7E8A83;
+  --line:#DDE3DC; --line-strong:#C8D1C7;
+  --green:#17654A; --green-deep:#0F4A34; --green-soft:#E4EFE8; --on-green:#FFFFFF;
+  --gold:#B8791F; --gold-soft:#F4E9D4;
+  --danger:#B23A2E; --danger-soft:#F6E2DE;
+  --shadow:0 1px 2px rgba(20,32,26,.04), 0 8px 30px rgba(20,32,26,.06);
+  --shadow-lg:0 4px 12px rgba(20,32,26,.08), 0 24px 60px rgba(20,32,26,.12);
+}
+:root[data-theme="dark"]{
+  --paper:#0D1512; --surface:#121D18; --surface-2:#16241E;
+  --ink:#E9EFEA; --muted:#94A199; --faint:#77857D;
+  --line:#243029; --line-strong:#324137;
+  --green:#57C293; --green-deep:#3EA277; --green-soft:#183527; --on-green:#0D1512;
+  --gold:#D9A441; --gold-soft:#2E2413;
+  --danger:#E17565; --danger-soft:#33201C;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 30px rgba(0,0,0,.35);
+  --shadow-lg:0 4px 12px rgba(0,0,0,.4), 0 24px 60px rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation-duration:.01ms!important; transition-duration:.01ms!important}}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  min-height:100vh; display:flex; flex-direction:column;
+}
+h1,h2,h3,h4{font-family:var(--serif); font-weight:600; text-wrap:balance; line-height:1.15; letter-spacing:-.01em; margin:0}
+p{margin:0}
+a{color:var(--green); text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--green); outline-offset:2px; border-radius:4px}
+img{max-width:100%; height:auto}
+
+.wrap{max-width:var(--w); margin:0 auto; padding:0 24px; width:100%}
+.narrow{max-width:760px}
+.eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); font-weight:600}
+.eyebrow.green{color:var(--green)}
+.lead{font-size:19px; color:var(--muted); line-height:1.6}
+.mono{font-family:var(--mono)}
+.tnum{font-variant-numeric:tabular-nums}
+.divider{height:1px; background:var(--line); border:0; margin:0}
+main{flex:1}
+
+/* buttons */
+.btn{font-family:var(--sans); font-size:14px; font-weight:600; border-radius:9px; padding:11px 18px; cursor:pointer; border:1px solid transparent; display:inline-flex; gap:8px; align-items:center; text-decoration:none}
+.btn:hover{text-decoration:none}
+.btn.primary{background:var(--green); color:var(--on-green)}
+.btn.primary:hover{background:var(--green-deep)}
+.btn.ghost{background:var(--surface); border-color:var(--line-strong); color:var(--ink)}
+.btn.ghost:hover{border-color:var(--green); color:var(--green)}
+
+/* pills */
+.pill{font-family:var(--mono); font-size:11px; font-weight:600; padding:3px 9px; border-radius:100px; letter-spacing:.03em; display:inline-block}
+.pill.ok{background:var(--green-soft); color:var(--green-deep)}
+.pill.wip{background:var(--gold-soft); color:var(--gold)}
+.pill.exp{background:var(--danger-soft); color:var(--danger)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pill.ok{color:var(--green)}}
+:root[data-theme="dark"] .pill.ok{color:var(--green)}
+
+/* section rhythm */
+.section{padding:56px 0}
+.sec-head{margin-bottom:32px}
+.sec-head h1,.sec-head h2{font-size:clamp(27px,3.6vw,40px); margin-top:12px}
+.sec-head .lead{margin-top:14px; max-width:660px}
+
+.kbd{font-family:var(--mono); font-size:11px; border:1px solid var(--line-strong); border-bottom-width:2px; border-radius:5px; padding:1px 6px; color:var(--muted)}

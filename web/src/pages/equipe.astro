@@ -1,0 +1,12 @@
+---
+import Doc from '../layouts/Doc.astro';
+import { getCollection, render } from 'astro:content';
+const paginas = await getCollection('paginas');
+const equipe = paginas.find((p) => p.id === 'equipe/index' || p.id === 'equipe');
+const { Content, headings } = equipe ? await render(equipe) : { Content: null as any, headings: [] };
+---
+<Doc title="Equipe gestora" section={{ label: 'Início', href: '/' }} headings={headings}
+     editPath="equipe/index.md"
+     description="Diretoria e coordenações do DPPGE — IFES Campus Serra — e a distribuição das comissões.">
+  {Content ? <Content /> : <p>Conteúdo não encontrado.</p>}
+</Doc>

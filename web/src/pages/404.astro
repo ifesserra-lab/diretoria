@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title="Página não encontrada">
+  <section class="nf">
+    <div class="wrap">
+      <p class="eyebrow">Erro 404</p>
+      <h1>Este registro não existe (ainda).</h1>
+      <p class="lead">A página que você procura não está no repositório. Ela pode ter sido movida,
+        renomeada ou ainda não foi versionada.</p>
+      <p><a class="btn primary" href={base + '/'}>Voltar ao início</a></p>
+    </div>
+  </section>
+</Base>
+<style>
+  .nf{padding:100px 0}
+  .nf h1{font-size:clamp(30px,5vw,48px); margin-top:14px}
+  .nf .lead{margin:18px 0 26px; max-width:520px}
+</style>

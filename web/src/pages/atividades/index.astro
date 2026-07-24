@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import DocList from '../../components/DocList.astro';
+import { getCollection } from 'astro:content';
+import { sections } from '../../lib/sections';
+const s = sections.atividades;
+const entries = await getCollection('atividades');
+---
+<Base title={s.label} description={s.intro}>
+  <section class="section"><div class="wrap">
+    <div class="sec-head narrow"><p class="eyebrow">Log mensal</p><h1>{s.label}</h1><p class="lead">{s.intro}</p></div>
+    <DocList section={s} entries={entries} />
+  </div></section>
+</Base>
