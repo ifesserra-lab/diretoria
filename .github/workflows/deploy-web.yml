@@ -1,7 +1,11 @@
 name: Deploy portal (Astro)
 
-# Deploy automático: publica a cada push no master que toque no portal ou no
-# conteúdo (inclui a atualização noturna do bot em docs/). Também roda sob demanda.
+# Deploy automático do portal Astro (web/) para GitHub Pages.
+# Dispara em:
+#  - push no master tocando web/** ou docs/** (edições humanas)
+#  - conclusão dos workflows-bot que commitam em docs/ com [skip ci]
+#    (o [skip ci] impede o gatilho de push — por isso o workflow_run)
+#  - manualmente (workflow_dispatch)
 on:
   push:
     branches: [master]
@@ -9,6 +13,12 @@ on:
       - 'web/**'
       - 'docs/**'
       - '.github/workflows/deploy-web.yml'
+  workflow_run:
+    workflows:
+      - '🌙 Daily Content Sync'
+      - 'Relatório de Governança'
+      - 'Weekly Repository Catalog'
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -23,8 +33,18 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # em workflow_run, só segue se o workflow-bot terminou com sucesso
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: master        # sempre a HEAD do master (inclui o commit recém-empurrado pelo bot)
+          fetch-depth: 0
+      - name: Carimbo GitOps (commit real do master)
+        id: git
+        run: |
+          echo "sha=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          echo "msg=$(git log -1 --pretty=%s)" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -33,12 +53,12 @@ jobs:
       - name: Install
         working-directory: web
         run: npm ci
-      - name: Build (com carimbo GitOps + todos os painéis)
+      - name: Build (todos os painéis + carimbo)
         working-directory: web
         env:
           PAINEIS: all
-          PUBLIC_GIT_SHA: ${{ github.sha }}
-          PUBLIC_GIT_MSG: ${{ github.event.head_commit.message }}
+          PUBLIC_GIT_SHA: ${{ steps.git.outputs.sha }}
+          PUBLIC_GIT_MSG: ${{ steps.git.outputs.msg }}
           PUBLIC_GIT_WHEN: publicado via GitHub Actions
         run: npm run build
       - uses: actions/upload-pages-artifact@v3
