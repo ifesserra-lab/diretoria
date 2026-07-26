@@ -128,6 +128,9 @@
   .frentes .ind{font-family:var(--mono);font-size:11.5px;color:var(--muted);
     border-top:1px solid var(--line);padding-top:10px;margin-top:3px;}
   @media(max-width:700px){.frentes{grid-template-columns:1fr;}}
+  .passo{width:100%;height:auto;display:block;margin-bottom:6px;}
+  .nota-dia{margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--muted);
+    line-height:1.5;}
   .act h2{font-size:clamp(27px,4.2vw,44px);letter-spacing:-.028em;font-weight:700;line-height:1.08;
     max-width:20ch;}
   .act .lede{margin-top:18px;font-size:clamp(16.5px,1.9vw,19px);color:var(--ink-2);
@@ -170,6 +173,66 @@
   .bar[data-hl="0"] .val{color:var(--ink-2);}
   @media(max-width:560px){.bar{grid-template-columns:78px minmax(0,1fr) 66px;gap:9px;}
     .bar .lbl{font-size:11px;} .bar .val{font-size:12px;}}
+
+  /* achado que o gráfico revela e o número sozinho não conta */
+  .insight{margin-top:20px;padding:16px 18px;background:var(--surface);
+    border:1px solid var(--line);border-left:3px solid var(--green-dark);
+    font-size:14.5px;line-height:1.6;color:var(--ink-2);max-width:66ch;}
+  #ato-4 .insight{background:var(--paper);}
+  .insight b{color:var(--ink);font-weight:600;}
+
+  /* waffle: um quadrado por ação. Contável — o leitor confere se quiser. */
+  .waffle{display:grid;grid-template-columns:repeat(auto-fill,minmax(0,1fr));gap:4px;
+    grid-auto-rows:1fr;}
+  .waffle > i{display:block;aspect-ratio:1;border-radius:2px;background:var(--data-mute);}
+  .waffle > i.tem{background:var(--green-dark);}
+  .waffle > i.sem{background:var(--yellow);}
+
+  /* treemap dos temas — área proporcional ao público, matiz único por tamanho */
+  .tm{position:relative;width:100%;height:400px;}
+  .tm .t{position:absolute;overflow:hidden;padding:11px 13px;border-radius:3px;
+    display:flex;flex-direction:column;gap:3px;transition:filter .12s;}
+  .tm .t:hover{filter:brightness(1.06);}
+  .tm .nome{font-size:14px;font-weight:600;line-height:1.2;letter-spacing:-.01em;
+    overflow-wrap:anywhere;}
+  /* NÃO usar a classe .num aqui: .act .num é o número do ato e traz cor + border-top. */
+  .tm .v{font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:-.01em;
+    font-variant-numeric:tabular-nums;color:inherit;}
+  .tm .sub{font-family:var(--mono);font-size:11px;opacity:.8;}
+  .tm .t.mini{padding:8px 9px;}
+  .tm .t.mini .nome{font-size:11.5px;}
+  .tm .t.mini .v{font-size:13px;}
+  .tm .t.mini .sub{display:none;}
+  .tm .s0{background:var(--green-dark);color:#fff;}
+  .tm .s1{background:var(--green);color:#fff;}
+  .tm .s2{background:color-mix(in srgb,var(--green) 58%,transparent);color:var(--ink);}
+  .tm .s3{background:color-mix(in srgb,var(--green) 42%,transparent);color:var(--ink);}
+  .tm .s4{background:color-mix(in srgb,var(--green) 30%,transparent);color:var(--ink);}
+  .tm .s5{background:color-mix(in srgb,var(--green) 21%,transparent);color:var(--ink);}
+  .tm .s6{background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--ink);}
+  .tm .t.dest{box-shadow:inset 0 0 0 2px var(--ink);}
+  @media(max-width:720px){.tm{height:520px;}}
+
+  .tabela{margin-top:18px;}
+  .tabela summary{font-family:var(--mono);font-size:12px;color:var(--ink-2);cursor:pointer;
+    padding:8px 0;}
+  .tabela summary:hover{color:var(--ink);}
+  .tabela table{border-collapse:collapse;width:100%;min-width:440px;font-size:13.5px;margin-top:8px;}
+  .tabela th,.tabela td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);}
+  .tabela th{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;}
+  .tabela td.n{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums;}
+
+  /* faixas do orçamento — grupos, nunca um ranking de pessoas */
+  .stack .c{background:color-mix(in srgb,var(--green) 45%,transparent);color:var(--ink);}
+  .faixas{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:1px;
+    background:var(--line);border:1px solid var(--line);}
+  .faixas li{background:var(--paper);display:grid;grid-template-columns:auto 1fr auto;
+    gap:12px;align-items:center;padding:13px 16px;}
+  #ato-4 .faixas li{background:var(--field);}
+  .faixas i{width:11px;height:11px;border-radius:2px;}
+  .faixas .q{font-size:14.5px;color:var(--ink-2);}
+  .faixas b{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink);}
 
   /* colchete do subtotal */
   .bracket{display:grid;grid-template-columns:104px minmax(0,1fr) 84px;gap:14px;
@@ -309,6 +372,7 @@
   footer h3{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px;font-family:var(--sans);}
   .divergencias{margin-top:26px;border:1px solid var(--line);background:var(--surface);}
   .divergencias h3{padding:18px 22px 0;}
+  .nota-proc{padding:10px 22px 4px;font-size:14px;color:var(--ink-2);max-width:74ch;line-height:1.55;}
   .divergencias table{border-collapse:collapse;width:100%;min-width:600px;font-size:13.5px;}
   .divergencias .tw{overflow-x:auto;margin-top:12px;}
   .divergencias th,.divergencias td{text-align:left;padding:11px 22px;border-top:1px solid var(--line);
@@ -337,23 +401,23 @@
     <p class="eyebrow">IFES · Campus Serra — DPPGE · balanço dos primeiros 6 meses de gestão</p>
     <h1>Transparência: <span class="b">descobrindo o campus e seus impactos.</span></h1>
     <p class="lede">Seis meses de gestão da Diretoria de Pesquisa, Pós-Graduação e Extensão.
-      Em vez de listar o que a diretoria fez, este balanço mostra o que o <b>campus</b> faz —
-      em quatro leituras dos dados reais: quem a extensão alcança, como pesquisa e extensão
-      se cruzam, o que acontece com quem passa por aqui, e onde está a nossa maior
-      oportunidade para 2027.</p>
+      Em vez de listar o que a diretoria fez, este balanço mostra o que <b>vocês</b> fazem —
+      sete leituras dos dados reais do campus: quem a extensão alcança, como pesquisa e
+      extensão se cruzam, o que acontece com quem passa por aqui, e para onde queremos
+      caminhar juntos em 2027.</p>
     <p class="lede" style="margin-top:16px">O trabalho destes seis meses foi tornar esses
-      números <b>encontráveis, auditáveis e abertos</b>. Por isso cada bloco aqui mostra a
-      própria fonte, a própria base e as próprias ressalvas: transparência não é o título
-      da apresentação, é o método dela.</p>
+      números <b>encontráveis, auditáveis e abertos</b> — para que ninguém precise acreditar
+      na nossa palavra. Por isso cada bloco mostra a própria fonte e as próprias ressalvas:
+      transparência não é o título da apresentação, é o método dela.</p>
 
     <nav class="toc">
-      <a href="#ato-1"><span class="k">01</span><span class="t">Extensão além dos muros</span></a>
-      <a href="#ato-2"><span class="k">02</span><span class="t">O fim do mito do pesquisador isolado</span></a>
-      <a href="#ato-3"><span class="k">03</span><span class="t">A escada real de crescimento</span></a>
-      <a href="#ato-4"><span class="k">04</span><span class="t">O fomento e o nosso desafio</span></a>
-      <a href="#gestao"><span class="k">05</span><span class="t">O que tornou este balanço possível</span></a>
-      <a href="#ato-6"><span class="k">06</span><span class="t">Escritório de Projetos</span></a>
-      <a href="#ato-7"><span class="k">07</span><span class="t">Visão 2027: crescer juntos</span></a>
+      <a href="#ato-1"><span class="k">01</span><span class="t">O campus não cabe dentro dos muros</span></a>
+      <a href="#ato-2"><span class="k">02</span><span class="t">Ninguém pesquisa sozinho aqui</span></a>
+      <a href="#ato-3"><span class="k">03</span><span class="t">Cada degrau é uma vida que mudou</span></a>
+      <a href="#ato-4"><span class="k">04</span><span class="t">A força que já temos</span></a>
+      <a href="#gestao"><span class="k">05</span><span class="t">Tudo isso já estava aqui</span></a>
+      <a href="#ato-6"><span class="k">06</span><span class="t">Você não precisa fazer sozinho</span></a>
+      <a href="#ato-7"><span class="k">07</span><span class="t">O melhor vem junto, em 2027</span></a>
     </nav>
   </div></section>
 
@@ -363,11 +427,12 @@
       <span class="num">01</span>
       <div>
         <p class="eyebrow">Extensão</p>
-        <h2>Extensão além dos muros</h2>
-        <p class="lede">O campus alcançou <b>4.845 pessoas</b> com suas ações de extensão.
-          E não é um público qualquer: <b>44% de tudo o que atendemos tem menos de 18 anos</b>.
-          A nossa força está na formação de base — chegamos na criança e no adolescente
-          antes que o sistema decida por eles.</p>
+        <h2>O campus não cabe dentro dos próprios muros</h2>
+        <p class="lede">Cada ação de extensão começou com alguém pedindo ajuda — e alguém
+          daqui atendendo. Somando tudo, <b>4.845 pessoas foram alcançadas</b>. E vale olhar
+          quem são: <b>44% do público tem menos de 18 anos</b>. A nossa maior força está na
+          formação de base, na idade em que uma tarde bem vivida ainda muda o rumo de
+          uma história.</p>
 
         <div class="fig rv">
           <p class="cap">Público atendido por faixa etária</p>
@@ -391,6 +456,29 @@
             <div><span class="k">Leitura</span><span class="v">Barras ordenadas por faixa etária, não por tamanho. Verde = menor de 18.</span></div>
           </div>
         </div>
+
+        <div class="fig rv">
+          <p class="cap">Os temas que mais atendem</p>
+          <div class="tm" id="tm-temas" role="img"
+               aria-label="Treemap dos temas de extensão por público atendido: robótica e cultura maker 2.547, captação e ingresso 1.156, mulheres e inclusão 887, empreendedorismo e incubação 475, cultura e arte 318, saúde e bem-estar 206, outros temas 118."></div>
+          <details class="tabela">
+            <summary>Ver os mesmos dados em tabela</summary>
+            <div class="tw"><table id="tab-temas">
+              <thead><tr><th>Tema</th><th>Atendimentos</th><th>Ações</th><th>% do classificado</th></tr></thead>
+              <tbody></tbody>
+            </table></div>
+          </details>
+          <p class="insight">A robótica leva multidão — quase metade de todo o atendimento.
+            Mas olhando o número de <b>iniciativas</b>, três temas empatam na frente:
+            <b>robótica, mulheres e inclusão, e empreendedorismo</b>, com 14 ações cada.
+            Uma coisa é alcançar muita gente de uma vez; outra é estar perto, várias vezes,
+            de grupos menores. O campus faz as duas.</p>
+          <div class="ficha">
+            <div><span class="k">Fonte</span><span class="v">/src/api/temas.json · Painel de Extensão SRC</span></div>
+            <div><span class="k">Base</span><span class="v">83 das 201 ações estão classificadas por tema, somando 5.707 atendimentos. As demais ainda não têm tema atribuído no sistema — por isso o total aqui é menor que os 7.938 do gráfico acima.</span></div>
+            <div><span class="k">Leitura</span><span class="v">A área de cada bloco é proporcional ao público atendido, e o tom escurece conforme o tamanho. Dentro do bloco, quantas ações sustentam o tema. “Outros temas” reúne quatro temas com menos de 80 atendimentos cada.</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div></section>
@@ -401,11 +489,12 @@
       <span class="num">02</span>
       <div>
         <p class="eyebrow">Pesquisa × Extensão</p>
-        <h2>O fim do mito do pesquisador isolado</h2>
+        <h2>Ninguém pesquisa sozinho aqui</h2>
         <p class="lede">O trabalho não acontece em bolhas: <b>78% dos coordenadores de pesquisa
-          do campus também fazem extensão</b>. E o relatório mostra o que isso não custa —
-          fazer extensão <b>não reduz o impacto científico</b> de quem faz. A excelência
-          científica caminha de mãos dadas com a transformação da comunidade.</p>
+          do campus também fazem extensão</b>. Quem assina artigo é, muitas vezes, a mesma
+          pessoa que dá oficina na comunidade. E os dados desfazem o medo antigo:
+          <b>fazer extensão não reduz o impacto científico</b> de ninguém. A excelência
+          caminha de mãos dadas com a transformação da comunidade.</p>
 
         <div class="fig rv">
           <p class="cap">Coordenadores de pesquisa que também coordenam extensão</p>
@@ -426,6 +515,11 @@
             <span><i style="background:var(--blue);opacity:.5"></i>coordenadores de pesquisa</span>
             <span><i style="background:var(--green);opacity:.5"></i>extensionistas do campus</span>
           </div>
+          <p class="insight">Pesquisa e extensão não competem — <b>elas se alimentam</b>.
+            O laboratório que publica é o mesmo que abre a porta no sábado, e a pergunta que
+            nasce na comunidade é a que vira artigo depois. Aqui não existe escolher entre
+            fazer ciência e servir à sociedade: <b>é a mesma pessoa, no mesmo dia, fazendo as
+            duas coisas</b>.</p>
           <div class="ficha">
             <div><span class="k">Fonte</span><span class="v">Relatório <b>Pesquisa × Extensão</b> · docs/relatorios/pesquisa-x-extensao.html</span></div>
             <div><span class="k">Base</span><span class="v">Coordenadores de projetos de pesquisa do campus, cruzados com a base de extensionistas do SRC. FWCI mediano usado como controle de impacto científico.</span></div>
@@ -442,11 +536,12 @@
       <span class="num">03</span>
       <div>
         <p class="eyebrow">Egressos</p>
-        <h2>A escada real de crescimento</h2>
-        <p class="lede">O destino final do esforço é mudar vidas. <b>100% dos egressos analisados
-          seguem na área de TI</b>, e a renda mediana da coorte <b>multiplicou por 7,2</b> entre o
-          primeiro emprego e hoje. A escada começa numa bolsa de projeto dentro do campus
-          e chega ao nível sênior — degrau por degrau, com dados de gente real.</p>
+        <h2>Cada degrau é uma vida que mudou</h2>
+        <p class="lede">No fim, é disso que tudo se trata: mudar vidas. <b>Todos os egressos
+          analisados seguem na área de TI</b>, e a renda mediana deles <b>multiplicou por 7,2</b>
+          entre o primeiro emprego e hoje. A escada começa numa bolsa de projeto dentro do
+          campus e chega ao nível sênior. Cada degrau é uma pessoa que um dia sentou numa
+          sala de aula daqui.</p>
 
         <div class="fig rv">
           <p class="cap">Os quatro degraus — renda mediana em R$ de 2026</p>
@@ -487,39 +582,54 @@
       <span class="num">04</span>
       <div>
         <p class="eyebrow">Fomento</p>
-        <h2>A verdade sobre o fomento — e o nosso desafio</h2>
+        <h2>A força que já temos — e como multiplicá-la</h2>
         <p class="lede">O corpo docente é uma potência: a captação do campus está na ordem de
           <b>dezenas de milhões de reais</b>, recurso que volta em equipamento, bolsa e
-          laboratório. E há um fato que precisa ser dito em voz alta:
-          <b>70% do orçamento FAPES do campus está concentrado em 5 coordenadores</b>.</p>
+          laboratório. E os dados mostram algo que vale a gente conversar com carinho:
+          hoje <b>70% do orçamento FAPES está concentrado em cinco coordenações</b> —
+          e espalhar essa capacidade é o que pode multiplicar o resultado de todo mundo.</p>
 
         <div class="fig rv">
-          <p class="cap">Concentração do orçamento FAPES · 99 projetos</p>
-          <div class="stack">
-            <div class="a" style="flex:70">70% · top 5</div>
-            <div class="b" style="flex:30">30% · demais</div>
+          <p class="cap">Como o orçamento FAPES se distribui · 99 projetos</p>
+          <div class="stack tres">
+            <div class="a" style="flex:70">70%</div>
+            <div class="c" style="flex:11">11%</div>
+            <div class="b" style="flex:19">19%</div>
           </div>
-          <div class="stack-lbl"><span>5 coordenadores</span><span>todos os outros</span></div>
-          <div class="bars" id="bars-conc" style="margin-top:30px"></div>
-          <div class="legend">
-            <span><i style="background:var(--green-dark)"></i>entre os 5 maiores</span>
-            <span><i style="background:var(--data-mute)"></i>demais coordenadores</span>
-          </div>
+          <ul class="faixas">
+            <li><i style="background:var(--green-dark)"></i>
+              <span class="q">Cinco coordenações de maior porte</span><b class="tnum">70%</b></li>
+            <li><i style="background:color-mix(in srgb,var(--green) 45%,transparent)"></i>
+              <span class="q">Três coordenações seguintes</span><b class="tnum">11%</b></li>
+            <li><i style="background:var(--data-mute)"></i>
+              <span class="q">Todas as outras coordenações</span><b class="tnum">19%</b></li>
+          </ul>
+
+          <p class="insight">O que esse número quer dizer — e o que ele não quer.
+            Um edital grande da FAPES pode valer mais que dez pequenos somados: o campus já
+            provou que <b>consegue os dois</b> — uma única proposta que trouxe 24% de todo o
+            orçamento, e coordenações que sustentam dez projetos ao mesmo tempo, ano após ano.
+            São duas forças distintas, e ambas já são nossas. Concentração de orçamento não
+            significa que poucos trabalham: significa que essa competência ainda circulou
+            pouco entre nós. <b>E competência que circula é competência que se multiplica.</b></p>
+
           <div class="ficha">
             <div><span class="k">Fonte</span><span class="v">Relatório <b>Captação de Projetos — FAPES + FACTO</b> · docs/relatorios/captacao-projetos.html</span></div>
-            <div><span class="k">Base</span><span class="v">Percentual do orçamento FAPES por coordenador. Não inclui FACTO, onde a concentração é ainda maior (44% num único coordenador, universo pequeno).</span></div>
-            <div><span class="k">Leitura</span><span class="v">Coordenadores anonimizados nesta apresentação. Os nomes estão no relatório de origem, que é público.</span></div>
+            <div><span class="k">Base</span><span class="v">Percentual do orçamento FAPES agrupado por faixa. Não inclui o FACTO, cujo universo de projetos coordenados pelo campus é pequeno demais para uma leitura estável.</span></div>
+            <div><span class="k">Leitura</span><span class="v">Agrupado por faixa, sem ranking individual: a conversa aqui é sobre o campus, não sobre pessoas. O detalhamento por coordenador está no relatório de origem, que é público.</span></div>
             <div><span class="k">Ressalva</span><span class="v alerta">O relatório de captação carrega aviso de estudo experimental — dados preliminares, sujeitos a revisão. O valor total é declarado como <b>ordem de grandeza</b> (~R$ 60 mi, dezenas de milhões), não como cifra apurada.</span></div>
           </div>
         </div>
 
         <div class="callout rv">
-          <p class="k">A provocação para 2027</p>
-          <p>Concentração não é acusação — é <b>expertise instalada</b>. Cinco pessoas
-            aprenderam a captar num nível que o campus inteiro pode aprender. O convite é
-            transformar esse conhecimento em <b>grupos colaborativos de submissão</b>:
-            cada projeto grande puxando um coordenador novo junto. Multiplicar não é
-            dividir o que já existe — é fazer o próximo edital caber em mais gente.</p>
+          <p class="k">O convite para 2027</p>
+          <p>Esse número não é um problema a corrigir: é <b>expertise que já mora aqui</b>,
+            no nosso próprio corpo docente. O convite para 2027 é montar as propostas
+            <b>em grupo desde a primeira linha</b> — quem já conhece o caminho junto de quem
+            está começando, laboratórios diferentes numa submissão só. Proposta coletiva
+            costuma nascer mais forte: mais gente para escrever, mais áreas para sustentar
+            o mérito, mais braços para executar depois. <b>Multiplicar não é repartir o que
+            já existe — é fazer o próximo edital caber em mais gente.</b></p>
         </div>
       </div>
     </div>
@@ -531,7 +641,7 @@
       <span class="num">05</span>
       <div>
         <p class="eyebrow">Os primeiros seis meses</p>
-        <h2>O que tornou este balanço possível</h2>
+        <h2>Tudo isso já estava aqui</h2>
         <p class="lede">Nenhum número desta apresentação foi produzido para ela. Todos vieram
           de painéis que já rodam, com API aberta e código público. O trabalho da gestão
           nestes seis meses foi <b>construir a infraestrutura que torna o campus legível</b> —
@@ -558,9 +668,9 @@
         <div class="callout rv" style="border-left-color:var(--green)">
           <p class="k">O que isso muda</p>
           <p>Antes, responder “quantas pessoas a extensão alcançou?” era um pedido de
-            levantamento. Agora é uma <b>URL</b>. É essa diferença que permite uma
-            apresentação institucional declarar as próprias ressalvas em vez de escondê-las —
-            e é ela que sustenta a provocação de 2027.</p>
+            levantamento, e alguém passava a tarde atrás de planilha. Agora é uma <b>URL</b>.
+            Esse tempo devolvido é o que permite a esta apresentação declarar as próprias
+            ressalvas em vez de escondê-las — e é ele que sustenta o convite de 2027.</p>
         </div>
       </div>
     </div>
@@ -572,7 +682,7 @@
       <span class="num">06</span>
       <div>
         <p class="eyebrow">Apoio real</p>
-        <h2>Escritório de Projetos e Portal de Editais</h2>
+        <h2>Você não precisa fazer sozinho</h2>
         <p class="lede">Nosso objetivo é facilitar: <b>tirar a burocracia do caminho de quem
           deseja transformar ideias em projetos reais</b>. Para isso estruturamos uma equipe
           dedicada e humana, pronta para dar o suporte necessário para você tirar o seu
@@ -619,15 +729,21 @@
             <span class="d">das <b>142 ações ativas</b> de extensão não têm vínculo de
               fomento registrado — projeto que já funciona e nunca foi a edital.</span>
           </div>
-          <div class="bars" id="bars-fomento"></div>
+          <div class="waffle" id="waffle-fomento" role="img"
+               aria-label="Grade de 142 quadrados, um por ação ativa de extensão: 35 têm fonte de fomento e 107 não têm vínculo registrado."></div>
           <div class="legend">
-            <span><i style="background:var(--yellow)"></i>sem vínculo de fomento</span>
-            <span><i style="background:var(--data-mute)"></i>com fonte de fomento</span>
+            <span><i style="background:var(--green-dark)"></i>com fonte de fomento · 35</span>
+            <span><i style="background:var(--yellow)"></i>sem vínculo · 107</span>
           </div>
+          <p class="insight">Cada quadradinho é <b>uma ação que o campus já faz</b> — turma
+            montada, gente atendida, resultado entregue. Trinta e cinco têm fomento; as
+            outras <b>107 seguem de pé sem nenhum recurso captado</b>. Não é uma falha:
+            é um estoque de trabalho comprovado, esperando alguém dizer que edital combina
+            com ele. <b>É exatamente para isso que o escritório existe.</b></p>
           <div class="ficha">
             <div><span class="k">Fonte</span><span class="v">/src/api/painel.json → visao_geral.fomento</span></div>
             <div><span class="k">Base</span><span class="v">142 ações ativas com fonte de fomento declarada. “Sem vínculo” inclui a ação que não buscou recurso e a ação cujo vínculo não foi registrado no sistema.</span></div>
-            <div><span class="k">Leitura</span><span class="v">Não é diagnóstico de má gestão — é o estoque de projeto pronto que o escritório pode ajudar a levar a edital.</span></div>
+            <div><span class="k">Leitura</span><span class="v">Um quadrado por ação ativa, 142 no total. Entre as 35 com fomento: 29 PAEX-IFES, 3 PRONATEC, 2 Mulheres Mil e 1 FAPES.</span></div>
           </div>
         </div>
 
@@ -648,7 +764,7 @@
       <span class="num">07</span>
       <div>
         <p class="eyebrow">Visão 2027</p>
-        <h2>Crescer juntos</h2>
+        <h2>O melhor a gente ainda vai fazer junto</h2>
         <p class="lede">Os seis movimentos anteriores mostram um campus que já entrega.
           O próximo ciclo é sobre <b>fazer isso em conjunto</b> — usar os dados e tudo o que
           aprendemos este ano para planejar um 2027 sistêmico.</p>
@@ -657,6 +773,14 @@
           <p class="cap">Três passos</p>
           <div class="frentes tres">
             <div class="fr">
+              <svg class="passo" viewBox="0 0 240 92" role="img"
+                aria-label="Grupos de pesquisa, núcleos e extensão hoje separados, convergindo para um espaço comum.">
+                <circle cx="38" cy="14" r="4.5" fill="var(--green)"/><circle cx="27" cy="27" r="4.5" fill="var(--green)"/><circle cx="49" cy="28" r="4.5" fill="var(--green)"/>
+                <circle cx="120" cy="12" r="4.5" fill="var(--blue)"/><circle cx="109" cy="26" r="4.5" fill="var(--blue)"/><circle cx="131" cy="27" r="4.5" fill="var(--blue)"/>
+                <circle cx="202" cy="14" r="4.5" fill="var(--red)"/><circle cx="191" cy="27" r="4.5" fill="var(--red)"/><circle cx="213" cy="28" r="4.5" fill="var(--red)"/>
+                <path d="M38 36 L72 56 M120 34 L120 56 M202 36 L168 56" stroke="var(--line-2)" stroke-width="2" stroke-linecap="round"/>
+                <rect x="34" y="58" width="172" height="26" rx="6" fill="color-mix(in srgb,var(--green) 12%,transparent)" stroke="var(--green-dark)" stroke-width="2"/>
+              </svg>
               <span class="n">01</span>
               <h3>Espaço de Projetos Colaborativos</h3>
               <p>Nosso próximo grande passo é criar um <b>ambiente físico e estruturado para
@@ -666,6 +790,15 @@
               <span class="ind">responde à concentração do ato 04</span>
             </div>
             <div class="fr">
+              <svg class="passo" viewBox="0 0 240 92" role="img"
+                aria-label="Incubadora e Pós-Graduação se ligando ao ecossistema já conectado do campus.">
+                <path d="M120 46 L44 20 M120 46 L44 72 M120 46 L120 10 M120 46 L120 82" stroke="var(--line-2)" stroke-width="2"/>
+                <path d="M120 46 L196 20 M120 46 L196 72" stroke="var(--green-dark)" stroke-width="2.5"/>
+                <circle cx="120" cy="46" r="17" fill="color-mix(in srgb,var(--green) 14%,transparent)" stroke="var(--green-dark)" stroke-width="2"/>
+                <circle cx="44" cy="20" r="6" fill="var(--green)"/><circle cx="44" cy="72" r="6" fill="var(--blue)"/>
+                <circle cx="120" cy="10" r="6" fill="var(--green)"/><circle cx="120" cy="82" r="6" fill="var(--blue)"/>
+                <circle cx="196" cy="20" r="8" fill="var(--yellow)"/><circle cx="196" cy="72" r="8" fill="var(--red)"/>
+              </svg>
               <span class="n">02</span>
               <h3>Integração total do campus</h3>
               <p>Vamos mergulhar fundo para entender e integrar cada vez mais a força da
@@ -674,6 +807,17 @@
               <span class="ind">o campus como um sistema, não como setores</span>
             </div>
             <div class="fr">
+              <svg class="passo" viewBox="0 0 240 92" role="img"
+                aria-label="Campus em rede: todos os núcleos conectados entre si.">
+                <path d="M36 24 L120 14 L204 24 L212 66 L128 82 L44 70 Z M36 24 L212 66 M204 24 L44 70 M120 14 L128 82 M36 24 L128 82 M204 24 L44 70 M120 14 L44 70 M120 14 L212 66"
+                      fill="none" stroke="var(--green-dark)" stroke-width="1.4" opacity=".45"/>
+                <circle cx="120" cy="14" r="6.5" fill="var(--green)"/>
+                <circle cx="204" cy="24" r="6.5" fill="var(--yellow)"/>
+                <circle cx="212" cy="66" r="6.5" fill="var(--red)"/>
+                <circle cx="128" cy="82" r="6.5" fill="var(--blue)"/>
+                <circle cx="44" cy="70" r="6.5" fill="var(--green)"/>
+                <circle cx="36" cy="24" r="6.5" fill="var(--green-dark)"/>
+              </svg>
               <span class="n">03</span>
               <h3>Um 2027 sistêmico</h3>
               <p>Usar os dados e tudo o que aprendemos este ano para planejar um 2027 em que
@@ -682,14 +826,18 @@
               <span class="ind">planejamento com base no que está medido</span>
             </div>
           </div>
+          <p class="nota-dia">Diagrama conceitual — representa o movimento que queremos,
+            não uma contagem de grupos.</p>
         </div>
 
         <div class="callout rv" style="border-left-color:var(--green)">
           <p class="k">O convite</p>
-          <p>Nada aqui foi feito pela diretoria: <b>4.845 pessoas alcançadas, 78% de
+          <p>Nada disso é obra da diretoria: <b>4.845 pessoas alcançadas, 78% de
             pesquisadores que também fazem extensão, egressos que multiplicaram a renda
-            por sete</b> — isso é trabalho de vocês. O que propomos para 2027 é que o
-            próximo ciclo dependa de <b>muita gente</b>, e não da persistência de poucos.</p>
+            por sete</b> — isso é trabalho de vocês. O que propomos para 2027 é simples:
+            <b>que o caminho que alguns descobriram sozinhos vire caminho de todo mundo</b>.
+            Que ninguém mais precise aprender do zero aquilo que o campus, junto,
+            já sabe fazer.</p>
         </div>
       </div>
     </div>
@@ -699,20 +847,23 @@
   <footer><div class="wrap">
     <p class="eyebrow">Procedência</p>
     <div class="divergencias">
-      <h3>Onde esta apresentação diverge do briefing — e por quê</h3>
+      <h3>Números que costumam circular, e o que a fonte diz</h3>
+      <p class="nota-proc">Alguns destes valores aparecem por aí em versões arredondadas ou com
+        outra base de cálculo. Nenhum está errado por má-fé — mudam de sentido conforme o que
+        se conta. Deixamos os dois lados à vista para quem quiser conferir.</p>
       <div class="tw"><table>
-        <thead><tr><th>No briefing</th><th>Aqui</th><th>Motivo</th></tr></thead>
+        <thead><tr><th>Costuma circular</th><th>O que a fonte diz</th><th>Por quê</th></tr></thead>
         <tbody>
           <tr><td class="a">44% de 4.845</td><td class="a">43,8% de 7.938</td>
-            <td class="b">Os 44% se calculam sobre <b>atendimentos</b> (7.938), não sobre pessoas únicas (4.845). O percentual está certo; a base é outra.</td></tr>
+            <td class="b">Os dois estão certos, com bases diferentes: 43,8% é sobre <b>atendimentos</b> (7.938), e as 4.845 são pessoas únicas.</td></tr>
           <tr><td class="a">bolsa de R$ 800</td><td class="a">R$ 813 – R$ 1.316</td>
-            <td class="b">R$ 813 é a <b>menor</b> bolsa registrada; a mediana de quem teve bolsa é R$ 1.316. E só 23 dos 49 egressos tiveram bolsa.</td></tr>
+            <td class="b">R$ 813 é a menor bolsa registrada e R$ 1.316 a mediana de quem teve. Como só 23 dos 49 tiveram bolsa, preferimos não falar por todos.</td></tr>
           <tr><td class="a">sênior R$ 14.608</td><td class="a">R$ 17.073 hoje</td>
-            <td class="b">R$ 14.608 corresponde ao patamar de <b>8 anos de experiência</b> (R$ 14.664 na série). A mediana atual da coorte é maior.</td></tr>
+            <td class="b">R$ 14.608 é o patamar de <b>8 anos de carreira</b> (R$ 14.664 na série). Hoje a mediana da coorte está acima disso — a notícia é melhor que a esperada.</td></tr>
           <tr><td class="a">renda × 8,1</td><td class="a">× 7,2 (mediana)</td>
             <td class="b">7,2× é mediana sobre mediana. A <b>média</b> dos multiplicadores individuais dá 8,0×. Os três números do briefing eram incompatíveis entre si: 800 × 8,1 = 6.480, não 14.608.</td></tr>
           <tr><td class="a">R$ 60 mi captados</td><td class="a">dezenas de milhões</td>
-            <td class="b">O relatório de origem declara <b>ordem de grandeza</b>, não cifra apurada, e carrega aviso de estudo experimental. Afirmar “captamos R$ 60 milhões” contradiz a nossa própria metodologia.</td></tr>
+            <td class="b">O relatório de origem declara <b>ordem de grandeza</b>, não cifra apurada, e ainda está em revisão. Preferimos dizer “dezenas de milhões” e poder sustentar cada palavra.</td></tr>
           <tr><td class="a">70,1% do recurso</td><td class="a">70% do FAPES</td>
             <td class="b">A concentração medida é do <b>orçamento FAPES</b>. O total captado inclui FACTO, que não entra nessa conta.</td></tr>
         </tbody>
@@ -756,11 +907,6 @@
     ['degrau 4','Sênior, hoje',              17073, 'mediana atual da coorte · n = 49']
   ];
 
-  var CONC = [
-    ['Coord. 1', 24, true],  ['Coord. 2', 14, true],  ['Coord. 3', 12, true],
-    ['Coord. 4', 12, true],  ['Coord. 5',  8, true],  ['Coord. 6',  6, false],
-    ['Coord. 7',  3, false], ['Coord. 8',  2, false], ['demais',   19, false]
-  ];
 
   var CURVA = [
     [0,813,14056,2417,44],   [1,765,7028,2597,42],    [2,892,11214,2916,40],
@@ -804,6 +950,111 @@
       bindTip(row, '<b>' + r[0] + '</b><br>' + nf.format(r[1]) + ' atendimentos<br>' +
         pct(p) + ' do total');
     });
+  })();
+
+  /* ---------- ato 1: temas (treemap squarified) ---------- */
+  (function(){
+    var host = document.getElementById('tm-temas');
+    if (!host) return;
+
+    /* [tema, atendimentos, nº de ações, destacar] */
+    var TEMAS = [
+      ['Robótica e cultura maker',      2547, 14, false],
+      ['Captação e ingresso',           1156,  8, false],
+      ['Mulheres e inclusão',            887, 14, true],
+      ['Empreendedorismo e incubação',   475, 14, false],
+      ['Cultura e arte',                 318, 11, false],
+      ['Saúde e bem-estar',              206, 10, false],
+      ['Outros temas',                   118, 12, false]
+    ];
+    var TOT = TEMAS.reduce(function(a, r){ return a + r[1]; }, 0);
+
+    /* algoritmo squarified (Bruls, Huizing & van Wijk): mantém os blocos o mais
+       próximo possível de quadrados, que é o formato mais fácil de comparar. */
+    function pior(linha, lado){
+      var soma = 0, mx = 0, mn = Infinity;
+      for (var i = 0; i < linha.length; i++){
+        soma += linha[i]; if (linha[i] > mx) mx = linha[i]; if (linha[i] < mn) mn = linha[i];
+      }
+      if (!soma) return Infinity;
+      return Math.max((lado * lado * mx) / (soma * soma), (soma * soma) / (lado * lado * mn));
+    }
+
+    function squarify(itens, r){
+      var saida = [], resto = itens.slice();
+      while (resto.length){
+        var lado = Math.min(r.w, r.h);
+        var linha = [], areas = [];
+        while (resto.length){
+          var cand = areas.concat([resto[0].a]);
+          if (!areas.length || pior(cand, lado) <= pior(areas, lado)){
+            areas = cand; linha.push(resto.shift());
+          } else break;
+        }
+        var soma = areas.reduce(function(a, b){ return a + b; }, 0);
+        if (r.w >= r.h){
+          var lw = soma / r.h, yy = r.y;
+          linha.forEach(function(it){
+            var hh = it.a / lw;
+            saida.push({d: it.d, x: r.x, y: yy, w: lw, h: hh});
+            yy += hh;
+          });
+          r.x += lw; r.w -= lw;
+        } else {
+          var lh = soma / r.w, xx = r.x;
+          linha.forEach(function(it){
+            var ww = it.a / lh;
+            saida.push({d: it.d, x: xx, y: r.y, w: ww, h: lh});
+            xx += ww;
+          });
+          r.y += lh; r.h -= lh;
+        }
+      }
+      return saida;
+    }
+
+    var GAP = 2;  /* respiro entre blocos: separa sem precisar de borda */
+
+    function desenhaTM(){
+      var W = host.clientWidth, H = host.clientHeight;
+      if (!W || !H) return;
+      host.innerHTML = '';
+      var itens = TEMAS.map(function(t){ return {d: t, a: t[1] / TOT * W * H}; });
+      var blocos = squarify(itens, {x: 0, y: 0, w: W, h: H});
+
+      blocos.forEach(function(b, i){
+        var t = b.d;
+        var w = Math.max(0, b.w - GAP), h = Math.max(0, b.h - GAP);
+        var el = document.createElement('div');
+        el.className = 't s' + Math.min(i, 6) + (t[3] ? ' dest' : '') +
+                       ((w < 132 || h < 80) ? ' mini' : '');
+        el.style.cssText = 'left:' + b.x + 'px;top:' + b.y + 'px;width:' + w + 'px;height:' + h + 'px';
+        var cabe = w > 56 && h > 42;
+        if (cabe){
+          el.innerHTML = '<span class="nome">' + t[0] + '</span>' +
+            '<span class="v">' + nf.format(t[1]) + '</span>' +
+            '<span class="sub">' + t[2] + ' ações · ' + pct(t[1] / TOT * 100) + '</span>';
+        }
+        bindTip(el, '<b>' + t[0] + '</b><br>' + nf.format(t[1]) + ' atendimentos<br>' +
+          t[2] + ' ações<br>' + pct(t[1] / TOT * 100) + ' do total classificado');
+        host.appendChild(el);
+      });
+    }
+
+    /* tabela equivalente — o dado não pode existir só no desenho */
+    var corpo = document.querySelector('#tab-temas tbody');
+    if (corpo) TEMAS.forEach(function(t){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + t[0] + '</td><td class="n">' + nf.format(t[1]) +
+        '</td><td class="n">' + t[2] + '</td><td class="n">' + pct(t[1] / TOT * 100) + '</td>';
+      corpo.appendChild(tr);
+    });
+
+    desenhaTM();
+    var tmr;
+    window.addEventListener('resize', function(){
+      clearTimeout(tmr); tmr = setTimeout(desenhaTM, 140);
+    }, {passive: true});
   })();
 
   /* ---------- ato 3: escada ---------- */
@@ -872,49 +1123,29 @@
     });
   })();
 
-  /* ---------- ato 4: concentração ---------- */
+  /* ---------- ato 6: waffle das ações por fomento ---------- */
   (function(){
-    var host = document.getElementById('bars-conc');
-    var max = 24;
-    CONC.forEach(function(r){
-      var row = document.createElement('div');
-      row.className = 'bar';
-      row.dataset.hl = r[2] ? '1' : '0';
-      row.innerHTML = '<span class="lbl">' + r[0] + '</span>' +
-        '<span class="track"><span class="fill"></span></span>' +
-        '<span class="val tnum">' + r[1] + '%</span>';
-      if (r[2]) row.querySelector('.fill').style.background = 'var(--green-dark)';
-      host.appendChild(row);
-      row.querySelector('.fill').dataset.w = (r[1] / max * 100) + '%';
-      bindTip(row, '<b>' + r[0] + '</b><br>' + r[1] + '% do orçamento FAPES' +
-        (r[2] ? '<br>entre os 5 maiores' : ''));
-    });
-  })();
-
-  /* ---------- ato 6: fomento das ações de extensão ---------- */
-  (function(){
-    var host = document.getElementById('bars-fomento');
+    var host = document.getElementById('waffle-fomento');
     if (!host) return;
-    var FOM = [
-      ['sem vínculo', 107, true], ['PAEX-IFES', 29, false], ['PRONATEC', 3, false],
-      ['MULHERES MIL', 2, false], ['FAPES', 1, false]
-    ];
-    var tot = FOM.reduce(function(a, r){ return a + r[1]; }, 0);
-    var max = 107;
-    FOM.forEach(function(r){
-      var p = r[1] / tot * 100;
-      var row = document.createElement('div');
-      row.className = 'bar';
-      row.dataset.hl = r[2] ? '1' : '0';
-      row.innerHTML = '<span class="lbl">' + r[0] + '</span>' +
-        '<span class="track"><span class="fill"></span></span>' +
-        '<span class="val tnum">' + r[1] + '</span>';
-      if (r[2]) row.querySelector('.fill').style.background = 'var(--yellow)';
-      host.appendChild(row);
-      row.querySelector('.fill').dataset.w = (r[1] / max * 100) + '%';
-      bindTip(row, '<b>' + r[0] + '</b><br>' + r[1] + ' de ' + tot + ' ações ativas<br>' +
-        pct(p) + ' do total');
-    });
+    var COM = 35, SEM = 107, TOT = COM + SEM;   /* 142 ações ativas */
+    /* colunas fechadas para não sobrar fileira quebrada em telas largas */
+    var COLS = window.matchMedia('(max-width:560px)').matches ? 14 : 26;
+    host.style.gridTemplateColumns = 'repeat(' + COLS + ',1fr)';
+    for (var i = 0; i < TOT; i++){
+      var q = document.createElement('i');
+      q.className = i < COM ? 'tem' : 'sem';
+      host.appendChild(q);
+    }
+    bindTip(host, '<b>142 ações ativas de extensão</b><br>35 com fonte de fomento<br>' +
+      '107 sem vínculo registrado<br>Fontes: 29 PAEX-IFES · 3 PRONATEC · 2 Mulheres Mil · 1 FAPES');
+    var t;
+    window.addEventListener('resize', function(){
+      clearTimeout(t);
+      t = setTimeout(function(){
+        host.style.gridTemplateColumns =
+          'repeat(' + (window.matchMedia('(max-width:560px)').matches ? 14 : 26) + ',1fr)';
+      }, 140);
+    }, {passive: true});
   })();
 
   /* ---------- navegação por teclado entre as seções ---------- */
