@@ -178,6 +178,13 @@
   #ato-4 .insight{background:var(--paper);}
   .insight b{color:var(--ink);font-weight:600;}
 
+  /* waffle: um quadrado por ação. Contável — o leitor confere se quiser. */
+  .waffle{display:grid;grid-template-columns:repeat(auto-fill,minmax(0,1fr));gap:4px;
+    grid-auto-rows:1fr;}
+  .waffle > i{display:block;aspect-ratio:1;border-radius:2px;background:var(--data-mute);}
+  .waffle > i.tem{background:var(--green-dark);}
+  .waffle > i.sem{background:var(--yellow);}
+
   /* treemap dos temas — área proporcional ao público, matiz único por tamanho */
   .tm{position:relative;width:100%;height:400px;}
   .tm .t{position:absolute;overflow:hidden;padding:11px 13px;border-radius:3px;
@@ -717,15 +724,21 @@
             <span class="d">das <b>142 ações ativas</b> de extensão não têm vínculo de
               fomento registrado — projeto que já funciona e nunca foi a edital.</span>
           </div>
-          <div class="bars" id="bars-fomento"></div>
+          <div class="waffle" id="waffle-fomento" role="img"
+               aria-label="Grade de 142 quadrados, um por ação ativa de extensão: 35 têm fonte de fomento e 107 não têm vínculo registrado."></div>
           <div class="legend">
-            <span><i style="background:var(--yellow)"></i>sem vínculo de fomento</span>
-            <span><i style="background:var(--data-mute)"></i>com fonte de fomento</span>
+            <span><i style="background:var(--green-dark)"></i>com fonte de fomento · 35</span>
+            <span><i style="background:var(--yellow)"></i>sem vínculo · 107</span>
           </div>
+          <p class="insight">Cada quadradinho é <b>uma ação que o campus já faz</b> — turma
+            montada, gente atendida, resultado entregue. Trinta e cinco têm fomento; as
+            outras <b>107 seguem de pé sem nenhum recurso captado</b>. Não é uma falha:
+            é um estoque de trabalho comprovado, esperando alguém dizer que edital combina
+            com ele. <b>É exatamente para isso que o escritório existe.</b></p>
           <div class="ficha">
             <div><span class="k">Fonte</span><span class="v">/src/api/painel.json → visao_geral.fomento</span></div>
             <div><span class="k">Base</span><span class="v">142 ações ativas com fonte de fomento declarada. “Sem vínculo” inclui a ação que não buscou recurso e a ação cujo vínculo não foi registrado no sistema.</span></div>
-            <div><span class="k">Leitura</span><span class="v">São projetos que já funcionam e já entregam — o escritório existe para ajudar a levá-los a edital quando fizer sentido.</span></div>
+            <div><span class="k">Leitura</span><span class="v">Um quadrado por ação ativa, 142 no total. Entre as 35 com fomento: 29 PAEX-IFES, 3 PRONATEC, 2 Mulheres Mil e 1 FAPES.</span></div>
           </div>
         </div>
 
@@ -1073,30 +1086,29 @@
     });
   })();
 
-  /* ---------- ato 6: fomento das ações de extensão ---------- */
+  /* ---------- ato 6: waffle das ações por fomento ---------- */
   (function(){
-    var host = document.getElementById('bars-fomento');
+    var host = document.getElementById('waffle-fomento');
     if (!host) return;
-    var FOM = [
-      ['sem vínculo', 107, true], ['PAEX-IFES', 29, false], ['PRONATEC', 3, false],
-      ['MULHERES MIL', 2, false], ['FAPES', 1, false]
-    ];
-    var tot = FOM.reduce(function(a, r){ return a + r[1]; }, 0);
-    var max = 107;
-    FOM.forEach(function(r){
-      var p = r[1] / tot * 100;
-      var row = document.createElement('div');
-      row.className = 'bar';
-      row.dataset.hl = r[2] ? '1' : '0';
-      row.innerHTML = '<span class="lbl">' + r[0] + '</span>' +
-        '<span class="track"><span class="fill"></span></span>' +
-        '<span class="val tnum">' + r[1] + '</span>';
-      if (r[2]) row.querySelector('.fill').style.background = 'var(--yellow)';
-      host.appendChild(row);
-      row.querySelector('.fill').dataset.w = (r[1] / max * 100) + '%';
-      bindTip(row, '<b>' + r[0] + '</b><br>' + r[1] + ' de ' + tot + ' ações ativas<br>' +
-        pct(p) + ' do total');
-    });
+    var COM = 35, SEM = 107, TOT = COM + SEM;   /* 142 ações ativas */
+    /* colunas fechadas para não sobrar fileira quebrada em telas largas */
+    var COLS = window.matchMedia('(max-width:560px)').matches ? 14 : 26;
+    host.style.gridTemplateColumns = 'repeat(' + COLS + ',1fr)';
+    for (var i = 0; i < TOT; i++){
+      var q = document.createElement('i');
+      q.className = i < COM ? 'tem' : 'sem';
+      host.appendChild(q);
+    }
+    bindTip(host, '<b>142 ações ativas de extensão</b><br>35 com fonte de fomento<br>' +
+      '107 sem vínculo registrado<br>Fontes: 29 PAEX-IFES · 3 PRONATEC · 2 Mulheres Mil · 1 FAPES');
+    var t;
+    window.addEventListener('resize', function(){
+      clearTimeout(t);
+      t = setTimeout(function(){
+        host.style.gridTemplateColumns =
+          'repeat(' + (window.matchMedia('(max-width:560px)').matches ? 14 : 26) + ',1fr)';
+      }, 140);
+    }, {passive: true});
   })();
 
   /* ---------- navegação por teclado entre as seções ---------- */
