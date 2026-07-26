@@ -128,6 +128,9 @@
   .frentes .ind{font-family:var(--mono);font-size:11.5px;color:var(--muted);
     border-top:1px solid var(--line);padding-top:10px;margin-top:3px;}
   @media(max-width:700px){.frentes{grid-template-columns:1fr;}}
+  .passo{width:100%;height:auto;display:block;margin-bottom:6px;}
+  .nota-dia{margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--muted);
+    line-height:1.5;}
   .act h2{font-size:clamp(27px,4.2vw,44px);letter-spacing:-.028em;font-weight:700;line-height:1.08;
     max-width:20ch;}
   .act .lede{margin-top:18px;font-size:clamp(16.5px,1.9vw,19px);color:var(--ink-2);
@@ -770,6 +773,14 @@
           <p class="cap">Três passos</p>
           <div class="frentes tres">
             <div class="fr">
+              <svg class="passo" viewBox="0 0 240 92" role="img"
+                aria-label="Grupos de pesquisa, núcleos e extensão hoje separados, convergindo para um espaço comum.">
+                <circle cx="38" cy="14" r="4.5" fill="var(--green)"/><circle cx="27" cy="27" r="4.5" fill="var(--green)"/><circle cx="49" cy="28" r="4.5" fill="var(--green)"/>
+                <circle cx="120" cy="12" r="4.5" fill="var(--blue)"/><circle cx="109" cy="26" r="4.5" fill="var(--blue)"/><circle cx="131" cy="27" r="4.5" fill="var(--blue)"/>
+                <circle cx="202" cy="14" r="4.5" fill="var(--red)"/><circle cx="191" cy="27" r="4.5" fill="var(--red)"/><circle cx="213" cy="28" r="4.5" fill="var(--red)"/>
+                <path d="M38 36 L72 56 M120 34 L120 56 M202 36 L168 56" stroke="var(--line-2)" stroke-width="2" stroke-linecap="round"/>
+                <rect x="34" y="58" width="172" height="26" rx="6" fill="color-mix(in srgb,var(--green) 12%,transparent)" stroke="var(--green-dark)" stroke-width="2"/>
+              </svg>
               <span class="n">01</span>
               <h3>Espaço de Projetos Colaborativos</h3>
               <p>Nosso próximo grande passo é criar um <b>ambiente físico e estruturado para
@@ -779,6 +790,15 @@
               <span class="ind">responde à concentração do ato 04</span>
             </div>
             <div class="fr">
+              <svg class="passo" viewBox="0 0 240 92" role="img"
+                aria-label="Incubadora e Pós-Graduação se ligando ao ecossistema já conectado do campus.">
+                <path d="M120 46 L44 20 M120 46 L44 72 M120 46 L120 10 M120 46 L120 82" stroke="var(--line-2)" stroke-width="2"/>
+                <path d="M120 46 L196 20 M120 46 L196 72" stroke="var(--green-dark)" stroke-width="2.5"/>
+                <circle cx="120" cy="46" r="17" fill="color-mix(in srgb,var(--green) 14%,transparent)" stroke="var(--green-dark)" stroke-width="2"/>
+                <circle cx="44" cy="20" r="6" fill="var(--green)"/><circle cx="44" cy="72" r="6" fill="var(--blue)"/>
+                <circle cx="120" cy="10" r="6" fill="var(--green)"/><circle cx="120" cy="82" r="6" fill="var(--blue)"/>
+                <circle cx="196" cy="20" r="8" fill="var(--yellow)"/><circle cx="196" cy="72" r="8" fill="var(--red)"/>
+              </svg>
               <span class="n">02</span>
               <h3>Integração total do campus</h3>
               <p>Vamos mergulhar fundo para entender e integrar cada vez mais a força da
@@ -787,6 +807,17 @@
               <span class="ind">o campus como um sistema, não como setores</span>
             </div>
             <div class="fr">
+              <svg class="passo" viewBox="0 0 240 92" role="img"
+                aria-label="Campus em rede: todos os núcleos conectados entre si.">
+                <path d="M36 24 L120 14 L204 24 L212 66 L128 82 L44 70 Z M36 24 L212 66 M204 24 L44 70 M120 14 L128 82 M36 24 L128 82 M204 24 L44 70 M120 14 L44 70 M120 14 L212 66"
+                      fill="none" stroke="var(--green-dark)" stroke-width="1.4" opacity=".45"/>
+                <circle cx="120" cy="14" r="6.5" fill="var(--green)"/>
+                <circle cx="204" cy="24" r="6.5" fill="var(--yellow)"/>
+                <circle cx="212" cy="66" r="6.5" fill="var(--red)"/>
+                <circle cx="128" cy="82" r="6.5" fill="var(--blue)"/>
+                <circle cx="44" cy="70" r="6.5" fill="var(--green)"/>
+                <circle cx="36" cy="24" r="6.5" fill="var(--green-dark)"/>
+              </svg>
               <span class="n">03</span>
               <h3>Um 2027 sistêmico</h3>
               <p>Usar os dados e tudo o que aprendemos este ano para planejar um 2027 em que
@@ -795,6 +826,8 @@
               <span class="ind">planejamento com base no que está medido</span>
             </div>
           </div>
+          <p class="nota-dia">Diagrama conceitual — representa o movimento que queremos,
+            não uma contagem de grupos.</p>
         </div>
 
         <div class="callout rv" style="border-left-color:var(--green)">
