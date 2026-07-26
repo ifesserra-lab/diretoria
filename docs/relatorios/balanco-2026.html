@@ -178,16 +178,40 @@
   #ato-4 .insight{background:var(--paper);}
   .insight b{color:var(--ink);font-weight:600;}
 
-  /* barras de tema: rótulo largo, contagem de ações à direita */
-  .bars.temas .bar{grid-template-columns:196px minmax(0,1fr) 66px 74px;}
-  .bars.temas .lbl{line-height:1.25;white-space:normal;}
-  .bars.temas .qtd{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right;}
-  @media(max-width:720px){
-    .bars.temas .bar{grid-template-columns:1fr;gap:4px;}
-    .bars.temas .lbl{text-align:left;}
-    .bars.temas .val,.bars.temas .qtd{text-align:left;}
-    .bars.temas .qtd{margin-top:-2px;}
-  }
+  /* treemap dos temas — área proporcional ao público, matiz único por tamanho */
+  .tm{position:relative;width:100%;height:400px;}
+  .tm .t{position:absolute;overflow:hidden;padding:11px 13px;border-radius:3px;
+    display:flex;flex-direction:column;gap:3px;transition:filter .12s;}
+  .tm .t:hover{filter:brightness(1.06);}
+  .tm .nome{font-size:14px;font-weight:600;line-height:1.2;letter-spacing:-.01em;
+    overflow-wrap:anywhere;}
+  /* NÃO usar a classe .num aqui: .act .num é o número do ato e traz cor + border-top. */
+  .tm .v{font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:-.01em;
+    font-variant-numeric:tabular-nums;color:inherit;}
+  .tm .sub{font-family:var(--mono);font-size:11px;opacity:.8;}
+  .tm .t.mini{padding:8px 9px;}
+  .tm .t.mini .nome{font-size:11.5px;}
+  .tm .t.mini .v{font-size:13px;}
+  .tm .t.mini .sub{display:none;}
+  .tm .s0{background:var(--green-dark);color:#fff;}
+  .tm .s1{background:var(--green);color:#fff;}
+  .tm .s2{background:color-mix(in srgb,var(--green) 58%,transparent);color:var(--ink);}
+  .tm .s3{background:color-mix(in srgb,var(--green) 42%,transparent);color:var(--ink);}
+  .tm .s4{background:color-mix(in srgb,var(--green) 30%,transparent);color:var(--ink);}
+  .tm .s5{background:color-mix(in srgb,var(--green) 21%,transparent);color:var(--ink);}
+  .tm .s6{background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--ink);}
+  .tm .t.dest{box-shadow:inset 0 0 0 2px var(--ink);}
+  @media(max-width:720px){.tm{height:520px;}}
+
+  .tabela{margin-top:18px;}
+  .tabela summary{font-family:var(--mono);font-size:12px;color:var(--ink-2);cursor:pointer;
+    padding:8px 0;}
+  .tabela summary:hover{color:var(--ink);}
+  .tabela table{border-collapse:collapse;width:100%;min-width:440px;font-size:13.5px;margin-top:8px;}
+  .tabela th,.tabela td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);}
+  .tabela th{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;}
+  .tabela td.n{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums;}
 
   /* faixas do orçamento — grupos, nunca um ranking de pessoas */
   .stack .c{background:color-mix(in srgb,var(--green) 45%,transparent);color:var(--ink);}
@@ -377,13 +401,13 @@
       transparência não é o título da apresentação, é o método dela.</p>
 
     <nav class="toc">
-      <a href="#ato-1"><span class="k">01</span><span class="t">Extensão além dos muros</span></a>
-      <a href="#ato-2"><span class="k">02</span><span class="t">O fim do mito do pesquisador isolado</span></a>
-      <a href="#ato-3"><span class="k">03</span><span class="t">A escada real de crescimento</span></a>
-      <a href="#ato-4"><span class="k">04</span><span class="t">O fomento e o nosso desafio</span></a>
-      <a href="#gestao"><span class="k">05</span><span class="t">O que tornou este balanço possível</span></a>
-      <a href="#ato-6"><span class="k">06</span><span class="t">Escritório de Projetos</span></a>
-      <a href="#ato-7"><span class="k">07</span><span class="t">Visão 2027: crescer juntos</span></a>
+      <a href="#ato-1"><span class="k">01</span><span class="t">O campus não cabe dentro dos muros</span></a>
+      <a href="#ato-2"><span class="k">02</span><span class="t">Ninguém pesquisa sozinho aqui</span></a>
+      <a href="#ato-3"><span class="k">03</span><span class="t">Cada degrau é uma vida que mudou</span></a>
+      <a href="#ato-4"><span class="k">04</span><span class="t">A força que já temos</span></a>
+      <a href="#gestao"><span class="k">05</span><span class="t">Tudo isso já estava aqui</span></a>
+      <a href="#ato-6"><span class="k">06</span><span class="t">Você não precisa fazer sozinho</span></a>
+      <a href="#ato-7"><span class="k">07</span><span class="t">O melhor vem junto, em 2027</span></a>
     </nav>
   </div></section>
 
@@ -393,7 +417,7 @@
       <span class="num">01</span>
       <div>
         <p class="eyebrow">Extensão</p>
-        <h2>Extensão além dos muros</h2>
+        <h2>O campus não cabe dentro dos próprios muros</h2>
         <p class="lede">Cada ação de extensão começou com alguém pedindo ajuda — e alguém
           daqui atendendo. Somando tudo, <b>4.845 pessoas foram alcançadas</b>. E vale olhar
           quem são: <b>44% do público tem menos de 18 anos</b>. A nossa maior força está na
@@ -425,7 +449,15 @@
 
         <div class="fig rv">
           <p class="cap">Os temas que mais atendem</p>
-          <div class="bars temas" id="bars-temas"></div>
+          <div class="tm" id="tm-temas" role="img"
+               aria-label="Treemap dos temas de extensão por público atendido: robótica e cultura maker 2.547, captação e ingresso 1.156, mulheres e inclusão 887, empreendedorismo e incubação 475, cultura e arte 318, saúde e bem-estar 206, outros temas 118."></div>
+          <details class="tabela">
+            <summary>Ver os mesmos dados em tabela</summary>
+            <div class="tw"><table id="tab-temas">
+              <thead><tr><th>Tema</th><th>Atendimentos</th><th>Ações</th><th>% do classificado</th></tr></thead>
+              <tbody></tbody>
+            </table></div>
+          </details>
           <p class="insight">A robótica leva multidão — quase metade de todo o atendimento.
             Mas olhando o número de <b>iniciativas</b>, três temas empatam na frente:
             <b>robótica, mulheres e inclusão, e empreendedorismo</b>, com 14 ações cada.
@@ -434,7 +466,7 @@
           <div class="ficha">
             <div><span class="k">Fonte</span><span class="v">/src/api/temas.json · Painel de Extensão SRC</span></div>
             <div><span class="k">Base</span><span class="v">83 das 201 ações estão classificadas por tema, somando 5.707 atendimentos. As demais ainda não têm tema atribuído no sistema — por isso o total aqui é menor que os 7.938 do gráfico acima.</span></div>
-            <div><span class="k">Leitura</span><span class="v">Barras pelo público atendido; a coluna da direita mostra quantas ações sustentam cada tema. “Outros temas” reúne quatro temas com menos de 80 atendimentos cada.</span></div>
+            <div><span class="k">Leitura</span><span class="v">A área de cada bloco é proporcional ao público atendido, e o tom escurece conforme o tamanho. Dentro do bloco, quantas ações sustentam o tema. “Outros temas” reúne quatro temas com menos de 80 atendimentos cada.</span></div>
           </div>
         </div>
       </div>
@@ -447,7 +479,7 @@
       <span class="num">02</span>
       <div>
         <p class="eyebrow">Pesquisa × Extensão</p>
-        <h2>O fim do mito do pesquisador isolado</h2>
+        <h2>Ninguém pesquisa sozinho aqui</h2>
         <p class="lede">O trabalho não acontece em bolhas: <b>78% dos coordenadores de pesquisa
           do campus também fazem extensão</b>. Quem assina artigo é, muitas vezes, a mesma
           pessoa que dá oficina na comunidade. E os dados desfazem o medo antigo:
@@ -473,6 +505,11 @@
             <span><i style="background:var(--blue);opacity:.5"></i>coordenadores de pesquisa</span>
             <span><i style="background:var(--green);opacity:.5"></i>extensionistas do campus</span>
           </div>
+          <p class="insight">Pesquisa e extensão não competem — <b>elas se alimentam</b>.
+            O laboratório que publica é o mesmo que abre a porta no sábado, e a pergunta que
+            nasce na comunidade é a que vira artigo depois. Aqui não existe escolher entre
+            fazer ciência e servir à sociedade: <b>é a mesma pessoa, no mesmo dia, fazendo as
+            duas coisas</b>.</p>
           <div class="ficha">
             <div><span class="k">Fonte</span><span class="v">Relatório <b>Pesquisa × Extensão</b> · docs/relatorios/pesquisa-x-extensao.html</span></div>
             <div><span class="k">Base</span><span class="v">Coordenadores de projetos de pesquisa do campus, cruzados com a base de extensionistas do SRC. FWCI mediano usado como controle de impacto científico.</span></div>
@@ -489,7 +526,7 @@
       <span class="num">03</span>
       <div>
         <p class="eyebrow">Egressos</p>
-        <h2>A escada real de crescimento</h2>
+        <h2>Cada degrau é uma vida que mudou</h2>
         <p class="lede">No fim, é disso que tudo se trata: mudar vidas. <b>Todos os egressos
           analisados seguem na área de TI</b>, e a renda mediana deles <b>multiplicou por 7,2</b>
           entre o primeiro emprego e hoje. A escada começa numa bolsa de projeto dentro do
@@ -535,7 +572,7 @@
       <span class="num">04</span>
       <div>
         <p class="eyebrow">Fomento</p>
-        <h2>A verdade sobre o fomento — e o nosso desafio</h2>
+        <h2>A força que já temos — e como multiplicá-la</h2>
         <p class="lede">O corpo docente é uma potência: a captação do campus está na ordem de
           <b>dezenas de milhões de reais</b>, recurso que volta em equipamento, bolsa e
           laboratório. E os dados mostram algo que vale a gente conversar com carinho:
@@ -592,7 +629,7 @@
       <span class="num">05</span>
       <div>
         <p class="eyebrow">Os primeiros seis meses</p>
-        <h2>O que tornou este balanço possível</h2>
+        <h2>Tudo isso já estava aqui</h2>
         <p class="lede">Nenhum número desta apresentação foi produzido para ela. Todos vieram
           de painéis que já rodam, com API aberta e código público. O trabalho da gestão
           nestes seis meses foi <b>construir a infraestrutura que torna o campus legível</b> —
@@ -633,7 +670,7 @@
       <span class="num">06</span>
       <div>
         <p class="eyebrow">Apoio real</p>
-        <h2>Escritório de Projetos e Portal de Editais</h2>
+        <h2>Você não precisa fazer sozinho</h2>
         <p class="lede">Nosso objetivo é facilitar: <b>tirar a burocracia do caminho de quem
           deseja transformar ideias em projetos reais</b>. Para isso estruturamos uma equipe
           dedicada e humana, pronta para dar o suporte necessário para você tirar o seu
@@ -709,7 +746,7 @@
       <span class="num">07</span>
       <div>
         <p class="eyebrow">Visão 2027</p>
-        <h2>Crescer juntos</h2>
+        <h2>O melhor a gente ainda vai fazer junto</h2>
         <p class="lede">Os seis movimentos anteriores mostram um campus que já entrega.
           O próximo ciclo é sobre <b>fazer isso em conjunto</b> — usar os dados e tudo o que
           aprendemos este ano para planejar um 2027 sistêmico.</p>
@@ -865,11 +902,12 @@
     });
   })();
 
-  /* ---------- ato 1: temas ---------- */
+  /* ---------- ato 1: temas (treemap squarified) ---------- */
   (function(){
-    var host = document.getElementById('bars-temas');
+    var host = document.getElementById('tm-temas');
     if (!host) return;
-    /* [tema, atendimentos, nº de ações, destaque] */
+
+    /* [tema, atendimentos, nº de ações, destacar] */
     var TEMAS = [
       ['Robótica e cultura maker',      2547, 14, false],
       ['Captação e ingresso',           1156,  8, false],
@@ -879,22 +917,94 @@
       ['Saúde e bem-estar',              206, 10, false],
       ['Outros temas',                   118, 12, false]
     ];
-    var tot = TEMAS.reduce(function(a, r){ return a + r[1]; }, 0);
-    var max = TEMAS[0][1];
-    TEMAS.forEach(function(r){
-      var p = r[1] / tot * 100;
-      var row = document.createElement('div');
-      row.className = 'bar';
-      row.dataset.hl = r[3] ? '1' : '0';
-      row.innerHTML = '<span class="lbl">' + r[0] + '</span>' +
-        '<span class="track"><span class="fill"></span></span>' +
-        '<span class="val tnum">' + nf.format(r[1]) + '</span>' +
-        '<span class="qtd tnum">' + r[2] + (r[2] === 1 ? ' ação' : ' ações') + '</span>';
-      host.appendChild(row);
-      row.querySelector('.fill').dataset.w = (r[1] / max * 100) + '%';
-      bindTip(row, '<b>' + r[0] + '</b><br>' + nf.format(r[1]) + ' atendimentos<br>' +
-        pct(p) + ' do total classificado<br>' + r[2] + ' ações');
+    var TOT = TEMAS.reduce(function(a, r){ return a + r[1]; }, 0);
+
+    /* algoritmo squarified (Bruls, Huizing & van Wijk): mantém os blocos o mais
+       próximo possível de quadrados, que é o formato mais fácil de comparar. */
+    function pior(linha, lado){
+      var soma = 0, mx = 0, mn = Infinity;
+      for (var i = 0; i < linha.length; i++){
+        soma += linha[i]; if (linha[i] > mx) mx = linha[i]; if (linha[i] < mn) mn = linha[i];
+      }
+      if (!soma) return Infinity;
+      return Math.max((lado * lado * mx) / (soma * soma), (soma * soma) / (lado * lado * mn));
+    }
+
+    function squarify(itens, r){
+      var saida = [], resto = itens.slice();
+      while (resto.length){
+        var lado = Math.min(r.w, r.h);
+        var linha = [], areas = [];
+        while (resto.length){
+          var cand = areas.concat([resto[0].a]);
+          if (!areas.length || pior(cand, lado) <= pior(areas, lado)){
+            areas = cand; linha.push(resto.shift());
+          } else break;
+        }
+        var soma = areas.reduce(function(a, b){ return a + b; }, 0);
+        if (r.w >= r.h){
+          var lw = soma / r.h, yy = r.y;
+          linha.forEach(function(it){
+            var hh = it.a / lw;
+            saida.push({d: it.d, x: r.x, y: yy, w: lw, h: hh});
+            yy += hh;
+          });
+          r.x += lw; r.w -= lw;
+        } else {
+          var lh = soma / r.w, xx = r.x;
+          linha.forEach(function(it){
+            var ww = it.a / lh;
+            saida.push({d: it.d, x: xx, y: r.y, w: ww, h: lh});
+            xx += ww;
+          });
+          r.y += lh; r.h -= lh;
+        }
+      }
+      return saida;
+    }
+
+    var GAP = 2;  /* respiro entre blocos: separa sem precisar de borda */
+
+    function desenhaTM(){
+      var W = host.clientWidth, H = host.clientHeight;
+      if (!W || !H) return;
+      host.innerHTML = '';
+      var itens = TEMAS.map(function(t){ return {d: t, a: t[1] / TOT * W * H}; });
+      var blocos = squarify(itens, {x: 0, y: 0, w: W, h: H});
+
+      blocos.forEach(function(b, i){
+        var t = b.d;
+        var w = Math.max(0, b.w - GAP), h = Math.max(0, b.h - GAP);
+        var el = document.createElement('div');
+        el.className = 't s' + Math.min(i, 6) + (t[3] ? ' dest' : '') +
+                       ((w < 132 || h < 80) ? ' mini' : '');
+        el.style.cssText = 'left:' + b.x + 'px;top:' + b.y + 'px;width:' + w + 'px;height:' + h + 'px';
+        var cabe = w > 56 && h > 42;
+        if (cabe){
+          el.innerHTML = '<span class="nome">' + t[0] + '</span>' +
+            '<span class="v">' + nf.format(t[1]) + '</span>' +
+            '<span class="sub">' + t[2] + ' ações · ' + pct(t[1] / TOT * 100) + '</span>';
+        }
+        bindTip(el, '<b>' + t[0] + '</b><br>' + nf.format(t[1]) + ' atendimentos<br>' +
+          t[2] + ' ações<br>' + pct(t[1] / TOT * 100) + ' do total classificado');
+        host.appendChild(el);
+      });
+    }
+
+    /* tabela equivalente — o dado não pode existir só no desenho */
+    var corpo = document.querySelector('#tab-temas tbody');
+    if (corpo) TEMAS.forEach(function(t){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + t[0] + '</td><td class="n">' + nf.format(t[1]) +
+        '</td><td class="n">' + t[2] + '</td><td class="n">' + pct(t[1] / TOT * 100) + '</td>';
+      corpo.appendChild(tr);
     });
+
+    desenhaTM();
+    var tmr;
+    window.addEventListener('resize', function(){
+      clearTimeout(tmr); tmr = setTimeout(desenhaTM, 140);
+    }, {passive: true});
   })();
 
   /* ---------- ato 3: escada ---------- */
