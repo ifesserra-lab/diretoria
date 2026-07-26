@@ -171,6 +171,21 @@
   @media(max-width:560px){.bar{grid-template-columns:78px minmax(0,1fr) 66px;gap:9px;}
     .bar .lbl{font-size:11px;} .bar .val{font-size:12px;}}
 
+  /* achado que o gráfico revela e o número sozinho não conta */
+  .insight{margin-top:20px;padding:16px 18px;background:var(--surface);
+    border:1px solid var(--line);border-left:3px solid var(--green-dark);
+    font-size:14.5px;line-height:1.6;color:var(--ink-2);max-width:66ch;}
+  #ato-4 .insight{background:var(--paper);}
+  .insight b{color:var(--ink);font-weight:600;}
+
+  /* 4ª coluna: quantidade de projetos (só no gráfico de concentração) */
+  .bars.conc .bar{grid-template-columns:104px minmax(0,1fr) 54px 92px;}
+  .bars.conc .qtd{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right;}
+  @media(max-width:640px){
+    .bars.conc .bar{grid-template-columns:78px minmax(0,1fr) 44px;}
+    .bars.conc .qtd{display:none;}
+  }
+
   /* colchete do subtotal */
   .bracket{display:grid;grid-template-columns:104px minmax(0,1fr) 84px;gap:14px;
     align-items:center;margin-top:4px;}
@@ -500,11 +515,14 @@
             <div class="b" style="flex:30">30% · demais</div>
           </div>
           <div class="stack-lbl"><span>5 coordenadores</span><span>todos os outros</span></div>
-          <div class="bars" id="bars-conc" style="margin-top:30px"></div>
+          <div class="bars conc" id="bars-conc" style="margin-top:30px"></div>
           <div class="legend">
             <span><i style="background:var(--green-dark)"></i>entre os 5 maiores</span>
             <span><i style="background:var(--data-mute)"></i>demais coordenadores</span>
           </div>
+          <p class="insight">Um coordenador captou <b>24% do orçamento com um projeto só</b>.
+            Outro tem <b>dez projetos e soma 3%</b>. A concentração é de valor, não de
+            quantidade — captar muitas vezes e captar grande são coisas diferentes.</p>
           <div class="ficha">
             <div><span class="k">Fonte</span><span class="v">Relatório <b>Captação de Projetos — FAPES + FACTO</b> · docs/relatorios/captacao-projetos.html</span></div>
             <div><span class="k">Base</span><span class="v">Percentual do orçamento FAPES por coordenador. Não inclui FACTO, onde a concentração é ainda maior (44% num único coordenador, universo pequeno).</span></div>
@@ -756,10 +774,11 @@
     ['degrau 4','Sênior, hoje',              17073, 'mediana atual da coorte · n = 49']
   ];
 
+  /* [rótulo, % do orçamento FAPES, entre os 5 maiores, nº de projetos] */
   var CONC = [
-    ['Coord. 1', 24, true],  ['Coord. 2', 14, true],  ['Coord. 3', 12, true],
-    ['Coord. 4', 12, true],  ['Coord. 5',  8, true],  ['Coord. 6',  6, false],
-    ['Coord. 7',  3, false], ['Coord. 8',  2, false], ['demais',   19, false]
+    ['Coord. 1', 24, true,   1], ['Coord. 2', 14, true,  6], ['Coord. 3', 12, true,  3],
+    ['Coord. 4', 12, true,   6], ['Coord. 5',  8, true,  6], ['Coord. 6',  6, false, 5],
+    ['Coord. 7',  3, false, 10], ['Coord. 8',  2, false, 2], ['demais',   19, false, null]
   ];
 
   var CURVA = [
@@ -880,13 +899,15 @@
       var row = document.createElement('div');
       row.className = 'bar';
       row.dataset.hl = r[2] ? '1' : '0';
+      var proj = r[3] == null ? '—' : r[3] + (r[3] === 1 ? ' projeto' : ' projetos');
       row.innerHTML = '<span class="lbl">' + r[0] + '</span>' +
         '<span class="track"><span class="fill"></span></span>' +
-        '<span class="val tnum">' + r[1] + '%</span>';
+        '<span class="val tnum">' + r[1] + '%</span>' +
+        '<span class="qtd tnum">' + proj + '</span>';
       if (r[2]) row.querySelector('.fill').style.background = 'var(--green-dark)';
       host.appendChild(row);
       row.querySelector('.fill').dataset.w = (r[1] / max * 100) + '%';
-      bindTip(row, '<b>' + r[0] + '</b><br>' + r[1] + '% do orçamento FAPES' +
+      bindTip(row, '<b>' + r[0] + '</b><br>' + r[1] + '% do orçamento FAPES<br>' + proj +
         (r[2] ? '<br>entre os 5 maiores' : ''));
     });
   })();
