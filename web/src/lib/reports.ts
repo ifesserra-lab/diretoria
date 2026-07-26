@@ -19,6 +19,12 @@ export type Report = {
 
 export const reports: Report[] = [
   {
+    slug: 'balanco-2026', titulo: 'Balanço de Gestão — 6 meses', tag: 'Apresentação · 2026',
+    resumo: 'A apresentação institucional dos primeiros seis meses de gestão, em sete movimentos.',
+    descricao: 'Extensão, pesquisa × extensão, egressos, fomento, infraestrutura de dados, Escritório de Projetos e visão 2027. Navegável por teclado; cada bloco declara fonte, base e ressalvas.',
+    status: 'ok', path: 'relatorios/balanco-2026.html', spark: 'area',
+  },
+  {
     slug: 'campus-serra', titulo: 'Extensão — Campus Serra (SRC)', tag: 'Extensão · SRC',
     resumo: 'Tudo o que o campus faz de extensão, num painel navegável por ação, atividade e pessoa.',
     descricao: '201 ações, 525 atividades e 757 extensionistas. Busca, jornada do formado, pendências e dados abertos (JSON + llms.txt).',
