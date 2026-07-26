@@ -178,6 +178,17 @@
   #ato-4 .insight{background:var(--paper);}
   .insight b{color:var(--ink);font-weight:600;}
 
+  /* barras de tema: rótulo largo, contagem de ações à direita */
+  .bars.temas .bar{grid-template-columns:196px minmax(0,1fr) 66px 74px;}
+  .bars.temas .lbl{line-height:1.25;white-space:normal;}
+  .bars.temas .qtd{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right;}
+  @media(max-width:720px){
+    .bars.temas .bar{grid-template-columns:1fr;gap:4px;}
+    .bars.temas .lbl{text-align:left;}
+    .bars.temas .val,.bars.temas .qtd{text-align:left;}
+    .bars.temas .qtd{margin-top:-2px;}
+  }
+
   /* faixas do orçamento — grupos, nunca um ranking de pessoas */
   .stack .c{background:color-mix(in srgb,var(--green) 45%,transparent);color:var(--ink);}
   .faixas{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:1px;
@@ -409,6 +420,21 @@
             <div><span class="k">Fonte</span><span class="v">/src/api/painel.json → impacto.idade · Painel de Extensão SRC</span></div>
             <div><span class="k">Base</span><span class="v">7.938 atendimentos registrados. As 4.845 pessoas são <b>alunos únicos</b> — quem participou de mais de uma ação conta uma vez só ali, e uma vez por ação aqui. Os 44% se calculam sobre os atendimentos.</span></div>
             <div><span class="k">Leitura</span><span class="v">Barras ordenadas por faixa etária, não por tamanho. Verde = menor de 18.</span></div>
+          </div>
+        </div>
+
+        <div class="fig rv">
+          <p class="cap">Os temas que mais atendem</p>
+          <div class="bars temas" id="bars-temas"></div>
+          <p class="insight">A robótica leva multidão — quase metade de todo o atendimento.
+            Mas olhando o número de <b>iniciativas</b>, três temas empatam na frente:
+            <b>robótica, mulheres e inclusão, e empreendedorismo</b>, com 14 ações cada.
+            Uma coisa é alcançar muita gente de uma vez; outra é estar perto, várias vezes,
+            de grupos menores. O campus faz as duas.</p>
+          <div class="ficha">
+            <div><span class="k">Fonte</span><span class="v">/src/api/temas.json · Painel de Extensão SRC</span></div>
+            <div><span class="k">Base</span><span class="v">83 das 201 ações estão classificadas por tema, somando 5.707 atendimentos. As demais ainda não têm tema atribuído no sistema — por isso o total aqui é menor que os 7.938 do gráfico acima.</span></div>
+            <div><span class="k">Leitura</span><span class="v">Barras pelo público atendido; a coluna da direita mostra quantas ações sustentam cada tema. “Outros temas” reúne quatro temas com menos de 80 atendimentos cada.</span></div>
           </div>
         </div>
       </div>
@@ -836,6 +862,38 @@
       row.querySelector('.fill').dataset.w = (p / maxPct * 100) + '%';
       bindTip(row, '<b>' + r[0] + '</b><br>' + nf.format(r[1]) + ' atendimentos<br>' +
         pct(p) + ' do total');
+    });
+  })();
+
+  /* ---------- ato 1: temas ---------- */
+  (function(){
+    var host = document.getElementById('bars-temas');
+    if (!host) return;
+    /* [tema, atendimentos, nº de ações, destaque] */
+    var TEMAS = [
+      ['Robótica e cultura maker',      2547, 14, false],
+      ['Captação e ingresso',           1156,  8, false],
+      ['Mulheres e inclusão',            887, 14, true],
+      ['Empreendedorismo e incubação',   475, 14, false],
+      ['Cultura e arte',                 318, 11, false],
+      ['Saúde e bem-estar',              206, 10, false],
+      ['Outros temas',                   118, 12, false]
+    ];
+    var tot = TEMAS.reduce(function(a, r){ return a + r[1]; }, 0);
+    var max = TEMAS[0][1];
+    TEMAS.forEach(function(r){
+      var p = r[1] / tot * 100;
+      var row = document.createElement('div');
+      row.className = 'bar';
+      row.dataset.hl = r[3] ? '1' : '0';
+      row.innerHTML = '<span class="lbl">' + r[0] + '</span>' +
+        '<span class="track"><span class="fill"></span></span>' +
+        '<span class="val tnum">' + nf.format(r[1]) + '</span>' +
+        '<span class="qtd tnum">' + r[2] + (r[2] === 1 ? ' ação' : ' ações') + '</span>';
+      host.appendChild(row);
+      row.querySelector('.fill').dataset.w = (r[1] / max * 100) + '%';
+      bindTip(row, '<b>' + r[0] + '</b><br>' + nf.format(r[1]) + ' atendimentos<br>' +
+        pct(p) + ' do total classificado<br>' + r[2] + ' ações');
     });
   })();
 
