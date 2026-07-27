@@ -285,6 +285,30 @@
   @media(max-width:620px){.bars-plain.cinco{grid-template-columns:1fr 1fr;}}
   @media(max-width:460px){.bars-plain,.bars-plain.cinco{grid-template-columns:1fr;}}
 
+  /* galeria dos portais — print + link. A tela é a prova de que o painel existe:
+     quem duvidar do número clica e confere na fonte. */
+  .portais{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);}
+  .portais a{background:var(--paper);text-decoration:none;color:inherit;
+    display:grid;align-content:start;transition:background .15s;}
+  .portais a:hover{background:var(--surface);}
+  .portais img{width:100%;height:auto;display:block;background:#fff;
+    border-bottom:1px solid var(--line);}
+  .portais .tx{padding:14px 16px 16px;display:grid;gap:5px;}
+  .portais .k{font-family:var(--mono);font-size:11px;color:var(--muted);}
+  .portais h3{font-size:15px;font-weight:600;letter-spacing:-.015em;line-height:1.25;}
+  .portais a:hover h3{color:var(--accent);}
+  .portais p{font-size:13px;color:var(--ink-2);line-height:1.45;}
+  .portais .u{font-family:var(--mono);font-size:10.5px;color:var(--muted);
+    overflow-wrap:anywhere;}
+  .portais a:hover .u{color:var(--accent);}
+  @media(max-width:860px){.portais{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.portais{grid-template-columns:1fr;}}
+  /* num projetor a tela precisa caber: o print recua, o texto continua legível */
+  :root[data-modo="slides"] .portais img{max-height:19vh;object-fit:cover;object-position:top;}
+  :root[data-modo="slides"] .portais .tx{padding:10px 12px 12px;gap:3px;}
+  :root[data-modo="slides"] .portais p{display:none;}
+
   /* legenda */
   .legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:22px;
     padding-top:16px;border-top:1px solid var(--line);}
@@ -979,6 +1003,92 @@
           <div class="ficha">
             <div><span class="k">Fonte</span><span class="v">github.com/ifesserra-lab · catálogo em web/src/lib/reports.ts · docs/atas e docs/decisoes</span></div>
             <div><span class="k">Leitura</span><span class="v">Portais contados são os listados como “em produção” na home do laboratório. Painéis incluem os marcados como experimentais.</span></div>
+          </div>
+        </div>
+
+        <div class="fig rv">
+          <p class="cap">Os seis portais — a tela de cada um, e o link para conferir</p>
+          <div class="portais">
+
+            <a href="https://ifesserra-lab.github.io/src/">
+              <img src="img/paineis/src.jpg" width="760" height="475" loading="lazy"
+                   alt="Tela do Painel de Extensão SRC: 4.845 pessoas atingidas e a curva de público por ano de 2013 a 2026." />
+              <span class="tx">
+                <span class="k">01</span>
+                <h3>Painel de Extensão — SRC</h3>
+                <p>O acervo da extensão navegável: ações, atividades, extensionistas, temas,
+                  investimento e o índice FORPROEX.</p>
+                <span class="u">ifesserra-lab.github.io/src</span>
+              </span>
+            </a>
+
+            <a href="https://ifesserra-lab.github.io/portal_edital/">
+              <img src="img/paineis/editais.jpg" width="760" height="475" loading="lazy"
+                   alt="Tela do Portal de Editais, com as chamadas de pesquisa, extensão e fomento filtráveis." />
+              <span class="tx">
+                <span class="k">02</span>
+                <h3>Portal de Editais</h3>
+                <p>Editais de pesquisa, extensão e fomento num só lugar, com coleta
+                  automatizada e sempre atualizada.</p>
+                <span class="u">ifesserra-lab.github.io/portal_edital</span>
+              </span>
+            </a>
+
+            <a href="https://ifesserra-lab.github.io/egressos/">
+              <img src="img/paineis/egressos.jpg" width="760" height="475" loading="lazy"
+                   alt="Tela do painel de egressos, com a trajetória de renda e o mapa das empresas." />
+              <span class="tx">
+                <span class="k">03</span>
+                <h3>Salários &amp; carreira de egressos</h3>
+                <p>Para onde vão os formados: 50 egressos em 204 empresas, 13 delas fora do
+                  Brasil. Anonimizado.</p>
+                <span class="u">ifesserra-lab.github.io/egressos</span>
+              </span>
+            </a>
+
+            <a href="https://ifesserra-lab.github.io/diretoria/">
+              <img src="img/paineis/diretoria.jpg" width="760" height="475" loading="lazy"
+                   alt="Tela do portal da diretoria, com os indicadores de gestão do campus." />
+              <span class="tx">
+                <span class="k">04</span>
+                <h3>Diretoria — indicadores de gestão</h3>
+                <p>Indicadores consolidados do campus para apoio à decisão: ensino, pesquisa e
+                  extensão num só painel.</p>
+                <span class="u">ifesserra-lab.github.io/diretoria</span>
+              </span>
+            </a>
+
+            <a href="https://gedocs.vercel.app/">
+              <img src="img/paineis/gedoc.jpg" width="760" height="475" loading="lazy"
+                   alt="Tela do GEDoc, com a busca por matrícula SIAPE no acervo de documentos." />
+              <span class="tx">
+                <span class="k">05</span>
+                <h3>GEDoc — busca de documentos</h3>
+                <p>Busca sobre o acervo de documentos institucionais: normas, atas e editais em
+                  segundos.</p>
+                <span class="u">gedocs.vercel.app</span>
+              </span>
+            </a>
+
+            <a href="https://ifesserra-lab.github.io/horizon_dashboard/">
+              <img src="img/paineis/horizon.jpg" width="760" height="475" loading="lazy"
+                   alt="Tela do Horizon: 2.298 publicações, 10.089 pesquisadores, 4.737 projetos e 312 áreas." />
+              <span class="tx">
+                <span class="k">06</span>
+                <h3>Horizon — pesquisa &amp; produção</h3>
+                <p>Dados acadêmicos centralizados: grupos de pesquisa, produção e editais, com
+                  pipeline próprio.</p>
+                <span class="u">ifesserra-lab.github.io/horizon_dashboard</span>
+              </span>
+            </a>
+
+          </div>
+          <p class="insight">Cada tela aí é clicável e está no ar agora. É a diferença entre
+            dizer que existe infraestrutura e <b>deixar qualquer pessoa conferir</b>: os números
+            desta apresentação saem desses seis lugares, e nenhum deles pede login.</p>
+          <div class="ficha">
+            <div><span class="k">Fonte</span><span class="v">Home do laboratório em <b>ifesserra-lab.github.io</b> — os seis listados como em produção</span></div>
+            <div><span class="k">Base</span><span class="v">Prints capturados em 27/07/2026, em tela de 1440×900. São retratos de um dia: os painéis atualizam sozinhos, então o que você vê no link pode já estar diferente do print.</span></div>
           </div>
         </div>
 

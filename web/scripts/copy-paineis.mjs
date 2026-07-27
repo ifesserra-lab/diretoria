@@ -36,7 +36,20 @@ async function main() {
       n++;
     }
   }
-  console.log(`[copy-paineis] ${n} painéis de topo copiados. (PAINEIS=all para incluir árvores geradas)`);
+
+  // img/ vai junto: são as imagens que os painéis de topo referenciam por
+  // caminho relativo (ex.: img/paineis/*.jpg no balanço). Sem isso o Astro
+  // serve o HTML e quebra as imagens.
+  const IMG = join(SRC, 'img');
+  let imgs = 0;
+  if (existsSync(IMG)) {
+    await cp(IMG, join(DEST, 'img'), { recursive: true });
+    for (const dir of await readdir(IMG)) {
+      const sub = join(IMG, dir);
+      imgs += (await stat(sub)).isDirectory() ? (await readdir(sub)).length : 1;
+    }
+  }
+  console.log(`[copy-paineis] ${n} painéis de topo e ${imgs} imagens copiados. (PAINEIS=all para incluir árvores geradas)`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
