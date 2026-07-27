@@ -121,6 +121,29 @@
   @media(max-width:760px){.equipe{grid-template-columns:repeat(3,1fr);}}
   @media(max-width:420px){.equipe{grid-template-columns:repeat(2,1fr);}}
 
+  /* destaques por vocação — cards de pessoa, sem ordem entre eles. Avatar de cor
+     única de propósito: cor por pessoa criaria hierarquia onde não deve haver. */
+  .pessoas{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);}
+  .pessoas .pe{background:var(--paper);padding:16px 17px;display:grid;
+    grid-template-columns:auto minmax(0,1fr);gap:13px;align-items:start;}
+  .pessoas .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+    background:color-mix(in srgb,var(--green) 16%,transparent);color:var(--green-dark);
+    font-size:16px;font-weight:700;}
+  .pessoas .tx{display:grid;gap:4px;}
+  .pessoas .nm{font-size:14.5px;font-weight:600;letter-spacing:-.01em;line-height:1.25;}
+  .pessoas .o{font-size:13px;color:var(--ink-2);line-height:1.4;}
+  .pessoas .vl{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--green-dark);
+    font-variant-numeric:tabular-nums;margin-top:2px;}
+  :root[data-theme="dark"] .pessoas .av,:root[data-theme="dark"] .pessoas .vl{color:var(--green);}
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .pessoas .av,
+    :root:not([data-theme="light"]) .pessoas .vl{color:var(--green);}}
+  @media(max-width:900px){.pessoas{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.pessoas{grid-template-columns:1fr;}}
+  :root[data-modo="slides"] .pessoas .pe{padding:13px 14px;}
+  :root[data-modo="slides"] .pessoas .o{display:none;}
+
   /* frentes do escritório */
   .frentes{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
     border:1px solid var(--line);}
@@ -748,6 +771,142 @@
             <div><span class="k">Fonte</span><span class="v">Relatório <b>Pesquisa × Extensão</b> · docs/relatorios/pesquisa-x-extensao.html</span></div>
             <div><span class="k">Base</span><span class="v">Coordenadores de projetos de pesquisa do campus, cruzados com a base de extensionistas do SRC. FWCI mediano usado como controle de impacto científico.</span></div>
             <div><span class="k">Leitura</span><span class="v alerta">Diagrama esquemático: as áreas dos círculos não são proporcionais aos conjuntos. Só o 78% e o 22% são valores medidos.</span></div>
+          </div>
+        </div>
+
+        <div class="fig rv">
+          <p class="cap">Não existe um jeito só de ser bom aqui</p>
+          <p class="lede" style="margin-top:0;font-size:16px">As pessoas a seguir aparecem
+            porque <b>os dados as mostram</b> — cada uma no que ela faz. Não é ranking: não dá
+            para ordenar numa lista quem publica um artigo que o mundo cita, quem orienta trinta
+            estudantes, quem abre o portão no sábado para trezentas crianças e quem sustenta um
+            projeto de mulheres na ciência por dez anos. São coisas diferentes, medidas de
+            formas diferentes — e o campus precisa das quatro. <b>Os quatro grupos não estão em
+            ordem de importância, e dentro de cada um ninguém está à frente de ninguém.</b></p>
+        </div>
+
+        <div class="fig rv">
+          <p class="cap">Ciência que o mundo cita · 6 pessoas</p>
+          <div class="pessoas">
+            <div class="pe"><span class="av">A</span><span class="tx">
+              <span class="nm">Adilson Ribeiro Prado</span>
+              <span class="o">A obra mais citada do campus.</span>
+              <span class="vl tnum">728 citações</span></span></div>
+            <div class="pe"><span class="av">F</span><span class="tx">
+              <span class="nm">Francisco de Assis Boldt</span>
+              <span class="o">Impacto por artigo muito acima da média mundial da área.</span>
+              <span class="vl tnum">FWCI 4,67 · 533 citações</span></span></div>
+            <div class="pe"><span class="av">G</span><span class="tx">
+              <span class="nm">Gabriel Tozatto Zago</span>
+              <span class="o">Citado no mundo e presente na comunidade, ao mesmo tempo.</span>
+              <span class="vl tnum">443 citações · 490 pessoas</span></span></div>
+            <div class="pe"><span class="av">C</span><span class="tx">
+              <span class="nm">Cristina Klippel Dominicini</span>
+              <span class="o">Redes de computadores, com repercussão bem acima da média.</span>
+              <span class="vl tnum">227 citações · FWCI 3,16</span></span></div>
+            <div class="pe"><span class="av">R</span><span class="tx">
+              <span class="nm">Rafael Peixoto Derenzi Vivacqua</span>
+              <span class="o">Tem dois artigos — e os <b>dois</b> estão no top 10% mundial. O de
+                2017, sobre direção autônoma, ainda é citado hoje.</span>
+              <span class="vl tnum">126 citações no artigo de 2017</span></span></div>
+            <div class="pe"><span class="av">S</span><span class="tx">
+              <span class="nm">Sérgio Nery Simões</span>
+              <span class="o">Bioinformática, produção constante e citada.</span>
+              <span class="vl tnum">246 citações</span></span></div>
+          </div>
+        </div>
+
+        <div class="fig rv">
+          <p class="cap">Quem forma gente · 6 pessoas</p>
+          <div class="pessoas">
+            <div class="pe"><span class="av">D</span><span class="tx">
+              <span class="nm">Daniel Cruz Cavalieri</span>
+              <span class="o">O maior número de orientações concluídas do campus.</span>
+              <span class="vl tnum">31 orientações</span></span></div>
+            <div class="pe"><span class="av">K</span><span class="tx">
+              <span class="nm">Karin Satie Komati</span>
+              <span class="o">Orienta tanto quanto publica — e ainda faz extensão.</span>
+              <span class="vl tnum">29 orientações · 285 pessoas</span></span></div>
+            <div class="pe"><span class="av">M</span><span class="tx">
+              <span class="nm">Marco Antonio de Souza Leite Cuadros</span>
+              <span class="o">Produção e orientação caminhando juntas há anos.</span>
+              <span class="vl tnum">19 orientações · 388 citações</span></span></div>
+            <div class="pe"><span class="av">F</span><span class="tx">
+              <span class="nm">Flávio Garcia Pereira</span>
+              <span class="o">Orienta muito e leva o laboratório para a comunidade.</span>
+              <span class="vl tnum">17 orientações · 81 pessoas</span></span></div>
+            <div class="pe"><span class="av">C</span><span class="tx">
+              <span class="nm">Cassius Zanetti Resende</span>
+              <span class="o">Formação de estudantes como linha de trabalho constante.</span>
+              <span class="vl tnum">14 orientações</span></span></div>
+            <div class="pe"><span class="av">F</span><span class="tx">
+              <span class="nm">Flávio Barcelos Braz da Silva</span>
+              <span class="o">Orientação e extensão na mesma agenda.</span>
+              <span class="vl tnum">11 orientações · 5 ações</span></span></div>
+          </div>
+        </div>
+
+        <div class="fig rv">
+          <p class="cap">Quem leva o campus para fora · 6 pessoas</p>
+          <div class="pessoas">
+            <div class="pe"><span class="av">E</span><span class="tx">
+              <span class="nm">Emmanuel Marques Silva</span>
+              <span class="o">O maior alcance de extensão do campus, em empreendedorismo.</span>
+              <span class="vl tnum">7 ações · 1.211 pessoas</span></span></div>
+            <div class="pe"><span class="av">W</span><span class="tx">
+              <span class="nm">Wagner Kirmse Caldas</span>
+              <span class="o">Portas Abertas: multidão de uma vez, e o campus cheio.</span>
+              <span class="vl tnum">885 pessoas em 2 ações</span></span></div>
+            <div class="pe"><span class="av">R</span><span class="tx">
+              <span class="nm">Richard Junior Manuel Godinez Tello</span>
+              <span class="o">Robótica e cultura maker, o tema que mais atende.</span>
+              <span class="vl tnum">3 ações · 472 pessoas</span></span></div>
+            <div class="pe"><span class="av">F</span><span class="tx">
+              <span class="nm">Francisco José Casarim Rapchan</span>
+              <span class="o">Empreendedorismo e incubação, presença constante.</span>
+              <span class="vl tnum">4 ações · 278 pessoas</span></span></div>
+            <div class="pe"><span class="av">R</span><span class="tx">
+              <span class="nm">Rosilene de Sá Ribeiro</span>
+              <span class="o">Extensão e pesquisa na mesma pessoa, no mesmo período.</span>
+              <span class="vl tnum">238 pessoas · 206 citações</span></span></div>
+            <div class="pe"><span class="av">M</span><span class="tx">
+              <span class="nm">Moisés Savedra Omena</span>
+              <span class="o">Atravessa três temas: saúde, robótica e divulgação científica.</span>
+              <span class="vl tnum">6 ações em 3 temas</span></span></div>
+          </div>
+        </div>
+
+        <div class="fig rv">
+          <p class="cap">Quem mantém um tema de pé · 4 pessoas</p>
+          <div class="pessoas">
+            <div class="pe"><span class="av">A</span><span class="tx">
+              <span class="nm">Alessandra Aguiar Vilarinho</span>
+              <span class="o">Dez anos em Mulheres na Ciência, LAMPEX e Mulheres Mil — de
+                professora a orientadora.</span>
+              <span class="vl tnum">6 ações · 2015 a 2025</span></span></div>
+            <div class="pe"><span class="av">T</span><span class="tx">
+              <span class="nm">Tatiane Policário Chagas</span>
+              <span class="o">Conduz o tema Mulheres e inclusão, que empata em primeiro em
+                número de iniciativas.</span>
+              <span class="vl tnum">3 ações coordenadas</span></span></div>
+            <div class="pe"><span class="av">B</span><span class="tx">
+              <span class="nm">Bruno Cardoso Coutinho</span>
+              <span class="o">Inclusão com continuidade, ano após ano.</span>
+              <span class="vl tnum">3 ações coordenadas</span></span></div>
+            <div class="pe"><span class="av">V</span><span class="tx">
+              <span class="nm">Victorio Albani de Carvalho</span>
+              <span class="o">Cultura e arte dentro de um campus de tecnologia.</span>
+              <span class="vl tnum">3 ações · 227 citações</span></span></div>
+          </div>
+          <p class="insight">Quem não está nestas quatro telas <b>não está de fora</b>. Está numa
+            das outras formas de olhar, ou num dado que ainda não coletamos — satisfação de quem
+            foi atendido, produto de extensão, orientação em andamento. <b>A lista é do que hoje
+            conseguimos verificar, não do que o campus tem de melhor.</b></p>
+          <div class="ficha">
+            <div><span class="k">Fonte</span><span class="v">Dashboard de Impacto dos Docentes e Docentes × Veículos (citações e FWCI via OpenAlex, por DOI) · Pesquisa × Extensão (orientações e alcance) · /src/api/temas.json e /src/api/extensionistas (ações coordenadas e por tema)</span></div>
+            <div><span class="k">Base</span><span class="v">Coordenar e executar ação de extensão é <b>crédito público</b> pela política de dados do campus. Citações cobrem 64 dos 93 docentes — só obra com DOI entra. O alcance conta o público das ações, sem nome de quem foi atendido.</span></div>
+            <div><span class="k">Leitura</span><span class="v alerta">Cada pessoa aparece com a medida que cabe ao que ela faz — citação, orientação, alcance ou anos de continuidade. Não existe uma coluna comum: por isso não há ordem entre os grupos nem dentro deles.</span></div>
+            <div><span class="k">Ressalva</span><span class="v alerta">O FWCI de quem tem 1 ou 2 artigos é instável — por isso o destaque do Vivacqua usa a citação do artigo, não o FWCI dele. O alcance do Emmanuel é 1.211 contando ações coordenadas e 1.361 em qualquer papel.</span></div>
           </div>
         </div>
       </div>
