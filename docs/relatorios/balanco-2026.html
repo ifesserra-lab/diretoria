@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Transparência: descobrindo o campus e seus impactos — DPPGE · IFES Campus Serra</title>
-<meta name="description" content="Balanço dos primeiros seis meses de gestão da DPPGE do IFES Campus Serra em sete movimentos: extensão, pesquisa, egressos, fomento, infraestrutura de dados, Escritório de Projetos e a visão para 2027. Cada bloco mostra a própria fonte." />
+<meta name="description" content="Balanço dos primeiros seis meses de gestão da DPPGE do IFES Campus Serra: um prólogo com as seis formas de ver impacto e sete movimentos — extensão, pesquisa, egressos, fomento, infraestrutura de dados, Escritório de Projetos e a visão para 2027. Cada bloco mostra a própria fonte." />
 <meta name="author" content="Diretoria de Pesquisa, Pós-Graduação e Extensão — IFES Campus Serra" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Transparência: descobrindo o campus e seus impactos" />
@@ -99,6 +99,10 @@
   #ato-2 .num{border-top-color:var(--blue);}
   #ato-3 .num{border-top-color:var(--red);}
   #ato-4 .num{border-top-color:var(--yellow);}
+  /* o prólogo não entra na alternância paper/surface: ganha o tom próprio
+     de --field porque é o bloco metodológico, não um movimento de dados novos. */
+  #ato-5{background:var(--field);}
+  #ato-5 .num{border-top-color:var(--blue);}
   #gestao .num{border-top-color:var(--line-2);}
   #ato-6{background:var(--surface);}
   #ato-6 .num{border-top-color:var(--green-dark);}
@@ -180,6 +184,31 @@
     font-size:14.5px;line-height:1.6;color:var(--ink-2);max-width:66ch;}
   #ato-4 .insight{background:var(--paper);}
   .insight b{color:var(--ink);font-weight:600;}
+
+  /* os seis olhares sobre impacto — cada card nomeia a moldura de onde o indicador vem,
+     porque número sem moldura não diz o que está medindo. */
+  .olhares{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);}
+  .olhares .olh{background:var(--surface);padding:16px 17px 15px;display:grid;gap:6px;
+    align-content:start;}
+  .olhares .mold{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--muted);}
+  .olhares h3{font-size:15px;font-weight:600;letter-spacing:-.015em;line-height:1.2;}
+  /* NÃO reaproveitar .num aqui: .act .num é o número do ato e traz cor + border-top. */
+  .olhares .n{font-family:var(--mono);font-size:29px;font-weight:600;letter-spacing:-.03em;
+    color:var(--green);line-height:1;margin-top:2px;}
+  .olhares .n s{text-decoration:none;font-size:12px;font-weight:500;color:var(--ink-2);
+    font-family:var(--sans);letter-spacing:0;display:block;margin-top:5px;line-height:1.35;}
+  .olhares .mais{font-size:12.5px;color:var(--ink-2);line-height:1.4;
+    border-top:1px solid var(--line);padding-top:9px;margin-top:3px;}
+  .olhares .mais b{font-family:var(--mono);color:var(--ink);font-weight:600;
+    font-variant-numeric:tabular-nums;}
+  @media(max-width:900px){.olhares{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.olhares{grid-template-columns:1fr;}}
+  /* a tabela do prólogo é mais larga que as outras: rola dentro do próprio bloco */
+  #ato-5 .tw{overflow-x:auto;}
+  #ato-5 .tabela tr.grp td{background:var(--field);font-family:var(--mono);font-size:10.5px;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);}
 
   /* waffle: um quadrado por ação. Contável — o leitor confere se quiser. */
   .waffle{display:grid;grid-template-columns:repeat(auto-fill,minmax(0,1fr));gap:4px;
@@ -299,6 +328,32 @@
   .curve .band{fill:var(--green);opacity:.09;}
   .curve .dot{fill:var(--green);stroke:var(--paper);stroke-width:2;}
 
+  /* ato 3: colunas em salários mínimos — bloco claro = o piso, bloco verde = o que
+     vem acima dele. A base é a mesma do relatório de egressos, seção 2. */
+  .smc{width:100%;height:auto;display:block;min-width:660px;}
+  .smc .grid{stroke:var(--line);stroke-width:1;}
+  .smc .axis{stroke:var(--line-2);stroke-width:1;}
+  .smc .lbl{font-family:var(--mono);font-size:10.5px;fill:var(--muted);}
+  .smc .ano{font-family:var(--mono);font-size:11px;fill:var(--ink-2);}
+  .smc .rs{font-family:var(--mono);font-size:9.5px;fill:var(--muted);}
+  .smc .vl{font-family:var(--mono);font-size:11.5px;font-weight:600;fill:var(--ink);}
+  .smc .base{fill:var(--data-mute);opacity:.42;}
+  .smc .acima{fill:var(--green);}
+  .smc .dentro{font-family:var(--mono);font-size:9.5px;font-weight:600;fill:#fff;}
+  .smc .piso{stroke:var(--ink-2);stroke-width:1.4;stroke-dasharray:5 4;opacity:.7;}
+  .smc .pisolbl{font-family:var(--mono);font-size:10.5px;fill:var(--ink-2);}
+  .smc .bolsa{stroke:var(--yellow);stroke-width:1.6;stroke-dasharray:4 3;}
+  .smc .bolsalbl{font-family:var(--mono);font-size:10.5px;fill:var(--yellow);}
+  .smc .traj{fill:none;stroke:var(--blue);stroke-width:1.8;stroke-dasharray:2 3;}
+  .smc .trajp{fill:var(--blue);}
+
+  /* ato 3: comparações de mercado — rótulos longos pedem coluna mais larga, e o
+     cenário (não medição) entra hachurado para não se confundir com o medido. */
+  #ato-3 .comp .bar{grid-template-columns:190px minmax(0,1fr) 94px;}
+  #ato-3 .comp .bar[data-cen="1"] .fill{
+    background:repeating-linear-gradient(135deg,var(--data-mute) 0 4px,transparent 4px 9px);}
+  @media(max-width:640px){#ato-3 .comp .bar{grid-template-columns:118px minmax(0,1fr) 78px;}}
+
   /* venn */
   .venn{width:100%;height:auto;display:block;max-width:560px;margin:0 auto;}
   .venn .cA{fill:var(--blue);opacity:.22;stroke:var(--blue);stroke-width:2;}
@@ -394,6 +449,8 @@
   :root[data-modo="slides"] .legend{margin-top:14px;padding-top:12px;}
   :root[data-modo="slides"] .stairs{min-height:min(340px,34vh);}
   :root[data-modo="slides"] .curve{max-height:36vh;}
+  :root[data-modo="slides"] .olhares .olh{padding:13px 14px 12px;}
+  :root[data-modo="slides"] .olhares .n{font-size:26px;}
 
   /* respiro maior para o texto de abertura de cada ato */
   :root[data-modo="slides"] .intro h2{font-size:clamp(34px,6vmin,60px);}
@@ -457,13 +514,11 @@
       Em vez de listar o que a diretoria fez, este balanço mostra o que <b>vocês</b> fazem —
       sete leituras dos dados reais do campus: quem a extensão alcança, como pesquisa e
       extensão se cruzam, o que acontece com quem passa por aqui, e para onde queremos
-      caminhar juntos em 2027.</p>
-    <p class="lede" style="margin-top:16px">O trabalho destes seis meses foi tornar esses
-      números <b>encontráveis, auditáveis e abertos</b> — para que ninguém precise acreditar
-      na nossa palavra. Por isso cada bloco mostra a própria fonte e as próprias ressalvas:
-      transparência não é o título da apresentação, é o método dela.</p>
+      caminhar juntos em 2027. Antes delas, um prólogo curto: <b>as seis formas de ver o
+      impacto</b> de uma instituição de ensino e pesquisa.</p>
 
     <nav class="toc">
+      <a href="#ato-5"><span class="k">00</span><span class="t">Impacto pode ser visto de muitas formas</span></a>
       <a href="#ato-1"><span class="k">01</span><span class="t">O campus não cabe dentro dos muros</span></a>
       <a href="#ato-2"><span class="k">02</span><span class="t">Ninguém pesquisa sozinho aqui</span></a>
       <a href="#ato-3"><span class="k">03</span><span class="t">Cada degrau é uma vida que mudou</span></a>
@@ -472,6 +527,172 @@
       <a href="#ato-6"><span class="k">06</span><span class="t">Você não precisa fazer sozinho</span></a>
       <a href="#ato-7"><span class="k">07</span><span class="t">O melhor vem junto, em 2027</span></a>
     </nav>
+  </div></section>
+
+  <!-- ================= PRÓLOGO · AS RÉGUAS ================= -->
+  <section class="act" id="ato-5"><div class="wrap">
+    <div class="head">
+      <span class="num">00</span>
+      <div>
+        <p class="eyebrow">Antes de começar — as muitas formas de ver impacto</p>
+        <h2>Impacto pode ser visto de muitas formas</h2>
+        <p class="lede">Nenhum número resume sozinho o impacto de um campus. Existem
+          <b>formas diferentes de olhar</b>, e cada uma vê algo que as outras não veem.
+          Reunimos os indicadores que os nossos dados já sustentam em <b>seis desses
+          olhares</b> — não como nota nem ranking, mas para entender o que já fazemos e ver
+          onde alguém só precisa de apoio. Os movimentos seguintes abrem esses olhares,
+          cada um com a própria fonte à vista.</p>
+
+        <div class="fig rv">
+          <p class="cap">Seis formas de ver o impacto — e o que cada uma já mostra do campus</p>
+          <div class="olhares">
+
+            <div class="olh">
+              <span class="mold">FORPROEX · IBEU 2017</span>
+              <h3>Alcance na comunidade</h3>
+              <p class="n tnum">4.845<s>pessoas alcançadas em 201 ações</s></p>
+              <p class="mais">7.938 atendimentos · <b>43%</b> com menos de 18 anos ·
+                <b>62%</b> da equipe é estudante</p>
+            </div>
+
+            <div class="olh">
+              <span class="mold">Leiden · DORA · CoARA</span>
+              <h3>Repercussão científica</h3>
+              <p class="n tnum">1,37<s>FWCI mediano — acima da média mundial</s></p>
+              <p class="mais"><b>1.959</b> itens · <b>5.794</b> citações ·
+                <b>226</b> artigos no top 10% do mundo</p>
+            </div>
+
+            <div class="olh">
+              <span class="mold">Payback · CAHS · monetização seletiva</span>
+              <h3>Retorno do investimento</h3>
+              <p class="n tnum">13×<s>uma bolsa de R$ 1.316 reaparece como R$ 17.073 de renda
+                mensal do egresso</s></p>
+              <p class="mais"><b>729</b> bolsas em <b>99</b> projetos ·
+                renda <b>×7,2</b> desde o primeiro emprego</p>
+            </div>
+
+            <div class="olh">
+              <span class="mold">CAHS · capacitação</span>
+              <h3>Formação na graduação</h3>
+              <p class="n tnum">78,4%<s>dos formandos passaram por iniciação científica</s></p>
+              <p class="mais"><b>306</b> formandos · <b>240</b> com IC ·
+                <b>37</b> seguiram para o mestrado</p>
+            </div>
+
+            <div class="olh">
+              <span class="mold">Payback · produção técnica</span>
+              <h3>Tecnologia entregue</h3>
+              <p class="n tnum">91<s>ativos tecnológicos distintos</s></p>
+              <p class="mais"><b>75</b> softwares · <b>49</b> prêmios ·
+                patente <b>0</b>, a conferir no INPI</p>
+            </div>
+
+            <div class="olh">
+              <span class="mold">REF · SROI · SIAMPI · CES · ODS</span>
+              <h3>Transformação social</h3>
+              <p class="n tnum">887<s>pessoas em 14 ações de mulheres e inclusão — o tema que
+                mais se repete no campus</s></p>
+              <p class="mais"><b>318</b> em cultura e arte · <b>206</b> em saúde ·
+                Mulheres Mil e PRONATEC em <b>5</b> ações</p>
+            </div>
+
+          </div>
+
+          <p class="insight">Os seis olhares <b>não concordam entre si — e é isso que os torna
+            úteis</b>. Quem alcança multidão raramente é quem mais publica; quem forma mais gente
+            não é quem mais capta. Ler os seis juntos é a única forma de ver o campus inteiro
+            em vez de um recorte — e de descobrir <b>quem já vai bem num desses olhares e pode
+            puxar alguém em outro</b>. Foi assim que apareceu o achado mais bonito da lista:
+            <b>quem entrou por cota faz iniciação científica na mesma proporção de todo mundo</b>
+            — e recebe bolsa numa proporção maior. A porta de entrada não decide quem vira
+            pesquisador aqui.</p>
+
+          <details class="tabela">
+            <summary>Ver os 43 indicadores levantados, olhar por olhar</summary>
+            <div class="tw"><table>
+              <thead><tr><th>Indicador</th><th>Valor</th><th>Fonte</th><th>Confiança</th></tr></thead>
+              <tbody>
+                <tr class="grp"><td colspan="4">Alcance na comunidade · FORPROEX</td></tr>
+                <tr><td>Pessoas alcançadas (público distinto)</td><td class="n">4.845</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Atendimentos (participações)</td><td class="n">7.938</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Ações de extensão · ativas</td><td class="n">201 · 142</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Relatório final aprovado</td><td class="n">75% (150/201)</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Pendências de relatório a regularizar</td><td class="n">51</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Programas contínuos (guarda-chuva)</td><td class="n">20</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Protagonismo discente na equipe</td><td class="n">62% (566/907)</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Formados alcançados pela extensão</td><td class="n">64% (197/306)</td><td>SRC</td><td>média</td></tr>
+                <tr><td>Público pré-universitário</td><td class="n">43%</td><td>SRC</td><td>alta</td></tr>
+
+                <tr class="grp"><td colspan="4">Repercussão científica · Leiden / DORA / CoARA</td></tr>
+                <tr><td>Itens científicos distintos</td><td class="n">1.959</td><td>Lattes</td><td>alta</td></tr>
+                <tr><td>Citações (por DOI)</td><td class="n">5.794</td><td>OpenAlex</td><td>média</td></tr>
+                <tr><td>FWCI mediano</td><td class="n">1,37</td><td>OpenAlex</td><td>média</td></tr>
+                <tr><td>Artigos no top 10% · top 1% mundial</td><td class="n">226 · 3</td><td>OpenAlex</td><td>média</td></tr>
+                <tr><td>Artigos em veículo Q1/Q2 (SJR)</td><td class="n">46,2%</td><td>SCImago</td><td>média</td></tr>
+                <tr><td>Artigos em Qualis A1/A2</td><td class="n">35,8%</td><td>Qualis CAPES</td><td>média</td></tr>
+                <tr><td>Concentração das citações (Gini)</td><td class="n">0,618</td><td>OpenAlex</td><td>média</td></tr>
+                <tr><td>FWCI mediano por área (normalizado)</td><td class="n">2,40 a 0,48</td><td>OpenAlex</td><td>média</td></tr>
+                <tr><td>Cobertura deste olhar</td><td class="n">64 de 93 docentes</td><td>OpenAlex</td><td>—</td></tr>
+
+                <tr class="grp"><td colspan="4">Retorno do investimento · Payback / CAHS / monetização seletiva</td></tr>
+                <tr><td>Bolsa mediana de projeto no campus</td><td class="n">R$ 1.316/mês</td><td>Coorte de egressos</td><td>média</td></tr>
+                <tr><td>Renda mediana do egresso hoje</td><td class="n">R$ 17.073/mês</td><td>Coorte de egressos</td><td>média</td></tr>
+                <tr><td>Razão renda de hoje ÷ bolsa</td><td class="n">12,97× (~13×)</td><td>derivado</td><td>média</td></tr>
+                <tr><td>Crescimento da renda desde o primeiro emprego</td><td class="n">×7,2 (mediana)</td><td>Coorte de egressos</td><td>média</td></tr>
+                <tr><td>Projetos FAPES (concluídos + andamento)</td><td class="n">99 (37+62)</td><td>FAPES</td><td>alta</td></tr>
+                <tr><td>Bolsas dentro dos projetos FAPES</td><td class="n">729</td><td>FAPES</td><td>alta</td></tr>
+                <tr><td>Fomento consolidado (ordem de grandeza)</td><td class="n">dezenas de milhões</td><td>FAPES+FACTO</td><td>média</td></tr>
+                <tr><td>Concentração do fomento (Gini) — com · sem institucionais</td><td class="n">0,771 · 0,742</td><td>FAPES</td><td>média</td></tr>
+                <tr><td>Parcela do orçamento que é programa institucional</td><td class="n">37,8%</td><td>FAPES</td><td>média</td></tr>
+                <tr><td>ROI financeiro contábil (%)</td><td class="n">não calculável</td><td>—</td><td>—</td></tr>
+
+                <tr class="grp"><td colspan="4">Formação na graduação · CAHS</td></tr>
+                <tr><td>Formandos analisados (2020.1 – 2025.2)</td><td class="n">306</td><td>Registro acadêmico</td><td>alta</td></tr>
+                <tr><td>Passaram por iniciação científica</td><td class="n">78,4% (240/306)</td><td>Registro + FAPES</td><td>alta</td></tr>
+                <tr><td>Cotistas entre os formandos</td><td class="n">28,4% (87)</td><td>Registro acadêmico</td><td>alta</td></tr>
+                <tr><td>Participação em IC — cotistas · ampla</td><td class="n">79,3% · 78,3%</td><td>Registro + FAPES</td><td>alta</td></tr>
+                <tr><td>Com bolsa paga — cotistas · ampla</td><td class="n">31,0% · 21,7%</td><td>FAPES</td><td>média</td></tr>
+                <tr><td>Egressos que seguiram para o mestrado</td><td class="n">37</td><td>Registro acadêmico</td><td>média</td></tr>
+                <tr><td>Orientações de graduação concluídas (TCC + IC)</td><td class="n">1.267</td><td>Lattes</td><td>alta</td></tr>
+
+                <tr class="grp"><td colspan="4">Tecnologia entregue · Payback</td></tr>
+                <tr><td>Ativos tecnológicos distintos</td><td class="n">91</td><td>Lattes</td><td>média</td></tr>
+                <tr><td>Patentes registradas</td><td class="n">0 — conferir INPI</td><td>Lattes</td><td>baixa</td></tr>
+
+                <tr class="grp"><td colspan="4">Transformação social · REF / SROI / SIAMPI / CES / ODS</td></tr>
+                <tr><td>Mulheres e inclusão — atendimentos · ações</td><td class="n">887 · 14</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Cultura e arte — atendimentos · ações</td><td class="n">318 · 11</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Saúde e bem-estar — atendimentos · ações</td><td class="n">206 · 10</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Ações com fomento de programa social (Mulheres Mil · PRONATEC)</td><td class="n">2 · 3</td><td>SRC</td><td>alta</td></tr>
+                <tr><td>Reserva de vagas entre formandos (esc. pública · PPI · renda · PcD)</td><td class="n">84 · 53 · 37 · 2</td><td>Registro acadêmico</td><td>alta</td></tr>
+                <tr><td>Satisfação, mudança percebida e território alcançado</td><td class="n">sem dado</td><td>—</td><td>—</td></tr>
+              </tbody>
+            </table></div>
+          </details>
+
+          <div class="ficha">
+            <div><span class="k">Fonte</span><span class="v">Índice de Extensão FORPROEX · Dashboard de Impacto dos Docentes · ROI e Impacto da Pesquisa · Pesquisa na Formação · Pesquisa × Extensão — públicos em docs/relatorios</span></div>
+            <div><span class="k">Base</span><span class="v">Extensão: 201 ações do SRC. Pesquisa: quadro de 93 docentes, 64 com DOI casado no OpenAlex. Fomento: 99 projetos FAPES + FACTO coordenado pelo campus. Formação: 306 formandos de Sistemas de Informação e Engenharia de Controle e Automação, 2020.1 a 2025.2.</span></div>
+            <div><span class="k">Leitura</span><span class="v">O olhar sobre formação vê a <b>graduação</b>: a pós-graduação stricto sensu do campus está em construção e ainda não titulou ninguém. FWCI é normalizado por área e ano — comparar volume bruto entre áreas não mede nada, e área com poucos docentes não sustenta leitura de área. Nenhum indicador aqui serve para avaliar pessoa.</span></div>
+            <div><span class="k">Social</span><span class="v">Aqui está medido <b>quem as ações sociais alcançam</b> — público, nº de iniciativas, programa de fomento —, não o que mudou na vida de quem participou, que é o que REF, SROI e CES de fato pedem. Os temas estão classificados em 83 das 201 ações, então o 887 é piso, não teto. O mapeamento aos ODS é derivável do tema (mulheres → ODS 5 · educação básica → ODS 4 · saúde → ODS 3) e ainda não foi feito.</span></div>
+            <div><span class="k">O 13×</span><span class="v alerta">É <b>associação, não causalidade</b>: a bolsa não explica sozinha a renda de hoje. Compara mediana com mediana, na mesma unidade (R$/mês), sobre a coorte de 49 egressos — a bolsa mediana vem dos 23 que tiveram bolsa. A renda é <b>estimativa de mercado por anos de experiência</b>, não folha de pagamento. Não é ROI contábil: esse segue não calculável, por falta de benefício monetizado.</span></div>
+            <div><span class="k">Ressalva</span><span class="v alerta">ROI, egressos e captação carregam aviso de estudo experimental: dados preliminares, sujeitos a revisão.</span></div>
+          </div>
+        </div>
+
+        <div class="callout rv" style="border-left-color:var(--green)">
+          <p class="k">Para que serve saber disso</p>
+          <p>Nenhum desses olhares existe para cobrar ninguém — existem para <b>a gente parar de
+            olhar todo mundo pela mesma janela</b>. Nenhum dos seis está vazio, mas o último ainda
+            mede alcance e não mudança: sabemos que <b>887 pessoas passaram pelas ações de
+            mulheres e inclusão</b>, não o que mudou na vida delas depois. Três gestos fecham
+            isso — satisfação ao fim da ação, município alcançado e uma ficha de uma página nos
+            casos de maior alcance. Feito, o campus passa a contar a história inteira do que
+            <b>vocês</b> já fazem.</p>
+        </div>
+      </div>
+    </div>
   </div></section>
 
   <!-- ================= ATO 1 ================= -->
@@ -623,6 +844,59 @@
             <div><span class="k">Fonte</span><span class="v">/egressos/api/coorte/serie-por-experiencia.json · campo <b>trajetoria_real</b></span></div>
             <div><span class="k">Base</span><span class="v">Cada ponto agrega os egressos que tinham aquele tempo de carreira. O n cai no fim da curva — passe o mouse para ver quantos sustentam cada ponto.</span></div>
             <div><span class="k">Leitura</span><span class="v alerta">Estudo experimental, dados preliminares e anonimizados. A cauda acima de 13 anos apoia-se em 14 egressos ou menos.</span></div>
+          </div>
+        </div>
+
+        <div class="fig rv">
+          <p class="cap">A mesma renda medida em salários mínimos — ano a ano</p>
+          <div class="hero-n">
+            <span class="v tnum">10,5</span>
+            <span class="d">salários mínimos é a mediana do coorte hoje — <b>R$ 15.452 acima
+              do piso</b>, todo mês. A bolsa de 2018 valia <b>0,8 mínimo</b>: não pagava
+              um piso inteiro.</span>
+          </div>
+          <div class="figscroll">
+            <svg class="smc" id="sm-anos" viewBox="0 0 900 360" role="img"
+                 aria-label="Colunas por ano de 2012 a 2026: a mediana do coorte em salários mínimos sobe de 1,5 para 10,5, com o piso legal marcado em 1 e a bolsa de 2018 em 0,8 mínimo. Uma linha pontilhada mostra uma trajetória individual anonimizada, que vai de 0,6 a 15 mínimos."></svg>
+          </div>
+          <div class="legend">
+            <span><i style="background:var(--data-mute);opacity:.42"></i>1 salário mínimo do ano</span>
+            <span><i style="background:var(--green)"></i>o que vem acima do piso</span>
+            <span><i style="background:none;border-top:2px dashed var(--yellow);height:0;width:16px"></i>bolsa de 2018 · 0,8 mínimo</span>
+            <span><i style="background:none;border-top:2px dotted var(--blue);height:0;width:16px"></i>uma trajetória individual, anonimizada</span>
+          </div>
+          <p class="insight">É a medida mais concreta que existe: <b>quantos pisos legais cabem
+            na renda de quem passou por aqui</b>. Em 2012 a mediana do coorte era 1,5 mínimo.
+            Hoje são <b>10,5</b>. E o degrau que começou tudo — a bolsa — não pagava nem um
+            mínimo inteiro. <b>Ninguém entra nessa escada por causa do dinheiro do primeiro
+            degrau</b>; entra porque alguém abriu a porta do laboratório.</p>
+          <div class="ficha">
+            <div><span class="k">Fonte</span><span class="v">Relatório <b>Trajetória salarial</b> · docs/relatorios/egressos/trajetoria_salarial.html, seção 2 — mesma série e mesma base de cálculo</span></div>
+            <div><span class="k">Base</span><span class="v">Mediana do coorte em R$ da época, dividida pelo salário mínimo do próprio ano (IPEADATA MTE12_SALMIN12; 2026 = R$ 1.621). Só anos com 10 egressos ou mais — 2012, o primeiro, tem 12. O n varia de 12 a 46 ao longo da série.</span></div>
+            <div><span class="k">Leitura</span><span class="v">Passe o mouse por uma coluna para ver o n do ano, a renda em R$ e US$ e a faixa p25–p75 do coorte. A queda de 2024 para 2026 não é perda de renda: <b>o mínimo subiu mais rápido</b> que a mediana nesses dois anos.</span></div>
+            <div><span class="k">Pontilhada</span><span class="v">Uma trajetória individual do coorte, anonimizada — <b>a de maior multiplicador entre quem teve bolsa documentada</b>. Não é o caso típico: é o teto do que já aconteceu aqui. Serve para ver quando uma pessoa corre à frente ou atrás do conjunto; anos sem registro não são interpolados.</span></div>
+            <div><span class="k">Leitura</span><span class="v alerta">Renda é <b>estimativa de mercado por anos de experiência</b> (Stack Overflow + câmbio + IPCA), não folha de pagamento — nenhum contracheque foi coletado. De 2024 em diante não há edição nova do survey: a estimativa é extrapolada.</span></div>
+          </div>
+        </div>
+
+        <div class="fig rv comp">
+          <p class="cap">Trocando a comparação — R$/mês de 2026, do piso ao mercado mundial</p>
+          <div class="bars" id="bars-comp"></div>
+          <div class="legend">
+            <span><i style="background:var(--green)"></i>mediana do coorte de egressos</span>
+            <span><i style="background:var(--data-mute)"></i>referência de mercado</span>
+            <span><i style="background:repeating-linear-gradient(135deg,var(--data-mute) 0 4px,transparent 4px 9px)"></i>cenário, não medição</span>
+          </div>
+          <p class="insight">Comparado ao mercado brasileiro, o coorte está <b>acima do sênior
+            nacional</b>. Comparado ao mercado mundial, a mesma renda é <b>47% do que um dev de igual
+            experiência ganha no mundo</b> — e o que separa as duas leituras não é competência,
+            <b>é câmbio</b>. Treze dos cinquenta já trabalham para empregador internacional,
+            todos em nível sênior ou acima: a fronteira é atravessável, e quem atravessou saiu
+            da mesma sala de aula.</p>
+          <div class="ficha">
+            <div><span class="k">Fonte</span><span class="v">Relatório <b>Trajetória salarial</b> → consolidado das três comparações · Stack Overflow Developer Survey 2023 · Pesquisa Código Fonte 2026 (17.046 respondentes)</span></div>
+            <div><span class="k">Base</span><span class="v">Tudo em R$/mês de 2026, câmbio médio de 2026 (R$ 5,1524). Mercado brasileiro por senioridade: Código Fonte. Mercado mundial e recorte Brasil: Stack Overflow, devs back/front/full-stack na faixa de 9 a 13 anos — a mediana de carreira do coorte é 11.</span></div>
+            <div><span class="k">Leitura</span><span class="v alerta">A barra hachurada é <b>cenário</b>: brasileiros que declaram salário em dólar no Stack Overflow (US$ 10.000/mês). Não é a renda medida de ninguém do coorte — o modelo precifica todos pela tabela brasileira, porque não temos contracheque real.</span></div>
           </div>
         </div>
       </div>
@@ -936,7 +1210,7 @@
           aria-label="Alternar modo apresentação" title="Modo apresentação (tecla P) · tela cheia (F)">⛶</button>
   <button id="nav-prev" type="button" aria-label="Seção anterior" title="Seção anterior (↑)">↑</button>
   <span class="fim">última</span>
-  <span class="pos" aria-live="polite"><b id="nav-i">1</b> / <span id="nav-n">9</span></span>
+  <span class="pos" aria-live="polite"><b id="nav-i">1</b> / <span id="nav-n">10</span></span>
   <button id="nav-next" type="button" aria-label="Próxima seção" title="Próxima seção (↓)">↓</button>
 </nav>
 <div class="navhint" id="navhint"><kbd>↑</kbd> <kbd>↓</kbd> navegar · <kbd>P</kbd> apresentação · <kbd>F</kbd> tela cheia</div>
@@ -972,9 +1246,55 @@
     [15,11977,35403,18870,6],[16,13172,32054,20878,3],[17,12631,31359,19055,3]
   ];
 
+  /* mesma série da seção 2 do relatório de egressos:
+     [ano, n, em_sm, p25_sm, p75_sm, mediana R$ da época, acima do mínimo R$, US$, mínimo do ano] */
+  var SM = [
+    [2012, 12,  1.47, 1.10,  2.21,   915,   293,  468,  622  ],
+    [2013, 14,  1.99, 1.49,  2.98,  1347,   669,  624,  678  ],
+    [2014, 16,  2.03, 1.52,  3.04,  1468,   744,  624,  724  ],
+    [2015, 24,  2.64, 1.98,  3.96,  2079,  1291,  624,  788  ],
+    [2016, 32,  3.59, 2.54,  5.57,  3162,  2282,  906,  880  ],
+    [2017, 34,  4.05, 2.76,  6.37,  3792,  2855, 1188,  937  ],
+    [2018, 43,  4.55, 3.11,  7.17,  4342,  3388, 1188,  954  ],
+    [2019, 45,  4.53, 3.24,  7.02,  4525,  3527, 1147,  998  ],
+    [2020, 44,  6.22, 4.27,  8.48,  6496,  5452, 1260, 1044.5],
+    [2021, 44, 10.21, 6.74, 16.38, 11226, 10126, 2081, 1100  ],
+    [2022, 46,  9.74, 7.08, 14.61, 11802, 10590, 2285, 1212  ],
+    [2023, 46, 11.05, 7.71, 16.59, 14524, 13210, 2908, 1314  ],
+    [2024, 43, 11.74, 7.74, 16.78, 16583, 15171, 3077, 1412  ],
+    [2025, 42, 11.33, 7.47, 18.30, 17194, 15676, 3077, 1518  ],
+    [2026, 40, 10.53, 6.45, 16.89, 17073, 15452, 3314, 1621  ]
+  ];
+  var BOLSA_SM = 0.84;   /* bolsa de 2018: R$ 800 sobre um piso de R$ 954 */
+
+  /* uma trajetória do coorte na mesma escala de mínimos — a de maior multiplicador
+     entre quem teve bolsa documentada. Anonimizada, e os anos sem registro ficam de fora. */
+  var TRAJ_SM = {
+    2013: 0.59, 2014:  0.55, 2016:  4.71, 2017:  4.05, 2020: 9.05, 2021: 10.11,
+    2022: 13.28, 2023: 15.04, 2024: 15.10, 2025: 14.07, 2026: 8.87
+  };
+
+  /* consolidado das três comparações · R$/mês de 2026 · flag 1 = coorte, 2 = cenário */
+  var COMP = [
+    ['salário mínimo 2026',            1621, 0],
+    ['estágio · mercado BR',           2587, 0],
+    ['júnior · mercado BR',            5060, 0],
+    ['pleno · mercado BR',             8467, 0],
+    ['sênior · mercado BR',           14608, 0],
+    ['egressos do campus',            17073, 1],
+    ['Brasil · 9 a 13 anos',          17420, 0],
+    ['especialista · mercado BR',     20602, 0],
+    ['mediana global de devs',        36489, 0],
+    ['brasileiro pago em US$',        51524, 2],
+    ['Estados Unidos',                68697, 0]
+  ];
+  var SM_2026 = 1621, EG_2026 = 17073;
+
   var nf = new Intl.NumberFormat('pt-BR');
   var brl = function(v){ return 'R$ ' + nf.format(v); };
   var pct = function(v){ return v.toFixed(1).replace('.', ',') + '%'; };
+  var d1 = function(v){ return v.toFixed(1).replace('.', ','); };
+  var d2 = function(v){ return v.toFixed(2).replace('.', ','); };
 
   /* ---------- tooltip compartilhado ---------- */
   var tip = document.getElementById('tip');
@@ -1176,6 +1496,101 @@
         '<br>p25–p75 ' + brl(r[1]) + ' – ' + brl(r[2]) + '<br>' + r[4] + ' egressos no ponto' +
         (r[4] < 10 ? '<br>— amostra pequena' : ''));
       c.setAttribute('pointer-events', 'none');
+    });
+  })();
+
+  /* ---------- ato 3: colunas em salários mínimos ---------- */
+  (function(){
+    var svg = document.getElementById('sm-anos');
+    if (!svg) return;
+    var W = 900, H = 360, ML = 46, MR = 16, MT = 26, MB = 74;
+    var pw = W - ML - MR, ph = H - MT - MB;
+    /* teto 18: acomoda o pico da trajetória individual (15,1) sem cortá-la */
+    var YM = 18;
+    var bw = pw / SM.length, cw = bw * 0.62;
+    var ns = 'http://www.w3.org/2000/svg';
+    var Y = function(v){ return MT + ph * (1 - v / YM); };
+    var add = function(tag, attrs, txt){
+      var el = document.createElementNS(ns, tag);
+      for (var k in attrs) el.setAttribute(k, attrs[k]);
+      if (txt != null) el.textContent = txt;
+      svg.appendChild(el);
+      return el;
+    };
+
+    for (var v = 0; v <= YM; v += 3){
+      add('line', {class: 'grid', x1: ML, x2: W - MR, y1: Y(v), y2: Y(v)});
+      add('text', {class: 'lbl', x: ML - 9, y: Y(v) + 4, 'text-anchor': 'end'}, v + '×');
+    }
+    add('line', {class: 'axis', x1: ML, x2: W - MR, y1: Y(0), y2: Y(0)});
+
+    SM.forEach(function(d, i){
+      var x = ML + bw * i + bw * 0.19;
+      var base = Math.min(d[2], 1);
+      add('rect', {class: 'base', x: x, y: Y(base), width: cw, height: Y(0) - Y(base), rx: 3});
+      if (d[2] > 1)
+        add('rect', {class: 'acima', x: x, y: Y(d[2]), width: cw, height: Y(1) - Y(d[2]), rx: 3});
+      add('text', {class: 'vl', x: x + cw / 2, y: Y(Math.max(d[2], 1)) - 8,
+        'text-anchor': 'middle'}, d1(d[2]) + '×');
+      /* o valor acima do piso só entra dentro da barra quando há altura para ele */
+      if (Y(1) - Y(d[2]) > 26)
+        add('text', {class: 'dentro', x: x + cw / 2, y: (Y(d[2]) + Y(1)) / 2 + 4,
+          'text-anchor': 'middle'},
+          '+R$ ' + (d[6] / 1000).toFixed(1).replace('.', ',') + 'k');
+      add('text', {class: 'ano', x: x + cw / 2, y: Y(0) + 20, 'text-anchor': 'middle'}, d[0]);
+      add('text', {class: 'rs', x: x + cw / 2, y: Y(0) + 34, 'text-anchor': 'middle'},
+        nf.format(d[5]));
+      var hit = add('rect', {x: ML + bw * i, y: MT, width: bw, height: ph, fill: 'transparent'});
+      bindTip(hit, '<b>' + d[0] + ' · ' + d[1] + ' egressos</b><br>' +
+        d1(d[2]) + ' salários mínimos<br>' + brl(d[5]) + '/mês (R$ da época)<br>' +
+        'US$ ' + nf.format(d[7]) + '/mês<br>' +
+        brl(d[6]) + ' acima do piso<br>p25–p75: ' + d1(d[3]) + '× a ' + d1(d[4]) + '×<br>' +
+        'mínimo do ano: ' + brl(d[8]));
+    });
+
+    /* piso legal e a bolsa: as duas referências que dão sentido à escada */
+    add('line', {class: 'piso', x1: ML, x2: W - MR, y1: Y(1), y2: Y(1)});
+    add('text', {class: 'pisolbl', x: W - MR, y: Y(1) - 7, 'text-anchor': 'end'},
+      'piso legal · 1 salário mínimo');
+    add('line', {class: 'bolsa', x1: ML, x2: W - MR, y1: Y(BOLSA_SM), y2: Y(BOLSA_SM)});
+    add('text', {class: 'bolsalbl', x: ML, y: Y(BOLSA_SM) + 14},
+      'bolsa de 2018 · ' + d1(BOLSA_SM) + ' mínimo');
+
+    /* trajetória individual sobreposta, na mesma escala — mostra quando uma pessoa
+       corre à frente ou atrás do conjunto. Anos sem registro não são interpolados. */
+    var pts = SM.map(function(d, i){
+      var v = TRAJ_SM[d[0]];
+      return v == null ? null : [ML + bw * i + bw / 2, v, d[0]];
+    }).filter(Boolean);
+    if (pts.length > 1){
+      add('path', {class: 'traj', d: 'M' + pts.map(function(q){
+        return q[0] + ' ' + Y(q[1]);
+      }).join(' L')});
+      pts.forEach(function(q){
+        add('circle', {class: 'trajp', cx: q[0], cy: Y(q[1]), r: 2.6});
+      });
+    }
+  })();
+
+  /* ---------- ato 3: trocando a comparação ---------- */
+  (function(){
+    var host = document.getElementById('bars-comp');
+    if (!host) return;
+    var max = COMP.reduce(function(a, r){ return Math.max(a, r[1]); }, 0);
+    COMP.forEach(function(r){
+      var row = document.createElement('div');
+      row.className = 'bar';
+      row.dataset.hl = r[2] === 1 ? '1' : '0';
+      row.dataset.cen = r[2] === 2 ? '1' : '0';
+      row.innerHTML = '<span class="lbl">' + r[0] + '</span>' +
+        '<span class="track"><span class="fill"></span></span>' +
+        '<span class="val tnum">' + brl(r[1]) + '</span>';
+      host.appendChild(row);
+      row.querySelector('.fill').dataset.w = (r[1] / max * 100) + '%';
+      bindTip(row, '<b>' + r[0] + '</b><br>' + brl(r[1]) + '/mês<br>' +
+        d1(r[1] / SM_2026) + ' salários mínimos<br>' +
+        d2(r[1] / EG_2026) + '× a mediana do coorte' +
+        (r[2] === 2 ? '<br>— cenário, não medição' : ''));
     });
   })();
 
