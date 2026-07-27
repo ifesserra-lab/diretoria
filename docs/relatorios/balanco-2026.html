@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Transparência: descobrindo o campus e seus impactos — DPPGE · IFES Campus Serra</title>
-<meta name="description" content="Balanço dos primeiros seis meses de gestão da DPPGE do IFES Campus Serra: um prólogo com as seis formas de ver impacto e sete movimentos — extensão, pesquisa, egressos, fomento, infraestrutura de dados, Escritório de Projetos e a visão para 2027. Cada bloco mostra a própria fonte." />
+<meta name="description" content="Balanço dos primeiros seis meses de gestão da DPPGE do IFES Campus Serra: um prólogo com as seis formas de ver impacto e oito movimentos — extensão, pesquisa, formação, egressos, fomento, infraestrutura de dados, Escritório de Projetos e a visão para 2027. Cada bloco mostra a própria fonte." />
 <meta name="author" content="Diretoria de Pesquisa, Pós-Graduação e Extensão — IFES Campus Serra" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Transparência: descobrindo o campus e seus impactos" />
@@ -328,6 +328,13 @@
   .curve .band{fill:var(--green);opacity:.09;}
   .curve .dot{fill:var(--green);stroke:var(--paper);stroke-width:2;}
 
+  /* formação: rótulos longos e uma terceira cor de barra para separar o que é
+     pesquisa, o que é extensão e o que vem depois da formatura. */
+  #formacao .bar{grid-template-columns:212px minmax(0,1fr) 104px;}
+  #formacao .bar[data-hl="2"] .fill{background:var(--green-dark);}
+  #formacao .bar[data-hl="2"] .lbl{color:var(--ink);font-weight:600;}
+  @media(max-width:640px){#formacao .bar{grid-template-columns:128px minmax(0,1fr) 84px;}}
+
   /* ato 3: colunas em salários mínimos — bloco claro = o piso, bloco verde = o que
      vem acima dele. A base é a mesma do relatório de egressos, seção 2. */
   .smc{width:100%;height:auto;display:block;min-width:660px;}
@@ -512,7 +519,7 @@
     <h1>Transparência: <span class="b">descobrindo o campus e seus impactos.</span></h1>
     <p class="lede">Seis meses de gestão da Diretoria de Pesquisa, Pós-Graduação e Extensão.
       Em vez de listar o que a diretoria fez, este balanço mostra o que <b>vocês</b> fazem —
-      sete leituras dos dados reais do campus: quem a extensão alcança, como pesquisa e
+      oito leituras dos dados reais do campus: quem a extensão alcança, como pesquisa e
       extensão se cruzam, o que acontece com quem passa por aqui, e para onde queremos
       caminhar juntos em 2027. Antes delas, um prólogo curto: <b>as seis formas de ver o
       impacto</b> de uma instituição de ensino e pesquisa.</p>
@@ -521,11 +528,12 @@
       <a href="#ato-5"><span class="k">00</span><span class="t">Impacto pode ser visto de muitas formas</span></a>
       <a href="#ato-1"><span class="k">01</span><span class="t">O campus não cabe dentro dos muros</span></a>
       <a href="#ato-2"><span class="k">02</span><span class="t">Ninguém pesquisa sozinho aqui</span></a>
-      <a href="#ato-3"><span class="k">03</span><span class="t">Cada degrau é uma vida que mudou</span></a>
-      <a href="#ato-4"><span class="k">04</span><span class="t">A força que já temos</span></a>
-      <a href="#gestao"><span class="k">05</span><span class="t">Tudo isso já estava aqui</span></a>
-      <a href="#ato-6"><span class="k">06</span><span class="t">Você não precisa fazer sozinho</span></a>
-      <a href="#ato-7"><span class="k">07</span><span class="t">O melhor vem junto, em 2027</span></a>
+      <a href="#formacao"><span class="k">03</span><span class="t">Passar por projeto virou a regra</span></a>
+      <a href="#ato-3"><span class="k">04</span><span class="t">Cada degrau é uma vida que mudou</span></a>
+      <a href="#ato-4"><span class="k">05</span><span class="t">A força que já temos</span></a>
+      <a href="#gestao"><span class="k">06</span><span class="t">Tudo isso já estava aqui</span></a>
+      <a href="#ato-6"><span class="k">07</span><span class="t">Você não precisa fazer sozinho</span></a>
+      <a href="#ato-7"><span class="k">08</span><span class="t">O melhor vem junto, em 2027</span></a>
     </nav>
   </div></section>
 
@@ -722,10 +730,74 @@
     </div>
   </div></section>
 
-  <!-- ================= ATO 3 ================= -->
-  <section class="act" id="ato-3"><div class="wrap">
+  <!-- ================= ATO 3 · FORMAÇÃO ================= -->
+  <section class="act" id="formacao"><div class="wrap">
     <div class="head">
       <span class="num">03</span>
+      <div>
+        <p class="eyebrow">Formação</p>
+        <h2>Passar por projeto virou a regra</h2>
+        <p class="lede">Entre 2020 e 2025, <b>306 pessoas se formaram</b> em Sistemas de
+          Informação e Engenharia de Controle e Automação. A pergunta que importa não é quantas
+          assistiram aula — é quantas <b>passaram por pesquisa ou por extensão</b> antes de sair
+          daqui. São <b>no mínimo 240</b>. Quatro de cada cinco.</p>
+
+        <div class="fig rv">
+          <p class="cap">Um quadrado por pessoa formada · 306 no total</p>
+          <div class="hero-n">
+            <span class="v tnum">240</span>
+            <span class="d">de 306 formados passaram por <b>pesquisa e/ou extensão</b> — e esse
+              número é o <b>piso</b>, não o total.</span>
+          </div>
+          <div class="waffle" id="waffle-formados" role="img"
+               aria-label="Grade de 306 quadrados, um por pessoa formada entre 2020 e 2025: 240 passaram por iniciação científica, e entre as 66 restantes algumas fizeram extensão."></div>
+          <div class="legend">
+            <span><i style="background:var(--green-dark)"></i>fez iniciação científica · 240</span>
+            <span><i style="background:var(--yellow)"></i>sem IC — até 66 sem nenhuma das duas</span>
+          </div>
+          <p class="insight">O bloco amarelo é <b>teto, não medida</b>: entre essas 66 pessoas
+            há quem tenha feito extensão sem passar por iniciação científica, e cada uma delas
+            move um quadrado para o verde. O que já dá para afirmar é o contrário, e é o que
+            interessa: <b>no máximo 66 pessoas — 21,6% — se formaram aqui sem passar por
+            pesquisa nem por extensão</b>. Projeto deixou de ser privilégio de poucos.</p>
+          <div class="ficha">
+            <div><span class="k">Fonte</span><span class="v">Relatório <b>Pesquisa na Formação</b> (306 formandos, 240 com IC) · /src/api/painel.json → formados (190 em extensão) — ambos públicos em docs/relatorios</span></div>
+            <div><span class="k">Base</span><span class="v">Formados de 2020.1 a 2025.2: 196 de Sistemas de Informação e 110 de Engenharia de Controle e Automação. Um quadrado por pessoa, 306 no total — nenhum identifica ninguém.</span></div>
+            <div><span class="k">Leitura</span><span class="v alerta">A <b>união</b> de quem fez pesquisa e/ou extensão está entre <b>240 e 306</b>. O piso é exato — são os 240 da iniciação científica. Fechar o número exige cruzar as duas listas por nome, o que ainda não foi feito.</span></div>
+            <div><span class="k">Contagem</span><span class="v">O relatório detalhado conta a IC de forma mais estrita: <b>231 no SigPesq</b> mais 4 recuperados via Lattes, ou seja 235, e 71 sem registro em nenhuma fonte. Adotamos aqui os 240 do relatório institucional e deixamos as duas contagens à vista.</span></div>
+          </div>
+        </div>
+
+        <div class="fig rv">
+          <p class="cap">Por onde essas pessoas passaram · % dos 306 formados</p>
+          <div class="bars" id="bars-caminhos"></div>
+          <div class="legend">
+            <span><i style="background:var(--green)"></i>pesquisa</span>
+            <span><i style="background:var(--green-dark)"></i>extensão</span>
+            <span><i style="background:var(--data-mute)"></i>depois da formatura</span>
+          </div>
+          <p class="insight">Os caminhos não são exclusivos — a mesma pessoa aparece em mais de
+            uma linha, e é isso que se quer. Duas coisas saltam. <b>Fazer pesquisa é quase
+            universal; entrar numa equipe de extensão ainda não</b>: 240 contra 108. E dos 190
+            formados que a extensão tocou, <b>82 estiveram só como público</b> — virar esses 82
+            em equipe é o caminho mais curto que o campus tem para dobrar o protagonismo
+            estudantil. No meio disso há um dado sobre gente, não sobre número:
+            <b>194 dos 196 que fizeram IC e TCC mantiveram o mesmo orientador</b> do começo ao
+            fim. O vínculo dura mais que o projeto.</p>
+          <div class="ficha">
+            <div><span class="k">Fonte</span><span class="v">/src/api/painel.json → formados.papel_dist · relatórios <b>Pesquisa na Formação</b> e <b>Formandos × Pesquisa</b> (pipeline IC → TCC → mestrado)</span></div>
+            <div><span class="k">Base</span><span class="v">Extensão por papel: 82 só público-alvo, 22 só equipe e 86 nos dois papéis — “equipe executora” soma os 22 e os 86. Mestrado: 37 que ingressaram depois de formados, dos quais <b>8 já defenderam</b> e 24 seguem ativos.</span></div>
+            <div><span class="k">Leitura</span><span class="v">A extensão alcança os dois cursos de forma desigual: <b>68,4% em Sistemas de Informação</b> (134 de 196) contra <b>50,9% na Engenharia de Controle e Automação</b> (56 de 110).</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ================= ATO 4 · EGRESSOS ================= -->
+  <section class="act" id="ato-3"><div class="wrap">
+    <div class="head">
+      <span class="num">04</span>
       <div>
         <p class="eyebrow">Egressos</p>
         <h2>Cada degrau é uma vida que mudou</h2>
@@ -824,7 +896,7 @@
   <!-- ================= ATO 4 ================= -->
   <section class="act" id="ato-4"><div class="wrap">
     <div class="head">
-      <span class="num">04</span>
+      <span class="num">05</span>
       <div>
         <p class="eyebrow">Fomento</p>
         <h2>A força que já temos — e como multiplicá-la</h2>
@@ -883,7 +955,7 @@
   <!-- ================= O QUE SUSTENTA O BALANÇO ================= -->
   <section class="act" id="gestao"><div class="wrap">
     <div class="head">
-      <span class="num">05</span>
+      <span class="num">06</span>
       <div>
         <p class="eyebrow">Os primeiros seis meses</p>
         <h2>Tudo isso já estava aqui</h2>
@@ -924,7 +996,7 @@
   <!-- ================= ATO 6 · APOIO REAL ================= -->
   <section class="act" id="ato-6"><div class="wrap">
     <div class="head">
-      <span class="num">06</span>
+      <span class="num">07</span>
       <div>
         <p class="eyebrow">Apoio real</p>
         <h2>Você não precisa fazer sozinho</h2>
@@ -1006,11 +1078,11 @@
   <!-- ================= ATO 7 · VISÃO 2027 ================= -->
   <section class="act" id="ato-7"><div class="wrap">
     <div class="head">
-      <span class="num">07</span>
+      <span class="num">08</span>
       <div>
         <p class="eyebrow">Visão 2027</p>
         <h2>O melhor a gente ainda vai fazer junto</h2>
-        <p class="lede">Os seis movimentos anteriores mostram um campus que já entrega.
+        <p class="lede">Os sete movimentos anteriores mostram um campus que já entrega.
           O próximo ciclo é sobre <b>fazer isso em conjunto</b> — usar os dados e tudo o que
           aprendemos este ano para planejar um 2027 sistêmico.</p>
 
@@ -1109,6 +1181,12 @@
             <td class="b">7,2× é mediana sobre mediana. A <b>média</b> dos multiplicadores individuais dá 8,0×. Os três números do briefing eram incompatíveis entre si: 800 × 8,1 = 6.480, não 14.608.</td></tr>
           <tr><td class="a">R$ 60 mi captados</td><td class="a">dezenas de milhões</td>
             <td class="b">O relatório de origem declara <b>ordem de grandeza</b>, não cifra apurada, e ainda está em revisão. Preferimos dizer “dezenas de milhões” e poder sustentar cada palavra.</td></tr>
+          <tr><td class="a">240 formandos com IC</td><td class="a">235 (231 + 4)</td>
+            <td class="b">O relatório institucional conta <b>240</b>; o detalhado conta 231 no SigPesq mais 4 recuperados via Lattes. Usamos 240 e declaramos a contagem estrita.</td></tr>
+          <tr><td class="a">197 formados na extensão</td><td class="a">190</td>
+            <td class="b">O Índice de Extensão diz 197 (64%); a <b>API do painel</b> diz 190 (62,1%). Adotamos a API, que é a fonte gerada.</td></tr>
+          <tr><td class="a">37 = 13,8% dos formandos</td><td class="a">12,1% de 306</td>
+            <td class="b">Os 13,8% usam um denominador menor, das turmas com pipeline apurado. Sobre os <b>306 formados</b>, 37 são 12,1%.</td></tr>
           <tr><td class="a">70,1% do recurso</td><td class="a">70% do FAPES</td>
             <td class="b">A concentração medida é do <b>orçamento FAPES</b>. O total captado inclui FACTO, que não entra nessa conta.</td></tr>
         </tbody>
@@ -1128,7 +1206,7 @@
           aria-label="Alternar modo apresentação" title="Modo apresentação (tecla P) · tela cheia (F)">⛶</button>
   <button id="nav-prev" type="button" aria-label="Seção anterior" title="Seção anterior (↑)">↑</button>
   <span class="fim">última</span>
-  <span class="pos" aria-live="polite"><b id="nav-i">1</b> / <span id="nav-n">10</span></span>
+  <span class="pos" aria-live="polite"><b id="nav-i">1</b> / <span id="nav-n">11</span></span>
   <button id="nav-next" type="button" aria-label="Próxima seção" title="Próxima seção (↓)">↓</button>
 </nav>
 <div class="navhint" id="navhint"><kbd>↑</kbd> <kbd>↓</kbd> navegar · <kbd>P</kbd> apresentação · <kbd>F</kbd> tela cheia</div>
@@ -1414,6 +1492,67 @@
         '<br>p25–p75 ' + brl(r[1]) + ' – ' + brl(r[2]) + '<br>' + r[4] + ' egressos no ponto' +
         (r[4] < 10 ? '<br>— amostra pequena' : ''));
       c.setAttribute('pointer-events', 'none');
+    });
+  })();
+
+  /* ---------- formação: waffle dos 306 formados ---------- */
+  (function(){
+    var host = document.getElementById('waffle-formados');
+    if (!host) return;
+    var TOTAL = 306, COM_IC = 240;
+    /* 34×9 e 18×17 fecham exatos em 306 — nenhuma fileira quebrada */
+    var cols = function(){
+      return window.matchMedia('(max-width:560px)').matches ? 18 : 34;
+    };
+    var monta = function(){ host.style.gridTemplateColumns = 'repeat(' + cols() + ',1fr)'; };
+    for (var i = 0; i < TOTAL; i++){
+      var q = document.createElement('i');
+      q.className = i < COM_IC ? 'tem' : 'sem';
+      host.appendChild(q);
+    }
+    monta();
+    bindTip(host, '<b>306 pessoas formadas · 2020.1 a 2025.2</b><br>' +
+      '240 com iniciação científica<br>190 apareceram em extensão<br>' +
+      'até 66 sem nenhuma das duas');
+    var t;
+    window.addEventListener('resize', function(){
+      clearTimeout(t); t = setTimeout(monta, 140);
+    }, {passive: true});
+    window.addEventListener('relayout', monta);
+  })();
+
+  /* ---------- formação: por onde passaram ---------- */
+  /* [rótulo, n, cor] — 1 pesquisa · 2 extensão · 0 depois da formatura */
+  var CAMINHOS = [
+    ['iniciação científica',        240, 1],
+    ['extensão · qualquer papel',   190, 2],
+    ['extensão · equipe executora', 108, 2],
+    ['extensão · só como público',   82, 2],
+    ['mestrado depois de formar',    37, 0]
+  ];
+  (function(){
+    var host = document.getElementById('bars-caminhos');
+    if (!host) return;
+    var TOTAL = 306;
+    var DET = {
+      240: 'inclui os 4 recuperados via Lattes fora do SigPesq',
+      190: '82 só público · 22 só equipe · 86 nos dois papéis',
+      108: 'quem executou a ação: 22 só equipe + 86 nos dois papéis',
+      82:  'esteve na ação como público, não na equipe',
+      37:  '8 já defenderam · 24 ativos · 2 evadiram'
+    };
+    CAMINHOS.forEach(function(r){
+      var p = r[1] / TOTAL * 100;
+      var row = document.createElement('div');
+      row.className = 'bar';
+      row.dataset.hl = r[2];
+      row.innerHTML = '<span class="lbl">' + r[0] + '</span>' +
+        '<span class="track"><span class="fill"></span></span>' +
+        '<span class="val tnum">' + r[1] + ' · ' + pct(p) + '</span>';
+      host.appendChild(row);
+      row.querySelector('.fill').dataset.w = p + '%';
+      bindTip(row, '<b>' + r[0] + '</b><br>' + r[1] + ' de ' + TOTAL + ' formados<br>' +
+        pct(p) + '<br>' + DET[r[1]]);
     });
   })();
 
