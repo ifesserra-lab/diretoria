@@ -432,6 +432,11 @@
     color:var(--muted);}
   .callout p{margin-top:10px;font-size:17px;line-height:1.55;color:var(--ink);max-width:60ch;}
   .callout p b{color:var(--accent);}
+  /* palavra final — o único bloco que fala mais alto que os dados */
+  .callout.finale{padding:36px 38px;border-left-width:5px;}
+  .callout.finale p{font-size:clamp(20px,2.9vw,28px);line-height:1.45;max-width:52ch;
+    margin-top:14px;letter-spacing:-.015em;}
+  @media(max-width:700px){.callout.finale{padding:26px 24px;}}
 
   /* ficha técnica — a transparência é parte do design, não apêndice */
   .ficha{margin-top:22px;border-top:1px solid var(--line);padding-top:14px;
@@ -1553,7 +1558,7 @@
             já sabe fazer.</p>
         </div>
 
-        <div class="callout rv" style="border-left-color:var(--green-dark)">
+        <div class="callout finale rv" style="border-left-color:var(--green-dark)">
           <p class="k">A última palavra</p>
           <p>Este balanço termina onde começou: em pessoas. Cada número destas páginas —
             as 4.845 vidas tocadas, os artigos que o mundo cita, a renda que multiplicou,
