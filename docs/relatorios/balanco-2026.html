@@ -432,11 +432,19 @@
     color:var(--muted);}
   .callout p{margin-top:10px;font-size:17px;line-height:1.55;color:var(--ink);max-width:60ch;}
   .callout p b{color:var(--accent);}
-  /* palavra final — o único bloco que fala mais alto que os dados */
-  .callout.finale{padding:36px 38px;border-left-width:5px;}
-  .callout.finale p{font-size:clamp(20px,2.9vw,28px);line-height:1.45;max-width:52ch;
-    margin-top:14px;letter-spacing:-.015em;}
-  @media(max-width:700px){.callout.finale{padding:26px 24px;}}
+  /* a última palavra — fecho no tom da capa: o balanço abre e fecha com
+     tipografia de display, e a bandeira completa do IFES marca o fim,
+     como a barra de progresso promete desde a primeira rolagem. */
+  .callout.finale{margin-top:64px;border:0;border-left:0;background:transparent;
+    padding:44px 0 8px;border-top:1px solid var(--line);}
+  .callout.finale::before{content:"";display:block;width:132px;height:5px;
+    background:var(--ifes-flag);background-size:132px 100%;margin-bottom:28px;}
+  .callout.finale .fin-t{margin-top:14px;font-size:clamp(30px,5.2vw,56px);line-height:1.06;
+    letter-spacing:-.03em;font-weight:800;color:var(--ink);max-width:22ch;text-wrap:balance;}
+  .callout.finale .fin-t .b{color:var(--green);display:block;margin-top:8px;}
+  .callout.finale .fin-lede{margin-top:24px;font-size:clamp(16.5px,1.9vw,19px);
+    color:var(--ink-2);max-width:62ch;line-height:1.6;}
+  .callout.finale .fin-lede b{color:var(--ink);font-weight:600;}
 
   /* ficha técnica — a transparência é parte do design, não apêndice */
   .ficha{margin-top:22px;border-top:1px solid var(--line);padding-top:14px;
@@ -1558,17 +1566,18 @@
             já sabe fazer.</p>
         </div>
 
-        <div class="callout finale rv" style="border-left-color:var(--green-dark)">
+        <div class="callout finale rv">
           <p class="k">A última palavra</p>
-          <p>Este balanço termina onde começou: em pessoas. Cada número destas páginas —
-            as 4.845 vidas tocadas, os artigos que o mundo cita, os 306 formados e os 37
-            que seguiram ao mestrado, os egressos hoje em 204 empresas, 13 delas fora do
-            Brasil, o recurso que virou laboratório — tem por trás <b>uma professora, um
-            professor, uma técnica, um técnico que escolheu se dedicar</b>, com compromisso
-            de verdade com a transformação social. Painel nenhum mede isso; ele só registra o
-            resultado. À equipe do IFES Campus Serra fica o reconhecimento e o convite:
-            <b>o que vocês já fazem é extraordinário. O que faremos juntos em 2027
-            ainda não cabe em gráfico nenhum.</b></p>
+          <p class="fin-t">O que vocês já fazem é extraordinário.
+            <span class="b">O que faremos juntos em 2027 ainda não cabe em gráfico
+            nenhum.</span></p>
+          <p class="fin-lede">Este balanço termina onde começou: em pessoas. Cada número
+            destas páginas — as 4.845 vidas tocadas, os artigos que o mundo cita, os 306
+            formados e os 37 que seguiram ao mestrado, os egressos hoje em 204 empresas,
+            13 delas fora do Brasil, o recurso que virou laboratório — tem por trás
+            <b>uma professora, um professor, uma técnica, um técnico que escolheu se
+            dedicar</b>, com compromisso de verdade com a transformação social. Painel
+            nenhum mede isso; ele só registra o resultado.</p>
         </div>
       </div>
     </div>
