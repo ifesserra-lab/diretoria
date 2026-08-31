@@ -2,31 +2,31 @@
 
 Lista de repositórios da organização GitHub `ifesserra-lab`, gerada automaticamente uma vez por semana.
 
-Última atualização: 2026-08-24 12:29 UTC
+Última atualização: 2026-08-31 18:29 UTC
 
 Total de repositórios: 19
 
 | Repositório | Descrição | Linguagem | Estado | Atualizado em |
 | --- | --- | --- | --- | --- |
 | [.github](https://github.com/ifesserra-lab/.github) | Configurações comunitárias e arquivos padrão da organização ifesserra-lab. | - | Publico | 2026-07-24 |
-| [dgp.cnqp_lib](https://github.com/ifesserra-lab/dgp.cnqp_lib) | Biblioteca Python para coleta e tratamento de dados do Diretório dos Grupos de Pesquisa do CNPq. | Python | Publico | 2026-08-24 |
-| [diretoria](https://github.com/ifesserra-lab/diretoria) | Portal de governança e documentação operacional da DPPGE do IFES Campus Serra. | Astro | Publico | 2026-08-24 |
+| [dgp.cnqp_lib](https://github.com/ifesserra-lab/dgp.cnqp_lib) | Biblioteca Python para coleta e tratamento de dados do Diretório dos Grupos de Pesquisa do CNPq. | Python | Publico | 2026-08-31 |
+| [diretoria](https://github.com/ifesserra-lab/diretoria) | Portal de governança e documentação operacional da DPPGE do IFES Campus Serra. | Astro | Publico | 2026-08-31 |
 | [egressos](https://github.com/ifesserra-lab/egressos) | Impacto de ensino, pesquisa e extensao na carreira de egressos (visao executiva anonimizada) | HTML | Publico | 2026-08-12 |
-| [factor](https://github.com/ifesserra-lab/factor) | Portal de projetos FACTO — dashboard estático (GitHub Pages) | HTML | Publico | 2026-08-20 |
-| [factor_lib](https://github.com/ifesserra-lab/factor_lib) | Python library using Playwright to scrape project data from Facto transparency portal | HTML | Publico | 2026-08-20 |
+| [factor](https://github.com/ifesserra-lab/factor) | Portal de projetos FACTO — dashboard estático (GitHub Pages) | HTML | Publico | 2026-08-31 |
+| [factor_lib](https://github.com/ifesserra-lab/factor_lib) | Python library using Playwright to scrape project data from Facto transparency portal | HTML | Publico | 2026-08-24 |
 | [gedoc-ifes-busca](https://github.com/ifesserra-lab/gedoc-ifes-busca) | Sem descrição informada. | Rust | Publico | 2026-07-16 |
 | [hermes](https://github.com/ifesserra-lab/hermes) | Agente Hermes — integração de Pesquisa, Ensino e Editais para suporte institucional do IFES | - | Publico | 2026-06-08 |
 | [homologacao-ponto](https://github.com/ifesserra-lab/homologacao-ponto) | CLI para extração automatizada do Espelho de Ponto do SIGRH (IFES) | Vue | Publico | 2026-05-30 |
 | [horizon_dashboard](https://github.com/ifesserra-lab/horizon_dashboard) | Premium Dashboard for Research Group Academic Visualization and Monitoring - Horizon Project. | Astro | Publico | 2026-07-24 |
 | [horizon_etl](https://github.com/ifesserra-lab/horizon_etl) | ETL Pipeline for extracting, validating, and loading data from multiple sources (Web, API) into Supabase using Prefect and Hexagonal Architecture. | HTML | Publico | 2026-07-20 |
-| [ifesserra-lab.github.io](https://github.com/ifesserra-lab/ifesserra-lab.github.io) | Site institucional do IFES Serra Lab — lista os projetos e o painel de extensão | HTML | Publico | 2026-07-26 |
+| [ifesserra-lab.github.io](https://github.com/ifesserra-lab/ifesserra-lab.github.io) | Site institucional do IFES Serra Lab — lista os projetos e o painel de extensão | HTML | Publico | 2026-08-24 |
 | [portal_edital](https://github.com/ifesserra-lab/portal_edital) | Portal de Editais - Astro + Tailwind v4 + BDD | HTML | Publico | 2026-04-03 |
 | [research_domain_lib](https://github.com/ifesserra-lab/research_domain_lib) | Biblioteca Python para modelagem e análise de domínios de pesquisa. | Python | Publico | 2026-03-29 |
-| [retrieve_edital](https://github.com/ifesserra-lab/retrieve_edital) | Agente especializado em fazer o download de editais usando Python e Playwright. | Python | Publico | 2026-08-24 |
-| [sbf](https://github.com/ifesserra-lab/sbf) | pagina do simposio regional de fisica hospedado no campus serra. | Astro | Publico | 2026-06-17 |
+| [retrieve_edital](https://github.com/ifesserra-lab/retrieve_edital) | Agente especializado em fazer o download de editais usando Python e Playwright. | Python | Publico | 2026-08-31 |
+| [sbf](https://github.com/ifesserra-lab/sbf) | pagina do simposio regional de fisica hospedado no campus serra. | Astro | Publico | 2026-08-31 |
 | [scriptLattes](https://github.com/ifesserra-lab/scriptLattes) | Lib que permite extrair dados do lattes e salvar em json | Python | Publico | 2026-01-31 |
 | [sigpesq_agent](https://github.com/ifesserra-lab/sigpesq_agent) | Automated agent for downloading reports from the Sigpesq portal. | Python | Publico | 2026-01-12 |
-| [src](https://github.com/ifesserra-lab/src) | ETL das ações públicas do SRC/Ifes (Playwright + httpx). Campus e saída parametrizáveis. | Python | Publico | 2026-08-02 |
+| [src](https://github.com/ifesserra-lab/src) | ETL das ações públicas do SRC/Ifes (Playwright + httpx). Campus e saída parametrizáveis. | Python | Publico | 2026-08-30 |
 
 ## Manutenção
 
