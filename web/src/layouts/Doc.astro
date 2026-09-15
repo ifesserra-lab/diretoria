@@ -101,23 +101,36 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 </style>
 
 <!-- Mermaid client-side (substitui o plugin mermaid2 do MkDocs).
-     Só carrega a lib se a página tiver algum bloco ```mermaid. -->
+     Só carrega a lib se a página tiver algum bloco ```mermaid.
+
+     O Shiki, que o Astro usa para destacar código, marca o bloco com o
+     atributo data-language no elemento PRE e NÃO aplica a classe
+     .language-mermaid no CODE. Por isso o seletor olha o data-language;
+     a forma antiga fica aceita junto, caso o highlighter mude. -->
 <script>
-  const blocks = Array.from(document.querySelectorAll('pre > code.language-mermaid'));
-  if (blocks.length) {
+  const pres = Array.from(
+    document.querySelectorAll('pre[data-language="mermaid"], pre > code.language-mermaid')
+  )
+    .map((el) => (el instanceof HTMLPreElement ? el : el.closest('pre')))
+    .filter((el, i, arr) => el !== null && arr.indexOf(el) === i);
+
+  if (pres.length) {
     const dark = document.documentElement.getAttribute('data-theme') === 'dark'
       || (!document.documentElement.getAttribute('data-theme')
           && matchMedia('(prefers-color-scheme: dark)').matches);
     const { default: mermaid } = await import('mermaid');
     mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral', securityLevel: 'strict' });
-    for (let i = 0; i < blocks.length; i++) {
-      const code = blocks[i].textContent || '';
+    for (let i = 0; i < pres.length; i++) {
+      const pre = pres[i];
+      if (!pre) continue;
+      const source = (pre.querySelector('code') ?? pre).textContent?.trim() || '';
+      if (!source) continue;
       try {
-        const { svg } = await mermaid.render('mmd-' + i, code);
+        const { svg } = await mermaid.render('mmd-' + i, source);
         const el = document.createElement('div');
         el.className = 'mermaid';
         el.innerHTML = svg;
-        blocks[i].parentElement?.replaceWith(el);
+        pre.replaceWith(el);
       } catch (e) { /* mantém o bloco de código se falhar */ }
     }
   }
