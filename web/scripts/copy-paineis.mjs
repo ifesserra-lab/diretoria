@@ -49,6 +49,16 @@ async function main() {
       imgs += (await stat(sub)).isDirectory() ? (await readdir(sub)).length : 1;
     }
   }
+  // Apresentação dos Grupos de Pesquisa: cards e slides (SSOT em ../docs/apresentacao_grupo_pesquisa).
+  const GP = resolve(__dirname, '../../docs/apresentacao_grupo_pesquisa');
+  if (existsSync(GP)) {
+    const GP_DEST = resolve(__dirname, '../public/grupos-de-pesquisa');
+    await mkdir(GP_DEST, { recursive: true });
+    for (const name of await readdir(GP)) {
+      if (/\.(pdf|jpe?g|png|webp)$/i.test(name)) await cp(join(GP, name), join(GP_DEST, name));
+    }
+  }
+
   console.log(`[copy-paineis] ${n} painéis de topo e ${imgs} imagens copiados. (PAINEIS=all para incluir árvores geradas)`);
 }
 

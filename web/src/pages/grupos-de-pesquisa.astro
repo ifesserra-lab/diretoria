@@ -1,0 +1,182 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+
+// Fonte: docs/apresentacao_grupo_pesquisa/ (texto do convite, cards e slides).
+// Os arquivos são copiados para public/grupos-de-pesquisa/ no prebuild (scripts/copy-paineis.mjs).
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const arq = (nome: string) => `${base}/grupos-de-pesquisa/${nome}`;
+
+type Material = { grupo: string; titulo: string; arquivo: string; paginas: number };
+type Encontro = { data: string; dia: string; local: string; grupos: string[]; materiais: Material[] };
+
+const encontros: Encontro[] = [
+  {
+    data: '2026-10-15', dia: '15/10', local: 'Auditório',
+    grupos: ['GPRO', 'NERA', 'LEDS'],
+    materiais: [
+      { grupo: 'GPRO', titulo: 'Grupo de Pesquisa em Redes e Otimização', arquivo: 'gpro-2026-10.pdf', paginas: 21 },
+      { grupo: 'LEDS', titulo: 'LEDS — Sinergia Aplicada', arquivo: 'leds-sinergia-aplicada.pdf', paginas: 10 },
+    ],
+  },
+  { data: '2026-10-29', dia: '29/10', local: 'Auditório', grupos: ['GETEC', 'GAMA', 'GAIn'], materiais: [] },
+  { data: '2026-11-12', dia: '12/11', local: 'Sala 503', grupos: ['GERA', 'LAICSI', 'Nu[TeC]²'], materiais: [] },
+];
+
+// Status calculado no build (o portal é reconstruído todo dia pelo bot).
+const hoje = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(new Date());
+const status = (d: string) => (d < hoje ? 'realizado' : d === hoje ? 'hoje' : 'proximo');
+const rotulo = { realizado: 'Realizado', hoje: 'É hoje', proximo: 'Próximo' } as const;
+---
+<Base title="Apresentação dos Grupos de Pesquisa"
+      description="Três tardes para conhecer os grupos de pesquisa do Ifes Campus Serra, conversar com quem pesquisa e encontrar um projeto para participar.">
+  <section class="hero">
+    <div class="wrap inner">
+      <div class="lead-col">
+        <p class="eyebrow green">Pesquisa · Campus Serra · out–nov 2026</p>
+        <h1>Apresentação dos Grupos de Pesquisa</h1>
+        <p class="sub">Três tardes para conhecer as pesquisas feitas no campus, conversar com
+          professores e pesquisadores e descobrir onde você pode entrar.</p>
+        <ul class="facts">
+          <li><span class="k mono">Para quem</span> Estudantes, professores, técnicos administrativos e quem mais tiver curiosidade</li>
+          <li><span class="k mono">Formato</span> 30 minutos por grupo: linhas de pesquisa, projetos e como participar</li>
+          <li><span class="k mono">Certificado</span> Sim — vale como hora complementar, conforme as regras de cada curso</li>
+        </ul>
+      </div>
+      <figure class="poster">
+        <img src={arq('card-convite.jpeg')} width="1080" height="1350"
+             alt="Card do convite: Apresentação dos Grupos de Pesquisa do Campus Serra — uma oportunidade para conhecer as pesquisas, estabelecer contato com pesquisadores e descobrir possibilidades de participação em projetos." />
+      </figure>
+    </div>
+  </section>
+
+  <div class="wrap stack">
+    <section class="block" aria-labelledby="prog">
+      <div>
+        <p class="eyebrow">Programação</p>
+        <h2 id="prog">Sempre às quintas, 14h</h2>
+      </div>
+
+      <ol class="agenda">
+        {encontros.map((e) => {
+          const s = status(e.data);
+          return (
+            <li class={`enc ${s}`}>
+              <div class="when">
+                <span class="dia">{e.dia}</span>
+                <span class="mono hora">qui · 14h</span>
+                <span class="mono local">{e.local}</span>
+              </div>
+              <div class="what">
+                <span class={`pill ${s}`}>{rotulo[s]}</span>
+                <ul class="grupos">
+                  {e.grupos.map((g) => <li>{g}</li>)}
+                </ul>
+                {e.materiais.length > 0 && (
+                  <div class="mats">
+                    <p class="mono mt">Slides apresentados</p>
+                    {e.materiais.map((m) => (
+                      <a class="mat" href={arq(m.arquivo)} target="_blank" rel="noopener">
+                        <span class="sig mono">{m.grupo}</span>
+                        <span class="mtit">{m.titulo}</span>
+                        <span class="mono mpg">PDF · {m.paginas} págs <Icon name="external" size={13} /></span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+
+    <section class="invite">
+      <p>Pesquisa no campus se faz em grupo — e todo grupo começa com alguém que apareceu
+        para conhecer. Venha ouvir, pergunte e leve um contato para casa.</p>
+      <p class="sig2 mono">Diretoria de Pesquisa, Pós-Graduação e Extensão · Ifes Campus Serra</p>
+    </section>
+
+    <section class="block" aria-labelledby="cards">
+      <div>
+        <p class="eyebrow">Para divulgar</p>
+        <h2 id="cards">Cards do evento</h2>
+      </div>
+      <div class="cgrid">
+        <a href={arq('card-convite.jpeg')} download><img src={arq('card-convite.jpeg')} width="1080" height="1350" loading="lazy" alt="Card do convite" /><span class="mono">Convite · baixar</span></a>
+        <a href={arq('card-programacao.jpeg')} download><img src={arq('card-programacao.jpeg')} width="1080" height="1350" loading="lazy" alt="Card da programação: 15/10 GPRO, NERA e LEDS no Auditório; 29/10 GETEC, GAMA e GAIn no Auditório; 12/11 GERA, LAICSI e Nu[TeC]² na Sala 503; sempre às 14h." /><span class="mono">Programação · baixar</span></a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--line)}
+  .hero:before{content:''; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(90% 120% at 100% -10%, var(--green-soft) 0%, transparent 50%)}
+  .hero .inner{position:relative; padding:56px 24px 52px; display:grid;
+    grid-template-columns:minmax(0,1.5fr) minmax(240px,.8fr); gap:48px; align-items:center}
+  .lead-col{min-width:0}
+  .hero h1{font-size:clamp(32px,4.6vw,50px); margin-top:14px; letter-spacing:-.018em; max-width:18ch}
+  .hero .sub{font-size:18px; color:var(--muted); margin-top:18px; max-width:52ch; line-height:1.55}
+  .facts{list-style:none; margin:26px 0 0; padding:0; display:flex; flex-direction:column; gap:10px; max-width:56ch}
+  .facts li{display:grid; grid-template-columns:110px 1fr; gap:12px; font-size:15px; line-height:1.45;
+    padding-top:10px; border-top:1px solid var(--line)}
+  .facts .k{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); padding-top:3px}
+  .poster{margin:0}
+  .poster img{display:block; border-radius:14px; box-shadow:var(--shadow-lg)}
+  @media (max-width:860px){
+    .hero .inner{grid-template-columns:1fr; gap:32px; padding:44px 16px 40px}
+    .poster{max-width:360px}
+    .facts li{grid-template-columns:1fr; gap:2px}
+  }
+
+  .stack{display:flex; flex-direction:column; gap:44px; padding-top:40px; padding-bottom:20px}
+  @media (max-width:600px){ .stack{padding-left:16px; padding-right:16px} }
+  .block{display:flex; flex-direction:column; gap:18px}
+  .block h2{font-size:clamp(24px,3vw,32px); margin-top:6px}
+
+  .agenda{list-style:none; margin:0; padding:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
+  .enc{display:grid; grid-template-columns:150px 1fr; gap:24px; padding:22px 22px; border-top:1px solid var(--line)}
+  .enc:first-child{border-top:0}
+  .enc.hoje{background:var(--green-soft)}
+  .enc.realizado .dia{color:var(--faint)}
+  .when{display:flex; flex-direction:column; gap:2px}
+  .dia{font-family:var(--serif); font-size:34px; font-weight:600; line-height:1; color:var(--green)}
+  .hora, .local{font-size:12.5px; color:var(--muted)}
+  .hora{margin-top:8px}
+  .what{display:flex; flex-direction:column; gap:12px; align-items:flex-start; min-width:0}
+  .pill{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; font-weight:700;
+    padding:3px 9px; border-radius:99px; border:1px solid var(--line-strong); color:var(--muted)}
+  .pill.hoje{background:var(--green); border-color:var(--green); color:var(--on-green)}
+  .pill.proximo{border-color:var(--gold); color:var(--gold)}
+  .grupos{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px}
+  .grupos li{font-family:var(--serif); font-size:20px; font-weight:600; padding:4px 14px; border:1px solid var(--line);
+    border-radius:10px; background:var(--surface-2)}
+  .mats{display:flex; flex-direction:column; gap:8px; width:100%; margin-top:4px}
+  .mt{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint)}
+  .mat{display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center; padding:10px 14px;
+    border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); text-decoration:none}
+  .mat:hover{border-color:var(--green); text-decoration:none}
+  .mat:hover .mtit{color:var(--green)}
+  .sig{font-size:12px; font-weight:700; color:var(--green)}
+  .mtit{font-size:15px; min-width:0}
+  .mpg{font-size:11.5px; color:var(--faint); display:inline-flex; gap:5px; align-items:center; white-space:nowrap}
+  @media (max-width:600px){
+    .enc{grid-template-columns:1fr; gap:14px; padding:18px 16px}
+    .when{flex-direction:row; flex-wrap:wrap; align-items:baseline; gap:10px}
+    .hora{margin-top:0}
+    .mat{grid-template-columns:auto 1fr}
+    .mpg{grid-column:1 / -1}
+  }
+
+  .invite{border-left:3px solid var(--green); padding:4px 0 4px 20px; max-width:62ch}
+  .invite p{font-family:var(--serif); font-size:21px; line-height:1.45}
+  .invite .sig2{font-family:var(--mono); font-size:12px; color:var(--muted); margin-top:12px}
+
+  .cgrid{display:grid; grid-template-columns:repeat(2, minmax(0, 280px)); gap:16px}
+  .cgrid a{display:flex; flex-direction:column; gap:8px; color:var(--muted); font-size:12px}
+  .cgrid img{display:block; border-radius:10px; border:1px solid var(--line)}
+  .cgrid a:hover{color:var(--green); text-decoration:none}
+  @media (max-width:600px){ .cgrid{grid-template-columns:1fr 1fr} }
+</style>

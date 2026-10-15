@@ -6,6 +6,7 @@ node_modules/
 .astro/
 # painéis copiados no prebuild (SSOT fica em ../docs/relatorios)
 public/relatorios/
+public/grupos-de-pesquisa/
 # env
 .env
 .env.production

@@ -6,5 +6,6 @@ export const nav: { label: string; href: string }[] = [
   { label: 'Decisões', href: '/decisoes' },
   { label: 'Comissões', href: '/comissoes' },
   { label: 'Processos', href: '/processos' },
+  { label: 'Grupos de Pesquisa', href: '/grupos-de-pesquisa' },
   { label: 'Equipe', href: '/equipe' },
 ];
