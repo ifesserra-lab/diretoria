@@ -58,6 +58,7 @@ nav:
       - Declaração de Ciência do NIT em Editais Fapes: processo/declaracao-ciencia-nit-editais-fapes.md
       - Acordo de PD&I com Aporte de Recurso: processo/acordo-pdi-com-aporte-recurso.md
       - Acordo de PD&I sem Aporte de Recurso: processo/acordo-pdi-sem-aporte-recurso.md
+      - Comitê de Ética em Pesquisa (CEP): processo/comite-etica-pesquisa.md
 
 markdown_extensions:
   - admonition
