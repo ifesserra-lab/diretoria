@@ -2,15 +2,15 @@
 
 Lista de repositórios da organização GitHub `ifesserra-lab`, gerada automaticamente uma vez por semana.
 
-Última atualização: 2026-11-09 21:45 UTC
+Última atualização: 2026-11-16 21:26 UTC
 
 Total de repositórios: 22
 
 | Repositório | Descrição | Linguagem | Estado | Atualizado em |
 | --- | --- | --- | --- | --- |
 | [.github](https://github.com/ifesserra-lab/.github) | Configurações comunitárias e arquivos padrão da organização ifesserra-lab. | - | Publico | 2026-07-24 |
-| [dgp.cnqp_lib](https://github.com/ifesserra-lab/dgp.cnqp_lib) | Biblioteca Python para coleta e tratamento de dados do Diretório dos Grupos de Pesquisa do CNPq. | Python | Publico | 2026-11-09 |
-| [diretoria](https://github.com/ifesserra-lab/diretoria) | Portal de governança e documentação operacional da DPPGE do IFES Campus Serra. | Astro | Publico | 2026-11-09 |
+| [dgp.cnqp_lib](https://github.com/ifesserra-lab/dgp.cnqp_lib) | Biblioteca Python para coleta e tratamento de dados do Diretório dos Grupos de Pesquisa do CNPq. | Python | Publico | 2026-11-12 |
+| [diretoria](https://github.com/ifesserra-lab/diretoria) | Portal de governança e documentação operacional da DPPGE do IFES Campus Serra. | Astro | Publico | 2026-11-11 |
 | [egp](https://github.com/ifesserra-lab/egp) | Site do Escritório de Projetos de Serra. | Shell | Publico | 2026-09-23 |
 | [egressos](https://github.com/ifesserra-lab/egressos) | Impacto de ensino, pesquisa e extensao na carreira de egressos (visao executiva anonimizada) | HTML | Publico | 2026-10-21 |
 | [factor](https://github.com/ifesserra-lab/factor) | Portal de projetos FACTO — dashboard estático (GitHub Pages) | HTML | Publico | 2026-11-09 |
